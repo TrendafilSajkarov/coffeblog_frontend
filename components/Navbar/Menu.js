@@ -105,7 +105,7 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                                     {category.title}
                                   </h3>
                                   <h3 className="font-light group-hover:text-red-300 text-xs prose-sm text-gray-500 self-end">
-                                    {"X"} posts
+                                    {category.posts.length} posts
                                   </h3>
                                 </a>
                               </Link>

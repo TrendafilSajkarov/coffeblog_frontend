@@ -8,14 +8,6 @@ import { getClient } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 
 export default function Home({ categories, aboutUs = null, logo }) {
-  //   const featuredFourPosts = props.data.featuredPosts.filter(
-  //     (post, i) => i <= 3
-  //   );
-
-  //   const olderFeaturedPosts = props.data.featuredPosts.filter(
-  //     (post, i) => i > 3
-  //   );
-
   return (
     <div>
       <Head>
@@ -40,10 +32,11 @@ export default function Home({ categories, aboutUs = null, logo }) {
 
 export async function getStaticProps({ preview = false }) {
   const postQuery = groq`
-  *[_type == "category"]{
+  *[_type == "category"] | order(_createdAt) {
     title,
     "slug": slug.current,
-    _id
+    _id,
+    "posts": *[_type == "post" && references(^._id)].title
   }
 `;
   const data = await getClient(preview).fetch(postQuery);
@@ -56,7 +49,14 @@ export async function getStaticProps({ preview = false }) {
 `;
   const data1 = await getClient(preview).fetch(layoutQuery);
   const logo = data1[0].logo;
-
+  // ===========================
+  //   const catQuery = groq`
+  //   *[_type == "post" && categories ]
+  // `;
+  //   const data2 = await getClient(preview).fetch(catQuery);
+  //   const cat = Array.from(data2);
+  //   console.log(cat[0].categories);
+  // ================================
   return {
     props: {
       categories,
