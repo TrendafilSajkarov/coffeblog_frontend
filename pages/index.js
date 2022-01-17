@@ -1,13 +1,18 @@
 import Head from "next/head";
 import Navbar from "../components/Navbar/Navbar";
-// import Latest from "../components/Latest/Latest";
+import Latest from "../components/Latest/Latest";
 // import Site from "../components/Site/Site";
 // import Footer from "../components/Footer/Footer";
 
 import { getClient } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 
-export default function Home({ categories, aboutUs = null, logo }) {
+export default function Home({
+  categories,
+  aboutUs = null,
+  logo,
+  featuredPosts,
+}) {
   return (
     <div>
       <Head>
@@ -15,11 +20,11 @@ export default function Home({ categories, aboutUs = null, logo }) {
         <link rel="icon" href="/logo.ico" />
       </Head>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
-      {/* <Latest
-        featuredPosts={featuredFourPosts}
-        categories={props.data.categories}
+      <Latest
+        featuredPosts={featuredPosts}
+        // categories={props.data.categories}
       />
-      <Site
+      {/*<Site
         latestPosts={props.data.latestPosts}
         categories={props.data.categories}
         aboutUs={props.data.aboutUs}
@@ -49,18 +54,26 @@ export async function getStaticProps({ preview = false }) {
 `;
   const data1 = await getClient(preview).fetch(layoutQuery);
   const logo = data1[0].logo;
-  // ===========================
-  //   const catQuery = groq`
-  //   *[_type == "post" && categories ]
-  // `;
-  //   const data2 = await getClient(preview).fetch(catQuery);
-  //   const cat = Array.from(data2);
-  //   console.log(cat[0].categories);
-  // ================================
+
+  const featPostQuery = groq`
+  *[_type == "post" && isFeaturedPost == true] | order(_updatedAt desc)[0...4] {
+    ...,
+    "body": [],
+    "author": author->{
+      name,
+      "slug": slug.current,
+    },
+    "categories": categories[0]->{title, "slug": slug.current}
+  }
+  `;
+  const data2 = await getClient(preview).fetch(featPostQuery);
+  const featuredPosts = Array.from(data2);
+
   return {
     props: {
       categories,
       logo,
+      featuredPosts,
     },
   };
 }
