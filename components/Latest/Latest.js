@@ -65,11 +65,7 @@ export default function Latest({ featuredPosts }) {
 
       <div className="grid grid-flow-row grid-rows-3 md:grid-flow-col grid-cols-2 md:grid-rows-2 gap-2">
         <div className="relative group">
-          <Image
-            objectFit="cover"
-            src={featuredPosts[1].mainImg}
-            layout="fill"
-          />
+          <Image objectFit="cover" src={imageProps1.src} layout="fill" />
           <div className="absolute bottom-0 h-2/5 max-h-36 w-full flex items-start">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
