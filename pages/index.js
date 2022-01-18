@@ -2,12 +2,19 @@ import Head from "next/head";
 import Navbar from "../components/Navbar/Navbar";
 import Latest from "../components/Latest/Latest";
 import Site from "../components/Site/Site";
+import Footer from "../components/Footer/Footer";
 // import Footer from "../components/Footer/Footer";
 
 import { getClient } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 
-export default function Home({ categories, aboutUs = null, logo, siteData }) {
+export default function Home({
+  categories,
+  aboutUs = null,
+  logo,
+  siteData,
+  footer,
+}) {
   return (
     <div>
       <Head>
@@ -24,7 +31,7 @@ export default function Home({ categories, aboutUs = null, logo, siteData }) {
         aboutUs={aboutUs}
         olderFeaturedPosts={siteData.olderFeaturedPosts}
       />
-      {/* <Footer /> */}
+      <Footer footer={footer} />
     </div>
   );
 }
@@ -49,19 +56,11 @@ export async function getStaticProps({ preview = false }) {
   const data1 = await getClient(preview).fetch(layoutQuery);
   const logo = data1[0].logo;
 
-  const featPostQuery = groq`
-  *[_type == "post" && isFeaturedPost == true] | order(_createdAt desc)[0...4] {
-    ...,
-    "body": [],
-    "author": author->{
-      name,
-      "slug": slug.current,
-    },
-    "categories": categories[0]->{title, "slug": slug.current}
-  }
+  const footerQuery = groq`
+    *[_type == "footer"]
   `;
-  const data2 = await getClient(preview).fetch(featPostQuery);
-  const featuredPosts = Array.from(data2);
+  const data2 = await getClient(preview).fetch(footerQuery);
+  const footer = Array.from(data2);
 
   const siteQuery = groq`
   {
@@ -106,7 +105,7 @@ export async function getStaticProps({ preview = false }) {
   }
   `;
   const result = await getClient(preview).fetch(siteQuery);
-  // const siteData = Array.from(data3);
+
   const count = result.posts / 10;
   const pages = Math.floor(count);
   const siteData = { ...result, pages };
@@ -115,8 +114,8 @@ export async function getStaticProps({ preview = false }) {
     props: {
       categories,
       logo,
-      featuredPosts,
       siteData,
+      footer,
     },
   };
 }
