@@ -44,7 +44,7 @@ export default function Latest({ featuredPosts }) {
               </h4>
             </div>
             <Link
-              href={`/${featuredPosts[0].categories.slug}/${featuredPosts[0].slug.current}`}
+              href={`/${featuredPosts[0].categories.slug}/${featuredPosts[0].slug}`}
             >
               <a>
                 <h3 className="text-xl font-light font-serif text-white prose-sm group-hover:underline">
@@ -82,7 +82,7 @@ export default function Latest({ featuredPosts }) {
                 </h4>
               </div>
               <Link
-                href={`/${featuredPosts[1].categories.slug}/${featuredPosts[1].slug.current}`}
+                href={`/${featuredPosts[1].categories.slug}/${featuredPosts[1].slug}`}
               >
                 <a>
                   <h3 className="text-xl font-light font-serif text-white prose-sm group-hover:underline">
@@ -112,7 +112,7 @@ export default function Latest({ featuredPosts }) {
                 </h4>
               </div>
               <Link
-                href={`/${featuredPosts[2].categories.slug}/${featuredPosts[2].slug.current}`}
+                href={`/${featuredPosts[2].categories.slug}/${featuredPosts[2].slug}`}
               >
                 <a>
                   <h3 className="text-xl font-light font-serif text-white group-hover:underline">
@@ -142,7 +142,7 @@ export default function Latest({ featuredPosts }) {
                 </h4>
               </div>
               <Link
-                href={`/${featuredPosts[3].categories.slug}/${featuredPosts[3].slug.current}`}
+                href={`/${featuredPosts[3].categories.slug}/${featuredPosts[3].slug}`}
               >
                 <a>
                   <h3 className="text-xl font-light font-serif text-white text-shadow group-hover:underline">
