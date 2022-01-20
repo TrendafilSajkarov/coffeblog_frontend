@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-// import Pagination from "../Pagination/Pagination";
+import Pagination from "../Pagination/Pagination";
 
 import { useNextSanityImage } from "next-sanity-image";
 import configuredSanityClient from "../../lib/configuredSanityClient";
@@ -118,7 +118,7 @@ export default function MainContent({
           );
         })}
       </section>
-      {/* {pages > 0 && <Pagination pages={pages} currentPage={currentPage} />} */}
+      {pages > 0 && <Pagination pages={pages} currentPage={currentPage} />}
     </main>
   );
 }
