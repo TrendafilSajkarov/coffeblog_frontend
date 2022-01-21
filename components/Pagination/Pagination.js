@@ -71,6 +71,25 @@ export default function Pagination({ pages, currentPage, category = "" }) {
             </Link>
             {/* <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" --> */}
 
+            {currentPage === 0 ? (
+              <span
+                aria-current="page"
+                className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+              >
+                Home
+              </span>
+            ) : (
+              <Link href="/">
+                <a>
+                  <span
+                    aria-current="page"
+                    className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                  >
+                    Home
+                  </span>
+                </a>
+              </Link>
+            )}
             {currentPage - 1 !== 0 && currentPage !== 0 && (
               <Link href={`/page/${currentPage - 1}`}>
                 <a
@@ -118,7 +137,7 @@ export default function Pagination({ pages, currentPage, category = "" }) {
               </span>
             )}
             {currentPage + 1 !== pages && currentPage !== pages && (
-              <Link href={`/pages/${pages}`}>
+              <Link href={`/page/${pages}`}>
                 <a className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                   {pages}
                 </a>
