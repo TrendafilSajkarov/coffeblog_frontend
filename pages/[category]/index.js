@@ -11,69 +11,80 @@ export default function CategoryPage({
   logo,
   aboutUs = null,
   footer,
-  siteData,
+  latestPosts,
+  currentCategory,
+  featuredPosts,
 }) {
   return (
     <div>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
       <section className="container grid grid-cols-2 auto-rows-auto w-11/12 lg:grid-cols-3 gap-4 xl:w-3/4 max-w-screen-xl mx-auto my-6">
-        {/* <CategoriesPageMainContent
-          latestPosts={siteData.latestPosts}
-          currentCategory={siteData.currentCategory}
-        /> */}
-        {/* <AsideContent
+        <CategoriesPageMainContent
+          latestPosts={latestPosts}
+          currentCategory={currentCategory}
+        />
+        <AsideContent
           aboutUs={aboutUs}
-          olderFeaturedPosts={siteData.featuredPosts}
+          olderFeaturedPosts={featuredPosts}
           categories={categories}
-        /> */}
+        />
       </section>
       <Footer footer={footer} />
     </div>
   );
 }
 
-export async function getStaticProps() {
-  const siteQuery = groq`
+export async function getStaticProps(context) {
+  const latestPostQuery = groq`
   {
-    "latestPosts": *[_type == "post"] | order(_createdAt desc)[0...10]{
-    ...,
-      "body": [],
-      "slug": slug.current,
-      "categories": categories[0]->{
-        _id,
-        title,
-        "slug": slug.current
-      },
-      "mainImageUrl": mainImage.asset->url,
-      "author": author->{name}
-  },
-  {
-    "currentCategory": *[_type == "category" && slug.current == 'buyers-guide'] {
-        title,
+    "latestPosts": *[_type == "category" && slug.current == '${context.params.category.toString()}'] | order(_createdAt desc)[0...10]{
+      "posts": *[_type == "post" && references(^._id)]{
+        ...,
+        "body": [],
         "slug": slug.current,
-        _id,
-        "posts": *[_type == "post" && references(^._id)].title
+        "mainImageUrl": mainImage.asset->url,
+        "author": author->{name}
       }
-  },
-  "featuredPosts": *[_type == "post" && isFeaturedPost == true] | order(_createdAt desc)[0...10]{
-    ...,
-      "body": [],
-      "slug": slug.current,
-      "categories": categories[0]->{
-        _id,
-        title,
-        "slug": slug.current
-      },
-      "mainImageUrl": mainImage.asset->url,
-      "author": author->{name}  
-  }
+    }
   }
   `;
-  const result = await getClient().fetch(siteQuery);
+  const result1 = await getClient().fetch(latestPostQuery);
+  const latestPosts = result1.latestPosts[0].posts;
 
-  const count = result.currentCategory.posts.length / 10;
+  const currentCategoryQuery = groq`
+    {
+      "currentCategory": *[_type == "category" && slug.current == '${context.params.category.toString()}'] {
+          title,
+          "slug": slug.current,
+          _id,
+          "posts": *[_type == "post" && references(^._id)].title
+      }
+    }
+  `;
+  const result2 = await getClient().fetch(currentCategoryQuery);
+  const currentCategory = result2.currentCategory;
+
+  const count = currentCategory[0].posts.length / 10;
   const pages = Math.floor(count);
-  const siteData = { ...result, pages };
+
+  const featuredPostsQuery = groq`
+  {
+      "featuredPosts": *[_type == "post" && isFeaturedPost == true] | order(_createdAt desc)[0...10]{
+        ...,
+        "body": [],
+        "slug": slug.current,
+        "categories": categories[0]->{
+          _id,
+          title,
+          "slug": slug.current
+        },
+        "mainImageUrl": mainImage.asset->url,
+        "author": author->{name}
+    }
+  }  
+  `;
+  const result = await getClient().fetch(featuredPostsQuery);
+  const featuredPosts = result.featuredPosts;
 
   const postQuery = groq`
     *[_type == "category"] | order(_createdAt) {
@@ -99,13 +110,15 @@ export async function getStaticProps() {
     `;
   const data2 = await getClient().fetch(footerQuery);
   const footer = Array.from(data2);
-  console.log(siteData.currentCategory);
+
   return {
     props: {
       categories,
       logo,
       footer,
-      siteData,
+      latestPosts,
+      currentCategory,
+      featuredPosts,
     },
   };
 }
