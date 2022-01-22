@@ -14,6 +14,8 @@ export default function CategoryPage({
   latestPosts,
   currentCategory,
   featuredPosts,
+  pages = 0,
+  currentPage = 0,
 }) {
   return (
     <div>
@@ -22,6 +24,8 @@ export default function CategoryPage({
         <CategoriesPageMainContent
           latestPosts={latestPosts}
           currentCategory={currentCategory}
+          pages={pages}
+          currentPage={currentPage}
         />
         <AsideContent
           aboutUs={aboutUs}
@@ -37,8 +41,8 @@ export default function CategoryPage({
 export async function getStaticProps(context) {
   const latestPostQuery = groq`
   {
-    "latestPosts": *[_type == "category" && slug.current == '${context.params.category.toString()}'] | order(_createdAt desc)[0...10]{
-      "posts": *[_type == "post" && references(^._id)]{
+    "latestPosts": *[_type == "category" && slug.current == '${context.params.category.toString()}']{
+      "posts": *[_type == "post" && references(^._id)] | order(_createdAt desc)[0...10]{
         ...,
         "body": [],
         "slug": slug.current,
@@ -50,6 +54,9 @@ export async function getStaticProps(context) {
   `;
   const result1 = await getClient().fetch(latestPostQuery);
   const latestPosts = result1.latestPosts[0].posts;
+
+  const count = latestPosts.length / 10;
+  const pages = Math.floor(count);
 
   const currentCategoryQuery = groq`
     {
@@ -63,9 +70,6 @@ export async function getStaticProps(context) {
   `;
   const result2 = await getClient().fetch(currentCategoryQuery);
   const currentCategory = result2.currentCategory;
-
-  const count = currentCategory[0].posts.length / 10;
-  const pages = Math.floor(count);
 
   const featuredPostsQuery = groq`
   {
@@ -119,6 +123,7 @@ export async function getStaticProps(context) {
       latestPosts,
       currentCategory,
       featuredPosts,
+      pages,
     },
   };
 }

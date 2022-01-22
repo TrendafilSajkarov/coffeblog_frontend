@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Pagination from "../Pagination/Pagination";
+import CategoryPagination from "../Pagination/CategoryPagination";
 
 import { getDate } from "../../utils/utils";
 
@@ -48,7 +48,7 @@ export default function CategoriesPageMainContent({
                     </a>
                   </Link>
 
-                  <p className="text-xs text-gray-400">By Admin | 3 min read</p>
+                  <p className="text-xs text-gray-400">By {post.author.name}</p>
                   <p className="text-base line-clamp-5">{post.excerpt}</p>
                   <Link href={`/${currentCategory[0].slug}/${post.slug}`}>
                     <a>
@@ -61,13 +61,13 @@ export default function CategoriesPageMainContent({
               </li>
             );
           })}
-          {/* {pages > 0 && (
-            <Pagination
+          {pages > 0 && (
+            <CategoryPagination
               pages={pages}
               currentPage={currentPage}
-              category={currentCategory.slug}
+              category={currentCategory[0].slug}
             />
-          )} */}
+          )}
         </ul>
       </section>
     </main>
