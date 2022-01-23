@@ -55,9 +55,6 @@ export async function getStaticProps(context) {
   const result1 = await getClient().fetch(latestPostQuery);
   const latestPosts = result1.latestPosts[0].posts;
 
-  const count = latestPosts.length / 10;
-  const pages = Math.floor(count);
-
   const currentCategoryQuery = groq`
     {
       "currentCategory": *[_type == "category" && slug.current == '${context.params.category.toString()}'] {
@@ -70,6 +67,9 @@ export async function getStaticProps(context) {
   `;
   const result2 = await getClient().fetch(currentCategoryQuery);
   const currentCategory = result2.currentCategory;
+
+  const count = currentCategory[0].posts.length / 10;
+  const pages = Math.floor(count);
 
   const featuredPostsQuery = groq`
   {

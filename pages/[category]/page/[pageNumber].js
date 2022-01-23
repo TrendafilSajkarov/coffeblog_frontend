@@ -73,7 +73,6 @@ export async function getStaticProps(context) {
   const count = currentCategory[0].posts.length / 10;
   const pages = Math.floor(count);
   const currentPage = parseInt(context.params.pageNumber);
-  console.log(pages);
 
   const featuredPostsQuery = groq`
     {
@@ -169,35 +168,3 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-//================== OLD ==================================
-// export async function getStaticPaths() {
-//   // Call an external API endpoint to get posts
-
-//   const res = await fetch(`http://localhost:3000/api/categories`);
-//   const categories = await res.json();
-
-//   let pagesParams = [];
-
-//   const catWithPosts = categories.categories.filter(
-//     (category) => category.slug !== "about"
-//   );
-
-//   catWithPosts.map((cat) => {
-//     let pagesPerCat = cat.posts.length / 10;
-//     const pagesNum = Math.floor(pagesPerCat);
-//     if (pagesNum > 0) {
-//       for (let index = 1; index <= pagesNum; index++) {
-//         pagesParams.push({
-//           params: { category: cat.slug, pageNumber: index.toString() },
-//         });
-//       }
-//       return;
-//     }
-//     return pagesParams;
-//   });
-
-//   return {
-//     paths: pagesParams,
-//     fallback: false,
-//   };
-// }
