@@ -4,6 +4,7 @@ import AsideContent from "../../components/Site/AsideContent";
 
 import { getDate } from "../../utils/utils";
 
+import { PortableText } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
 
@@ -15,53 +16,54 @@ export default function PostPage({
   logo,
   footer,
   singlePost,
+  featuredPosts,
 }) {
   return (
     <div className="">
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
 
       <section className="container max-w-screen-xl mx-auto my-6">
-        <article className="prose-lg px-1 md:px-4 flex flex-col items-center">
-          <div className="relative w-full h-screen max-h-600 shadow-md">
-            <Image
-              src={singlePost[0].mainImageUrl}
-              layout="fill"
-              objectFit="cover"
-              quality={100}
-            />
+        <div className="relative w-full h-screen max-h-600 shadow-md">
+          <Image
+            src={singlePost[0].mainImageUrl}
+            layout="fill"
+            objectFit="cover"
+            quality={100}
+          />
 
-            <div className="absolute shadow-sm border-gray-200 border bg-white py-0 -bottom-6 left-5 right-5 md:left-20 md:right-20 lg:left-32 lg:right-32 flex items-center">
-              <div className="hidden top-4 md:flex flex-col items-center bg-gray-100 bg-opacity-50 w py-2 px-6 mx-6 shadow-lg">
-                <div className="text-4xl font-extrabold text-gray-700 ">
-                  {getDate(singlePost[0]._createdAt)[0]}
-                </div>
-                <div className="text-base font-medium h-auto text-gray-700">
-                  {getDate(singlePost[0]._createdAt)[1]}
-                </div>
+          <div className="absolute shadow-sm border-gray-200 border bg-white py-0 -bottom-6 left-5 right-5 md:left-20 md:right-20 lg:left-32 lg:right-32 flex items-center">
+            <div className="hidden top-4 md:flex flex-col items-center bg-gray-100 bg-opacity-50 w py-2 px-6 mx-6 shadow-lg">
+              <div className="text-4xl font-extrabold text-gray-700 ">
+                {getDate(singlePost[0]._createdAt)[0]}
               </div>
-              <div className="flex flex-1 flex-col items-center font-serif">
-                <h4 className="uppercase text-yellow-600 text-base flex-grow-0">
-                  {singlePost[0].categories.title}
-                </h4>
-                <h3 className="font-light">{singlePost[0].title}</h3>
-                <p className="text-xs text-gray-400">
-                  By {singlePost[0].author.name}
-                </p>
+              <div className="text-base font-medium h-auto text-gray-700">
+                {getDate(singlePost[0]._createdAt)[1]}
               </div>
             </div>
+            <div className="flex flex-1 flex-col items-center py-3 font-serif text-4xl">
+              <h4 className="uppercase text-yellow-600 text-base flex-grow-0">
+                {singlePost[0].categories.title}
+              </h4>
+              <h3 className="font-light">{singlePost[0].title}</h3>
+              <p className="text-xs text-gray-400">
+                By {singlePost[0].author.name}
+              </p>
+            </div>
           </div>
-          {/* <div
-            dangerouslySetInnerHTML={{
-              __html: marked(singlePost.singlePost[0].content),
-            }}
-            className="prose mt-16"
-          ></div> */}
-        </article>
-        {/* <AsideContent
-          aboutUs={aboutUs}
-          olderFeaturedPosts={featuredPosts}
-          categories={categories}
-        /> */}
+        </div>
+        <section className="container grid grid-cols-2 auto-rows-auto w-11/12 lg:grid-cols-3 gap-4 xl:w-3/4 max-w-screen-xl mx-auto my-6">
+          <article className="col-span-2 px-1 md:px-4 flex flex-col items-center">
+            <PortableText
+              className="prose mt-16 font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-serif"
+              blocks={singlePost[0].body}
+            />
+          </article>
+          <AsideContent
+            aboutUs={aboutUs}
+            olderFeaturedPosts={featuredPosts}
+            categories={categories}
+          />
+        </section>
       </section>
       <Footer footer={footer} />
     </div>
@@ -80,24 +82,24 @@ export async function getStaticProps(context) {
   const data3 = await getClient().fetch(singlePostQuery);
   const singlePost = Array.from(data3);
 
-  // const featuredPostsQuery = groq`
-  //     {
-  //         "featuredPosts": *[_type == "post" && isFeaturedPost == true] | order(_createdAt desc)[0...10]{
-  //           ...,
-  //           "body": [],
-  //           "slug": slug.current,
-  //           "categories": categories[0]->{
-  //             _id,
-  //             title,
-  //             "slug": slug.current
-  //           },
-  //           "mainImageUrl": mainImage.asset->url,
-  //           "author": author->{name}
-  //       }
-  //     }
-  //     `;
-  //   const result = await getClient().fetch(featuredPostsQuery);
-  //   const featuredPosts = result.featuredPosts;
+  const featuredPostsQuery = groq`
+      {
+          "featuredPosts": *[_type == "post" && isFeaturedPost == true] | order(_createdAt desc)[0...10]{
+            ...,
+            "body": [],
+            "slug": slug.current,
+            "categories": categories[0]->{
+              _id,
+              title,
+              "slug": slug.current
+            },
+            "mainImageUrl": mainImage.asset->url,
+            "author": author->{name}
+        }
+      }
+      `;
+  const result = await getClient().fetch(featuredPostsQuery);
+  const featuredPosts = result.featuredPosts;
 
   const postQuery = groq`
       *[_type == "category"] | order(_createdAt) {
@@ -126,7 +128,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      // featuredPosts,
+      featuredPosts,
       singlePost,
       categories,
       logo,
