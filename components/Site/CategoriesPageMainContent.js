@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Pagination from "../Pagination/Pagination";
+import CategoryPagination from "../Pagination/CategoryPagination";
 
 import { getDate } from "../../utils/utils";
 
@@ -61,13 +61,13 @@ export default function CategoriesPageMainContent({
               </li>
             );
           })}
-          {/* {pages > 0 && (
-            <Pagination
+          {pages > 0 && (
+            <CategoryPagination
               pages={pages}
               currentPage={currentPage}
-              category={currentCategory.slug}
+              category={currentCategory[0].slug}
             />
-          )} */}
+          )}
         </ul>
       </section>
     </main>
