@@ -3,6 +3,7 @@ import Footer from "../../components/Footer/Footer";
 import AsideContent from "../../components/Site/AsideContent";
 
 import { getDate } from "../../utils/utils";
+import { serializers } from "../../lib/serializers";
 
 import { PortableText } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
@@ -54,8 +55,9 @@ export default function PostPage({
         <section className="container grid grid-cols-2 auto-rows-auto w-11/12 lg:grid-cols-3 gap-4 xl:w-3/4 max-w-screen-xl mx-auto my-6">
           <article className="col-span-2 px-1 md:px-4 flex flex-col items-center">
             <PortableText
-              className="prose mt-16 font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-serif"
+              className="prose mt-16 prose-a:text-blue-600 font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-serif"
               blocks={singlePost[0].body}
+              serializers={serializers}
             />
           </article>
           <AsideContent
@@ -74,6 +76,15 @@ export async function getStaticProps(context) {
   const singlePostQuery = groq`
         *[_type == "post" && slug.current == "${context.params.post.toString()}"]{
             ...,
+            body[]{
+              ...,
+              markDefs[]{
+                ...,
+                _type == "internalLink" => {
+                  "slug": @.reference->slug
+                }
+              }
+            },
             "mainImageUrl": mainImage.asset->url,
             "author": author->{name},
             "categories": categories[0]->{title, "slug": slug.current}
