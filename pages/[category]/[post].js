@@ -72,6 +72,10 @@ export default function PostPage({
   );
 }
 
+// "url": "${
+//   process.env.SITE_ADDRESS
+// }" + categories[0]->{slug.current} + @.item->slug.current,
+
 export async function getStaticProps(context) {
   const singlePostQuery = groq`
         *[_type == "post" && slug.current == "${context.params.post.toString()}"]{
@@ -81,7 +85,8 @@ export async function getStaticProps(context) {
               markDefs[]{
                 ...,
                 _type == "internalLink" => {
-                  "slug": @.reference->slug
+                  "postSlug": @.reference->slug.current,
+                  "categorySlug": @.reference->categories[0]->slug.current           
                 }
               }
             },
