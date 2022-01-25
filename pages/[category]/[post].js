@@ -47,7 +47,8 @@ export default function PostPage({
               </h4>
               <h3 className="font-light">{singlePost[0].title}</h3>
               <p className="text-xs text-gray-400">
-                By {singlePost[0].author.name}
+                By {singlePost[0].author.name} |{" "}
+                {singlePost[0].estimatedReadingTime} min read
               </p>
             </div>
           </div>
@@ -90,6 +91,7 @@ export async function getStaticProps(context) {
                 }
               }
             },
+            "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
             "mainImageUrl": mainImage.asset->url,
             "author": author->{name},
             "categories": categories[0]->{title, "slug": slug.current}
@@ -103,6 +105,7 @@ export async function getStaticProps(context) {
           "featuredPosts": *[_type == "post" && isFeaturedPost == true] | order(_createdAt desc)[0...10]{
             ...,
             "body": [],
+            "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
             "slug": slug.current,
             "categories": categories[0]->{
               _id,

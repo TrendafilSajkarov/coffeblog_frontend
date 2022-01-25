@@ -53,7 +53,10 @@ export default function MainContent({
               </a>
             </Link>
 
-            <p className="text-xs text-gray-400">By {latestPost.author.name}</p>
+            <p className="text-xs text-gray-400">
+              By {latestPost.author.name} | {latestPost.estimatedReadingTime}{" "}
+              min read
+            </p>
             <p className="text-base line-clamp-5">{latestPost.excerpt}</p>
             <Link href={`/${latestPost.categories.slug}/${latestPost.slug}`}>
               <a>
@@ -104,7 +107,9 @@ export default function MainContent({
                   </a>
                 </Link>
 
-                <p className="text-xs text-gray-400">By {post.author.name}</p>
+                <p className="text-xs text-gray-400">
+                  By {post.author.name} | {post.estimatedReadingTime} min read
+                </p>
                 <p className="text-base line-clamp-3">{post.excerpt}</p>
                 <Link href={`/${post.categories.slug}/${post.slug}`}>
                   <a>

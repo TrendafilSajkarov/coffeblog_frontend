@@ -67,6 +67,7 @@ export async function getStaticProps({ preview = false }) {
     "latestPosts": *[_type == "post"] | order(_createdAt desc)[0...10]{
     ...,
       "body": [],
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
       "slug": slug.current,
       "categories": categories[0]->{
         _id,
@@ -79,6 +80,7 @@ export async function getStaticProps({ preview = false }) {
   "featuredFourPosts": *[_type == "post" && isFeaturedPost == true] | order(_createdAt desc)[0...4]{
     ...,
       "body": [],
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
       "slug": slug.current,
       "categories": categories[0]->{
         _id,
@@ -91,6 +93,7 @@ export async function getStaticProps({ preview = false }) {
   "olderFeaturedPosts": *[_type == "post"] | order(_createdAt desc)[4...10]{
     ...,
       "body": [],
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
       "slug": slug.current,
       "categories": categories[0]->{
         _id,

@@ -47,6 +47,7 @@ export async function getStaticProps(context) {
   }0]{
           ...,
           "body": [],
+          "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
           "slug": slug.current,
           "mainImageUrl": mainImage.asset->url,
           "author": author->{name}
@@ -79,6 +80,7 @@ export async function getStaticProps(context) {
         "featuredPosts": *[_type == "post" && isFeaturedPost == true] | order(_createdAt desc)[0...10]{
           ...,
           "body": [],
+          "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
           "slug": slug.current,
           "categories": categories[0]->{
             _id,

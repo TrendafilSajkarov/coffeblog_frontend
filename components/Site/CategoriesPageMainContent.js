@@ -48,7 +48,9 @@ export default function CategoriesPageMainContent({
                     </a>
                   </Link>
 
-                  <p className="text-xs text-gray-400">By {post.author.name}</p>
+                  <p className="text-xs text-gray-400">
+                    By {post.author.name} | {post.estimatedReadingTime} min read
+                  </p>
                   <p className="text-base line-clamp-5">{post.excerpt}</p>
                   <Link href={`/${currentCategory[0].slug}/${post.slug}`}>
                     <a>

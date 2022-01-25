@@ -56,7 +56,8 @@ export default function AsideContent({
                     </Link>
 
                     <p className="text-xs prose-sm text-gray-400">
-                      By {post.author.name}
+                      By {post.author.name} | {post.estimatedReadingTime} min
+                      read
                     </p>
                   </div>
                 </div>

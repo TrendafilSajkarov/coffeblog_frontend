@@ -57,6 +57,10 @@ export default function Latest({ featuredPosts }) {
                 <p className="md:max-w-screen-sm prose-sm text-base font-serif text-white font-extralight line-clamp-3">
                   {featuredPosts[0].excerpt}
                 </p>
+                <p className="text-xs prose-sm text-gray-400">
+                  By {featuredPosts[0].author.name} |{" "}
+                  {featuredPosts[0].estimatedReadingTime} min read
+                </p>
               </div>
             )}
           </div>
@@ -90,6 +94,10 @@ export default function Latest({ featuredPosts }) {
                   </h3>
                 </a>
               </Link>
+              <p className="text-xs prose-sm text-gray-400">
+                By {featuredPosts[1].author.name} |{" "}
+                {featuredPosts[1].estimatedReadingTime} min read
+              </p>
             </div>
           </div>
         </div>
@@ -120,6 +128,10 @@ export default function Latest({ featuredPosts }) {
                   </h3>
                 </a>
               </Link>
+              <p className="text-xs prose-sm text-gray-400">
+                By {featuredPosts[2].author.name} |{" "}
+                {featuredPosts[2].estimatedReadingTime} min read
+              </p>
             </div>
           </div>
         </div>
@@ -153,6 +165,10 @@ export default function Latest({ featuredPosts }) {
 
               <p className="prose-sm text-base font-serif text-white font-extralight line-clamp-3">
                 {featuredPosts[3].excerpt}
+              </p>
+              <p className="text-xs prose-sm text-gray-400">
+                By {featuredPosts[3].author.name} |{" "}
+                {featuredPosts[3].estimatedReadingTime} min read
               </p>
             </div>
           </div>
