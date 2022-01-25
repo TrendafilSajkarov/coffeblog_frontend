@@ -80,7 +80,6 @@ export default function MainContent({
                   i % 3 === 0 ? "md:h-52" : "md:h-80"
                 } w-full`}
               >
-                {}
                 <Image
                   src={post.mainImageUrl}
                   layout="fill"
