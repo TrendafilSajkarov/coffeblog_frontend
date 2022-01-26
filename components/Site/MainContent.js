@@ -4,6 +4,7 @@ import Pagination from "../Pagination/Pagination";
 
 import { useNextSanityImage } from "next-sanity-image";
 import configuredSanityClient from "../../lib/configuredSanityClient";
+import { urlFor } from "../../lib/sanity";
 
 import { getDate } from "../../utils/utils";
 
@@ -27,7 +28,7 @@ export default function MainContent({
         <article className="prose-sm px-1 group text-center row-span-1 h-screen max-h-1000 min-h-600 flex flex-col items-center justify-center">
           <div className="relative w-full h-2/3 shadow-md">
             <Image
-              src={imageProps.src}
+              src={urlFor(latestPost.mainImage.asset).width(850).url()}
               layout="fill"
               objectFit="cover"
               quality={100}
@@ -81,7 +82,10 @@ export default function MainContent({
                 } w-full`}
               >
                 <Image
-                  src={post.mainImageUrl}
+                  src={urlFor(post.mainImage.asset)
+                    .width(500)
+                    .quality(100)
+                    .url()}
                   layout="fill"
                   objectFit="cover"
                 />

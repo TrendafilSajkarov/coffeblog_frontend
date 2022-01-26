@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { urlFor } from "../../lib/sanity";
+
 export default function AsideContent({
   aboutUs,
   olderFeaturedPosts,
@@ -38,7 +40,7 @@ export default function AsideContent({
                 <div className="h-full flex">
                   <div className="relative h-full w-4/12">
                     <Image
-                      src={post.mainImageUrl}
+                      src={urlFor(post.mainImage.asset).width(150).url()}
                       layout="fill"
                       objectFit="cover"
                     />

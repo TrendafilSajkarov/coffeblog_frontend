@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import CategoryPagination from "../Pagination/CategoryPagination";
 
+import { urlFor } from "../../lib/sanity";
+
 import { getDate } from "../../utils/utils";
 
 export default function CategoriesPageMainContent({
@@ -23,7 +25,7 @@ export default function CategoriesPageMainContent({
               <li key={post._id} className="flex w-full h-52 group">
                 <div className="relative h-full w-full flex-1 mr-3">
                   <Image
-                    src={post.mainImageUrl}
+                    src={urlFor(post.mainImage.asset).width(550).url()}
                     layout="fill"
                     objectFit="cover"
                   />
