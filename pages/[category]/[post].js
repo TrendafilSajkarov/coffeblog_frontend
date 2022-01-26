@@ -5,7 +5,7 @@ import AsideContent from "../../components/Site/AsideContent";
 import { getDate } from "../../utils/utils";
 import { serializers } from "../../lib/serializers";
 
-import { PortableText } from "../../lib/sanity";
+import { PortableText, urlFor } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
 
@@ -26,7 +26,7 @@ export default function PostPage({
       <section className="container max-w-screen-xl mx-auto my-6">
         <div className="relative w-full h-screen max-h-600 shadow-md">
           <Image
-            src={singlePost[0].mainImageUrl}
+            src={urlFor(singlePost[0].mainImage.asset).width(1200).url()}
             layout="fill"
             objectFit="cover"
             quality={100}

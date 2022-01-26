@@ -1,33 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { useNextSanityImage } from "next-sanity-image";
-import configuredSanityClient from "../../lib/configuredSanityClient";
+import { urlFor } from "../../lib/sanity";
 
 import { getDate } from "../../utils/utils";
 
 export default function Latest({ featuredPosts }) {
-  const imageProps0 = useNextSanityImage(
-    configuredSanityClient,
-    featuredPosts[0].mainImage
-  );
-  const imageProps1 = useNextSanityImage(
-    configuredSanityClient,
-    featuredPosts[1].mainImage
-  );
-  const imageProps2 = useNextSanityImage(
-    configuredSanityClient,
-    featuredPosts[2].mainImage
-  );
-  const imageProps3 = useNextSanityImage(
-    configuredSanityClient,
-    featuredPosts[3].mainImage
-  );
-
   return (
     <main className="xl:container mx-auto py-8 grid md:grid-rows-2 min-h-700 h-xxxxl md:h-xxxl lg:grid-cols-2 lg:grid-rows-1 gap-2 lg:h-screen lg:max-h-760 w-full">
       <div className="relative group">
-        <Image objectFit="cover" src={imageProps0.src} layout="fill" />
+        <Image
+          objectFit="cover"
+          src={urlFor(featuredPosts[0].mainImage.asset).width(1000).url()}
+          layout="fill"
+        />
         <div className="absolute bottom-0 h-2/5 max-h-200 w-full flex items-start">
           <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-2 px-6 mx-6 shadow-lg">
             <div className="text-3xl font-extrabold text-white ">
@@ -69,7 +55,11 @@ export default function Latest({ featuredPosts }) {
 
       <div className="grid grid-flow-row grid-rows-3 md:grid-flow-col grid-cols-2 md:grid-rows-2 gap-2">
         <div className="relative group">
-          <Image objectFit="cover" src={imageProps1.src} layout="fill" />
+          <Image
+            objectFit="cover"
+            src={urlFor(featuredPosts[1].mainImage.asset).width(800).url()}
+            layout="fill"
+          />
           <div className="absolute bottom-0 h-2/5 max-h-36 w-full flex items-start">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
@@ -103,7 +93,11 @@ export default function Latest({ featuredPosts }) {
         </div>
 
         <div className="relative group">
-          <Image objectFit="cover" src={imageProps2.src} layout="fill" />
+          <Image
+            objectFit="cover"
+            src={urlFor(featuredPosts[2].mainImage.asset).width(800).url()}
+            layout="fill"
+          />
           <div className="absolute bottom-0 h-2/5 max-h-36 w-full flex items-start">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
@@ -137,7 +131,11 @@ export default function Latest({ featuredPosts }) {
         </div>
 
         <div className="relative col-span-2 row-span-2 md:col-span-1 group">
-          <Image objectFit="cover" src={imageProps3.src} layout="fill" />
+          <Image
+            objectFit="cover"
+            src={urlFor(featuredPosts[3].mainImage.asset).width(800).url()}
+            layout="fill"
+          />
           <div className="absolute bottom-0 right-0 h-2/4 max-h-200 w-full flex items-start">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
