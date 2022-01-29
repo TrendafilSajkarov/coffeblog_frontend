@@ -24,7 +24,7 @@ export default function PostPage({
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
 
       <section className="container max-w-screen-xl mx-auto my-6">
-        <div className="relative w-full h-screen max-h-600 shadow-md">
+        <div className="relative w-full h-screen max-h-700 shadow-md">
           <Image
             src={urlFor(singlePost[0].mainImage.asset).width(1200).url()}
             layout="fill"
@@ -89,6 +89,9 @@ export async function getStaticProps(context) {
                   "postSlug": @.reference->slug.current,
                   "categorySlug": @.reference->categories[0]->slug.current           
                 }
+              },
+              _type == "image" => {
+                "metadata": @.asset->
               }
             },
             "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),

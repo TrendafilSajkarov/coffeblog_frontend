@@ -12,8 +12,6 @@ export default function MainContent({
   pages,
   currentPage,
 }) {
-  console.log(latestPosts.length);
-
   return (
     <main className="col-span-2 grid grid-cols-1 auto-rows-auto">
       <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3 px-4">
@@ -84,9 +82,9 @@ export default function MainContent({
                     .quality(100)
                     .url()}
                   layout="fill"
-                  objectFit="cover"
+                  objectFit="contain"
                 />
-                <div className="absolute top-2 flex flex-col items-center bg-gray-100 bg-opacity-50 px-3 mx-3 shadow-lg">
+                <div className="absolute top-2 flex flex-col items-center bg-gray-100  bg-opacity-50 px-3 mx-3 shadow-lg">
                   <div className="text-2xl font-extrabold text-gray-700 ">
                     {getDate(post._createdAt)[0]}
                   </div>
