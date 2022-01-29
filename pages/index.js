@@ -75,7 +75,8 @@ export async function getStaticProps({ preview = false }) {
         "slug": slug.current
       },
       "mainImageUrl": mainImage.asset->url,
-      "author": author->{name}
+      "author": author->{name},
+      "mainImageMeta": mainImage.asset->metadata
   },
   "featuredFourPosts": *[_type == "post" && isFeaturedPost == true] | order(_createdAt desc)[0...4]{
     ...,

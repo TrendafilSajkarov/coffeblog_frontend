@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Pagination from "../Pagination/Pagination";
 
-import { useNextSanityImage } from "next-sanity-image";
-import configuredSanityClient from "../../lib/configuredSanityClient";
 import { urlFor } from "../../lib/sanity";
 
 import { getDate } from "../../utils/utils";
@@ -14,10 +12,7 @@ export default function MainContent({
   pages,
   currentPage,
 }) {
-  const imageProps = useNextSanityImage(
-    configuredSanityClient,
-    latestPost.mainImage
-  );
+  console.log(latestPosts.length);
 
   return (
     <main className="col-span-2 grid grid-cols-1 auto-rows-auto">
@@ -78,7 +73,9 @@ export default function MainContent({
             <div key={post._id} className="w-full md:w-2/4 mt-9 px-1 group">
               <div
                 className={`relative h-80 ${
-                  i % 3 === 0 ? "md:h-52" : "md:h-80"
+                  post.mainImageMeta.dimensions.aspectRatio >= 1
+                    ? "md:h-60"
+                    : "md:h-96"
                 } w-full`}
               >
                 <Image

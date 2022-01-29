@@ -39,12 +39,14 @@ export default function CategoryPageWithNumber({
 }
 
 export async function getStaticProps(context) {
+  const start = context.params.pageNumber.toString() + "0";
+  const finish = Number(context.params.pageNumber) + 1;
+  const end = finish + "0";
+
   const latestPostQuery = groq`
     {
       "latestPosts": *[_type == "category" && slug.current == '${context.params.category.toString()}']{
-        "posts": *[_type == "post" && references(^._id)] | order(_createdAt desc)[${context.params.pageNumber.toString()}0...${
-    context.params.pageNumber.toString() + 1
-  }0]{
+        "posts": *[_type == "post" && references(^._id)] | order(_createdAt desc)[${start}...${end}]{
           ...,
           "body": [],
           "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),

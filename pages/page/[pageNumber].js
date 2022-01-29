@@ -36,12 +36,13 @@ export default function Page({
 }
 
 export async function getStaticProps(context) {
+  const start = context.params.pageNumber.toString() + "0";
+  const finish = Number(context.params.pageNumber) + 1;
+  const end = finish + "0";
   // ================= POSTS Query ===========================
   const postsQuery = groq`
   {
-    "latestPosts": *[_type == "post"] | order(_createdAt desc)[${context.params.pageNumber.toString()}0...${
-    context.params.pageNumber.toString() + 1
-  }0]{
+    "latestPosts": *[_type == "post"] | order(_createdAt desc)[${start}...${end}] {
         ...,
           "body": [],
           "slug": slug.current,
@@ -51,7 +52,8 @@ export async function getStaticProps(context) {
             "slug": slug.current
           },
           "mainImageUrl": mainImage.asset->url,
-          "author": author->{name}
+          "author": author->{name},
+          "mainImageMeta": mainImage.asset->metadata
       }, 
       "featuredPosts": *[_type == "post" && isFeaturedPost == true] | order(_createdAt desc)[0...10]{
         ...,
