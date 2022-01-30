@@ -92,6 +92,10 @@ export async function getStaticProps(context) {
               },
               _type == "image" => {
                 "metadata": @.asset->
+              },
+              images[]{
+                ...,
+                "asset": @.asset->
               }
             },
             "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
