@@ -84,8 +84,12 @@ export default function MainContent({
                   layout="fill"
                   objectFit="contain"
                 />
-                <div className="absolute top-2 flex flex-col items-center bg-gray-100  bg-opacity-50 px-3 mx-3 shadow-lg">
-                  <div className="text-2xl font-extrabold text-gray-700 ">
+                <div
+                  className={`absolute top-2 ${
+                    post.mainImageMeta.dimensions.aspectRatio <= 1 && "left-12"
+                  } flex flex-col items-center bg-gray-100 bg-opacity-50 px-3 mx-3 shadow-lg`}
+                >
+                  <div className="text-2xl font-extrabold text-gray-700">
                     {getDate(post._createdAt)[0]}
                   </div>
                   <div className="text-base font-medium h-auto text-gray-700">
