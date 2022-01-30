@@ -24,7 +24,7 @@ export default function PostPage({
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
 
       <section className="container max-w-screen-xl mx-auto my-6">
-        <div className="relative w-full h-screen max-h-600 shadow-md">
+        <div className="relative w-full h-screen max-h-700 shadow-md">
           <Image
             src={urlFor(singlePost[0].mainImage.asset).width(1200).url()}
             layout="fill"
@@ -56,7 +56,7 @@ export default function PostPage({
         <section className="container grid grid-cols-2 auto-rows-auto w-11/12 lg:grid-cols-3 gap-4 xl:w-3/4 max-w-screen-xl mx-auto my-6">
           <article className="col-span-2 px-1 md:px-4 flex flex-col items-center">
             <PortableText
-              className="prose mt-16 prose-figcaption:italic prose-figcaption:text-xs prose-figcaption:text-center prose-a:text-blue-600 font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-serif"
+              className="prose mt-16 prose-img:mx-auto prose-figcaption:italic prose-figcaption:text-xs prose-figcaption:text-center prose-a:text-blue-600 font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-serif"
               blocks={singlePost[0].body}
               serializers={serializers}
             />
@@ -89,6 +89,9 @@ export async function getStaticProps(context) {
                   "postSlug": @.reference->slug.current,
                   "categorySlug": @.reference->categories[0]->slug.current           
                 }
+              },
+              _type == "image" => {
+                "metadata": @.asset->
               }
             },
             "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
