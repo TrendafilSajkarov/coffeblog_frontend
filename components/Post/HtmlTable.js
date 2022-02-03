@@ -1,33 +1,72 @@
 export default (props) => {
   return (
-    <div className="flex flex-col">
-      <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-200">
-              <tbody className="bg-white divide-y divide-gray-200">
-                {props.node.rows &&
-                  props.node.rows.map((row) => {
-                    return (
-                      <tr>
-                        {row.cells.map((sell) => (
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm font-medium text-gray-900">
-                              {sell}
-                            </div>
-                          </td>
-                        ))}
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
-          </div>
-        </div>
+    <div className=" mx-auto overflow-x-scroll">
+      <div className="">
+        <table className="table-auto">
+          {props.node.caption && <caption>{props.node.caption}</caption>}
+          {props.node.hasColHeadings === true && (
+            <thead>
+              <tr>
+                {props.node.postTable.rows[0].cells.map((cell, i) => (
+                  <th key={i} className="whitespace-nowrap">
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+          )}
+          {props.node.hasRowHeadings === true &&
+          props.node.hasColHeadings === true ? (
+            <tbody>
+              {props.node.postTable.rows.map((row, i) => {
+                if (i === 0) return null;
+                return (
+                  <tr key={i}>
+                    {row.cells.map((cell, i) => {
+                      if (i === 0) return <th key={i}>{cell}</th>;
+                      return <td key={i}>{cell}</td>;
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          ) : null}
+        </table>
       </div>
     </div>
   );
 };
+
+// export default (props) => {
+//   return (
+//     <div className="flex flex-col">
+//       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+//         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+//           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+//             <table className="min-w-full divide-y divide-gray-200">
+//               <tbody className="bg-white divide-y divide-gray-200">
+//                 {props.node.rows &&
+//                   props.node.rows.map((row) => {
+//                     return (
+//                       <tr>
+//                         {row.cells.map((sell) => (
+//                           <td className="px-6 py-4 whitespace-nowrap">
+//                             <div className="text-sm font-medium text-gray-900">
+//                               {sell}
+//                             </div>
+//                           </td>
+//                         ))}
+//                       </tr>
+//                     );
+//                   })}
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 // export default (props) => {
 //   return (
