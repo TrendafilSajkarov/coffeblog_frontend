@@ -1,41 +1,106 @@
+// export default (props) => {
+//   return (
+//     <div className="overflow-x-scroll">
+//       <table>
+//         {props.node.caption && <caption>{props.node.caption}</caption>}
+//         {props.node.hasColHeadings === true && (
+//           <thead>
+//             <tr>
+//               {props.node.postTable.rows[0].cells.map((cell, i) => (
+//                 <th key={i} className="whitespace-nowrap">
+//                   {cell}
+//                 </th>
+//               ))}
+//             </tr>
+//           </thead>
+//         )}
+//         {props.node.hasRowHeadings === true &&
+//         props.node.hasColHeadings === true ? (
+//           <tbody>
+//             {props.node.postTable.rows.map((row, i) => {
+//               if (i === 0) return null;
+//               return (
+//                 <tr key={i}>
+//                   {row.cells.map((cell, i) => {
+//                     if (i === 0) return <th key={i}>{cell}</th>;
+//                     return <td key={i}>{cell}</td>;
+//                   })}
+//                 </tr>
+//               );
+//             })}
+//           </tbody>
+//         ) : null}
+//       </table>
+//     </div>
+//   );
+// };
+
+// =======================================================================================
+
 export default (props) => {
   return (
-    <div className=" mx-auto overflow-x-scroll">
-      <div className="">
-        <table className="table-auto">
-          {props.node.caption && <caption>{props.node.caption}</caption>}
-          {props.node.hasColHeadings === true && (
-            <thead>
-              <tr>
-                {props.node.postTable.rows[0].cells.map((cell, i) => (
-                  <th key={i} className="whitespace-nowrap">
-                    {cell}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-          )}
-          {props.node.hasRowHeadings === true &&
-          props.node.hasColHeadings === true ? (
-            <tbody>
-              {props.node.postTable.rows.map((row, i) => {
-                if (i === 0) return null;
-                return (
-                  <tr key={i}>
-                    {row.cells.map((cell, i) => {
-                      if (i === 0) return <th key={i}>{cell}</th>;
-                      return <td key={i}>{cell}</td>;
-                    })}
+    <div className="flex flex-col">
+      <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div className="shadow-md overflow-hidden border-b border-y-2 border-gray-200 sm:rounded-lg">
+            <table className="min-w-full table-auto divide-y divide-x divide-gray-200">
+              {props.node.caption && <caption>{props.node.caption}</caption>}
+              {props.node.hasColHeadings === true && (
+                <thead>
+                  <tr>
+                    {props.node.postTable.rows[0].cells.map((cell, i) => (
+                      <th
+                        key={i}
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-900 whitespace-nowrap tracking-wider"
+                      >
+                        {cell}
+                      </th>
+                    ))}
                   </tr>
-                );
-              })}
-            </tbody>
-          ) : null}
-        </table>
+                </thead>
+              )}
+
+              {props.node.hasRowHeadings === true &&
+              props.node.hasColHeadings === true ? (
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {props.node.postTable.rows.map((row, i) => {
+                    if (i === 0) return null;
+                    return (
+                      <tr className="odd:bg-slate-100" key={i}>
+                        {row.cells.map((cell, i) => {
+                          if (i === 0)
+                            return (
+                              <th
+                                className="px-6 py-3 text-left text-xs font-medium text-gray-900 tracking-wider"
+                                key={i}
+                              >
+                                {cell}
+                              </th>
+                            );
+                          return (
+                            <td
+                              className="text-sm text-gray-900 text-center"
+                              key={i}
+                            >
+                              {cell}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              ) : null}
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
+
+// ==========================================================================================
 
 // export default (props) => {
 //   return (
