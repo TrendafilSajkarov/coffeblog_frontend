@@ -9,7 +9,7 @@ import { groq } from "next-sanity";
 export default function CategoryPage({
   categories,
   logo,
-  aboutUs = null,
+  aboutUs,
   footer,
   latestPosts,
   currentCategory,
@@ -117,11 +117,18 @@ export async function getStaticProps(context) {
   const data2 = await getClient().fetch(footerQuery);
   const footer = Array.from(data2);
 
+  const aboutUsQuery = groq`
+  *[_type == "aboutUs"]`;
+  const data3 = await getClient().fetch(aboutUsQuery);
+  const aboutUsArr = Array.from(data3);
+  const aboutUs = aboutUsArr[0];
+
   return {
     props: {
       categories,
       logo,
       footer,
+      aboutUs,
       latestPosts,
       currentCategory,
       featuredPosts,
@@ -133,7 +140,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
   const catQuery = groq`
-    *[_type == "category"] | order(_createdAt) {
+    *[_type == "category" || _type == "aboutUs"] | order(_createdAt) {
       title,
       "slug": slug.current,
       _id,

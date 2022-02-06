@@ -17,10 +17,14 @@ export default function AsideContent({
           </h4>
           <div className="prose-sm font-serif text-base">
             <div className="relative w-full h-52">
-              <Image src={aboutUs.mainImage} layout="fill" />
+              <Image
+                src={urlFor(aboutUs.mainImage.asset).width(300).url()}
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
             <div className="">
-              <p>{aboutUs.content}</p>
+              <p>{aboutUs.shortText}</p>
             </div>
           </div>
         </article>

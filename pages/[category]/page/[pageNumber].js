@@ -9,7 +9,7 @@ import { groq } from "next-sanity";
 export default function CategoryPageWithNumber({
   categories,
   logo,
-  aboutUs = null,
+  aboutUs,
   footer,
   latestPosts,
   currentCategory,
@@ -122,11 +122,18 @@ export async function getStaticProps(context) {
   const data2 = await getClient().fetch(footerQuery);
   const footer = Array.from(data2);
 
+  const aboutUsQuery = groq`
+  *[_type == "aboutUs"]`;
+  const data3 = await getClient().fetch(aboutUsQuery);
+  const aboutUsArr = Array.from(data3);
+  const aboutUs = aboutUsArr[0];
+
   return {
     props: {
       categories,
       logo,
       footer,
+      aboutUs,
       latestPosts,
       currentCategory,
       featuredPosts,
