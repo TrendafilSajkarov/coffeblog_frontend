@@ -91,6 +91,15 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                         Categories
                       </h4>
                       <ul>
+                        <li>
+                          <Link href="/">
+                            <a className="flex font-serif justify-between group border-b-2 border-red-300">
+                              <h3 className=" group-hover:text-red-300 font-light prose-sm text-base ">
+                                Home
+                              </h3>
+                            </a>
+                          </Link>
+                        </li>
                         {categories.map((category) => {
                           return (
                             <li key={category._id}>

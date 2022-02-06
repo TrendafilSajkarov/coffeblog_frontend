@@ -8,7 +8,6 @@ export default function AsideContent({
   olderFeaturedPosts,
   categories,
 }) {
-  const catWithPosts = categories.filter((cat) => cat.hasOwnProperty("posts"));
   return (
     <aside className="flex px-1 my-5 col-span-2 flex-col md:col-span-2 md:grid md:grid-cols-2 md:auto-rows-auto md:space-y-5 md:space-x-3 lg:flex lg:col-span-1 lg:flex-col ">
       {aboutUs && (
@@ -73,6 +72,15 @@ export default function AsideContent({
           Categories
         </h4>
         <ul>
+          <li>
+            <Link href="/">
+              <a className="flex font-serif justify-between group border-b-2 border-red-300">
+                <h3 className=" group-hover:text-red-300 font-light prose-sm text-base ">
+                  Home
+                </h3>
+              </a>
+            </Link>
+          </li>
           {categories.map((category) => {
             return (
               <li key={category._id}>
