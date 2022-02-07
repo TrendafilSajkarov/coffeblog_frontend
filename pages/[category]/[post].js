@@ -13,7 +13,7 @@ import Image from "next/image";
 
 export default function PostPage({
   categories,
-  aboutUs = null,
+  aboutUs,
   logo,
   footer,
   singlePost,
@@ -152,6 +152,12 @@ export async function getStaticProps(context) {
   const data2 = await getClient().fetch(footerQuery);
   const footer = Array.from(data2);
 
+  const aboutUsQuery = groq`
+  *[_type == "aboutUs"]`;
+  const data4 = await getClient().fetch(aboutUsQuery);
+  const aboutUsArr = Array.from(data4);
+  const aboutUs = aboutUsArr[0];
+
   return {
     props: {
       featuredPosts,
@@ -159,6 +165,7 @@ export async function getStaticProps(context) {
       categories,
       logo,
       footer,
+      aboutUs,
     }, // will be passed to the page component as props
   };
 }

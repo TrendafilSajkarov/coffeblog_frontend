@@ -8,13 +8,7 @@ import Footer from "../components/Footer/Footer";
 import { getClient } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 
-export default function Home({
-  categories,
-  aboutUs = null,
-  logo,
-  siteData,
-  footer,
-}) {
+export default function Home({ categories, aboutUs, logo, siteData, footer }) {
   return (
     <div>
       <Head>
@@ -47,6 +41,12 @@ export async function getStaticProps({ preview = false }) {
 `;
   const data = await getClient(preview).fetch(postQuery);
   const categories = Array.from(data);
+
+  const aboutUsQuery = groq`
+  *[_type == "aboutUs"]`;
+  const data3 = await getClient(preview).fetch(aboutUsQuery);
+  const aboutUsArr = Array.from(data3);
+  const aboutUs = aboutUsArr[0];
 
   const layoutQuery = groq`
   *[_type == "layout"]{
@@ -120,6 +120,7 @@ export async function getStaticProps({ preview = false }) {
       logo,
       siteData,
       footer,
+      aboutUs,
     },
   };
 }

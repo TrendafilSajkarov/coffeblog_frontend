@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { urlFor } from "../../lib/sanity";
+
 export default function Menu({ setOpenMenu, aboutUs, categories }) {
   return (
     // <!-- This example requires Tailwind CSS v2.0+ -->
@@ -91,6 +93,15 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                         Categories
                       </h4>
                       <ul>
+                        <li>
+                          <Link href="/">
+                            <a className="flex font-serif justify-between group border-b-2 border-red-300">
+                              <h3 className=" group-hover:text-red-300 font-light prose-sm text-base ">
+                                Home
+                              </h3>
+                            </a>
+                          </Link>
+                        </li>
                         {categories.map((category) => {
                           return (
                             <li key={category._id}>
@@ -122,10 +133,16 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                         </h4>
                         <div className="prose-sm font-serif text-xs">
                           <div className="relative w-full h-48">
-                            <Image src={aboutUs.featuredImage} layout="fill" />
+                            <Image
+                              src={urlFor(aboutUs.mainImage.asset)
+                                .width(300)
+                                .url()}
+                              layout="fill"
+                              objectFit="cover"
+                            />
                           </div>
                           <div className="text-sm">
-                            <p>{aboutUs.content}</p>
+                            <p>{aboutUs.shortText}</p>
                           </div>
                         </div>
                       </article>

@@ -46,6 +46,11 @@ export default function Links({ categories, aboutUs }) {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href={`/${aboutUs.slug.current}`}>
+                <a className="uppercase hover:underline">{aboutUs.title}</a>
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
