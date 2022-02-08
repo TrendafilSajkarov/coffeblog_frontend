@@ -26,7 +26,8 @@ export default function PostPage({
       <section className="container max-w-screen-xl mx-auto my-6">
         <div className="relative w-full h-screen max-h-700 shadow-md">
           <Image
-            src={urlFor(singlePost[0].mainImage.asset).width(1200).url()}
+            src={urlFor(singlePost[0].mainImage.asset).width(800).url()}
+            priority="true"
             layout="fill"
             objectFit="cover"
             quality={100}
@@ -197,23 +198,3 @@ export async function getStaticPaths() {
   // return { categories, fallback: false };
   return { paths: allPosts, fallback: false };
 }
-
-//================ OLD ===========================================
-//   const res = await fetch(
-//     `http://localhost:3000/api/singlePost?post=${context.params.post}`
-//   );
-//   const singlePost = await res.json();
-
-//   const res1 = await fetch(`http://localhost:3000/api/categories`);
-
-//   const categories = await res1.json();
-
-//   if (!categories) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   return {
-//     props: { categories, singlePost }, // will be passed to the page component as props
-//   };
