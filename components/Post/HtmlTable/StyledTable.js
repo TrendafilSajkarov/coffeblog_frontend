@@ -103,7 +103,7 @@ export default (props) => {
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow-md overflow-hidden border-b border-y-2 border-gray-200 sm:rounded-lg">
             <table className="min-w-full table-auto divide-y divide-x divide-gray-200">
-              {props.node.caption && (
+              {props.node?.caption && (
                 <caption className="mb-2 italic font-light">
                   {props.node.caption}
                 </caption>

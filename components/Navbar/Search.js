@@ -25,9 +25,9 @@ export default function Search() {
   }, [debouncedSearchTerm]);
 
   return (
-    <div className="relative bg-gray-50 p-4">
-      <div className="container xl:max-w-7xl mx-auto flex items-center justify-center md:justify-end">
-        <div className="relative w-72 text-gray-600 py-2">
+    <div className="absolute z-10 right-0 bg-gray-50 px-2">
+      <div className="container lg:max-w-2xl mx-auto flex flex-col items-center justify-center md:justify-end">
+        <div className="w-72 text-gray-600 py-2">
           <form>
             <input
               type="search"
@@ -40,19 +40,24 @@ export default function Search() {
             />
           </form>
         </div>
-        {isSearching && <div className="text-6xl">Searching ...</div>}
-        {console.log(results)}
+        {isSearching && (
+          <h4 className="font-serif text-yellow-600 text-base mb-3">
+            Searching ...
+          </h4>
+        )}
         {results !== [] &&
         results.posts !== undefined &&
         results.posts?.length === 0 ? (
-          <h1>No Results</h1>
+          <h4 className="font-serif text-yellow-600 text-base mb-3">
+            No Results
+          </h4>
         ) : null}
         {results !== [] &&
         results.posts !== undefined &&
         results.posts?.length !== 0 ? (
-          <section className="mt-9">
-            <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3">
-              Featured Posts
+          <section className="mt-9 w-full">
+            <h4 className="font-serif text-yellow-600 text-base mb-3">
+              {`Search Results for "${searchTerm}"`}
             </h4>
             <ul>
               {results.posts &&
