@@ -17,7 +17,7 @@ export default function Links({ categories, aboutUs }) {
           categories={categories}
         />
       )}
-      <nav className="container mx-auto flex justify-around items-center">
+      <nav className="relative container mx-auto flex justify-around items-center">
         <div onClick={() => setOpenMenu(true)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ export default function Links({ categories, aboutUs }) {
             </li>
           </ul>
         </div>
-        <div className="relative">
+        <div className="sm:relative">
           {openSearch ? (
             <div onClick={() => setOpenSearch(!openSearch)}>
               <svg

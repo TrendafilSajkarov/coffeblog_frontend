@@ -9,11 +9,18 @@ export default function Footer({ footer }) {
   return (
     <footer className="bg-gray-50 w-full mt-10 py-4">
       <div className="container mx-auto flex flex-col items-center">
-        <Link href="/">
-          <div className="relative h-32 w-56 cursor-pointer">
-            <Image className="object-fill" src={imageProps.src} layout="fill" />
-          </div>
-        </Link>
+        <div className="container mx-auto my-3 flex h-24 justify-around items-center">
+          <Link href="/">
+            <div className="relative h-full w-48 cursor-pointer">
+              <Image
+                className="object-fill"
+                src={imageProps.src}
+                loader={imageProps.loader}
+                layout="fill"
+              />
+            </div>
+          </Link>
+        </div>
         <p className="prose-sm font-serif text-xs w-2/5 text-center border-b-2 border-gray-300 pb-4">
           {footer[0].content}
         </p>

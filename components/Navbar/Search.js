@@ -25,7 +25,7 @@ export default function Search() {
   }, [debouncedSearchTerm]);
 
   return (
-    <div className="absolute z-10 right-0 bg-gray-50 px-2">
+    <div className="absolute z-10 right-0 bg-gray-100 px-2">
       <div className="container lg:max-w-2xl mx-auto flex flex-col items-center justify-center md:justify-end">
         <div className="w-72 text-gray-600 py-2">
           <form>
@@ -33,7 +33,7 @@ export default function Search() {
               type="search"
               name="search"
               id="search"
-              className="bg-white h-10 px-5 rounded-full text-sm focus:outline-none w-72"
+              className="bg-white h-10 px-0 xs:px-5 rounded-sm text-sm focus:outline-none focus:ring-slate-200 focus:border-collapse focus:ring-2 w-52 xs:w-72"
               placeholder="Search Posts..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -55,7 +55,7 @@ export default function Search() {
         {results !== [] &&
         results.posts !== undefined &&
         results.posts?.length !== 0 ? (
-          <section className="mt-9 w-full">
+          <section className="mt-9 w-full max-h-96 overflow-auto">
             <h4 className="font-serif text-yellow-600 text-base mb-3">
               {`Search Results for "${searchTerm}"`}
             </h4>

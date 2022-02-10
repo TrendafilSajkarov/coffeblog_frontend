@@ -26,6 +26,9 @@ module.exports = {
       width: {
         600: "600px",
       },
+      screens: {
+        xs: "300px",
+      },
     },
   },
   variants: {
