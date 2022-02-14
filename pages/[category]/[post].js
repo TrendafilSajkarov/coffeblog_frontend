@@ -11,6 +11,7 @@ import { groq } from "next-sanity";
 
 import Image from "next/image";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export default function PostPage({
   categories,
@@ -20,13 +21,21 @@ export default function PostPage({
   singlePost,
   featuredPosts,
 }) {
+  const { basePath } = useRouter();
   return (
     <div className="">
       <Head>
         <title>{singlePost[0].title}</title>
+        <meta name="description" content={singlePost[0].description} />
+        <meta name="twitter:card" content="summary" />
+        {/* <meta name="twitter:site" content="@nytimesbits" />
+        <meta name="twitter:creator" content="@nickbilton" /> */}
+        <meta property="og:url" content={basePath} />
+        <meta property="og:title" content={singlePost[0].title} />
+        <meta property="og:description" content={singlePost[0].description} />
         <meta
-          name="description"
-          content={singlePost[0]?.description && singlePost[0].description}
+          property="og:image"
+          content={urlFor(singlePost[0].mainImage.asset).width(800).url()}
         />
       </Head>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
