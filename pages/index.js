@@ -7,13 +7,21 @@ import Footer from "../components/Footer/Footer";
 
 import { getClient } from "../lib/sanity.server";
 import { groq } from "next-sanity";
+import { urlFor } from "../lib/sanity";
 
-export default function Home({ categories, aboutUs, logo, siteData, footer }) {
+export default function Home({
+  categories,
+  aboutUs,
+  logo,
+  title,
+  siteData,
+  footer,
+}) {
   return (
     <div>
       <Head>
-        <title>Simple Blog</title>
-        <link rel="icon" href="/logo.ico" />
+        <title>{title}</title>
+        <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
       </Head>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
       <Latest featuredPosts={siteData.featuredFourPosts} />
@@ -50,11 +58,13 @@ export async function getStaticProps({ preview = false }) {
 
   const layoutQuery = groq`
   *[_type == "layout"]{
-    logo
+    logo,
+    title
   }
 `;
   const data1 = await getClient(preview).fetch(layoutQuery);
   const logo = data1[0].logo;
+  const title = data1[0].title;
 
   const footerQuery = groq`
     *[_type == "footer"]
@@ -118,6 +128,7 @@ export async function getStaticProps({ preview = false }) {
     props: {
       categories,
       logo,
+      title,
       siteData,
       footer,
       aboutUs,

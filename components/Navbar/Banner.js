@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Links from "./Links";
 
 import { useNextSanityImage } from "next-sanity-image";
 import configuredSanityClient from "../../lib/configuredSanityClient";

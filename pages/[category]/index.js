@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import AsideContent from "../../components/Site/AsideContent";
@@ -5,6 +7,7 @@ import CategoriesPageMainContent from "../../components/Site/CategoriesPageMainC
 
 import { getClient } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
+import { urlFor } from "../../lib/sanity";
 
 export default function CategoryPage({
   categories,
@@ -19,6 +22,10 @@ export default function CategoryPage({
 }) {
   return (
     <div>
+      <Head>
+        <title>{currentCategory[0].title}</title>
+        <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+      </Head>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
       <section className="container grid grid-cols-2 auto-rows-auto w-11/12 lg:grid-cols-3 gap-4 xl:w-3/4 max-w-screen-xl mx-auto my-6">
         <CategoriesPageMainContent

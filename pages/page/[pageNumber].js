@@ -5,12 +5,14 @@ import Site from "../../components/Site/Site";
 
 import { getClient } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
+import { urlFor } from "../../lib/sanity";
 
 export default function Page({
   posts,
   categories,
   logo,
-  aboutUs = null,
+  title,
+  aboutUs,
   footer,
   pages,
   currentPage,
@@ -18,8 +20,8 @@ export default function Page({
   return (
     <div>
       <Head>
-        <title>Simple Blog</title>
-        <link rel="icon" href="/logo.ico" />
+        <title>{title}</title>
+        <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
       </Head>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
       <Site
@@ -85,11 +87,13 @@ export async function getStaticProps(context) {
   // =============== LOGO Query ==============================
   const layoutQuery = groq`
   *[_type == "layout"]{
-    logo
+    logo,
+    title
   }
 `;
   const data1 = await getClient().fetch(layoutQuery);
   const logo = data1[0].logo;
+  const title = data1[0].title;
 
   //================ FOOTER Query ==========================
   const footerQuery = groq`
@@ -110,14 +114,22 @@ export async function getStaticProps(context) {
   const pages = Math.floor(count);
   const currentPage = parseInt(context.params.pageNumber);
 
+  const aboutUsQuery = groq`
+  *[_type == "aboutUs"]`;
+  const data3 = await getClient().fetch(aboutUsQuery);
+  const aboutUsArr = Array.from(data3);
+  const aboutUs = aboutUsArr[0];
+
   return {
     props: {
       posts,
       categories,
       logo,
+      title,
       footer,
       currentPage,
       pages,
+      aboutUs,
     },
   };
 }

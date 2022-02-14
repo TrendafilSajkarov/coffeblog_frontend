@@ -10,6 +10,7 @@ import { getClient } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
 
 import Image from "next/image";
+import Head from "next/head";
 
 export default function PostPage({
   categories,
@@ -21,6 +22,13 @@ export default function PostPage({
 }) {
   return (
     <div className="">
+      <Head>
+        <title>{singlePost[0].title}</title>
+        <meta
+          name="description"
+          content={singlePost[0]?.description && singlePost[0].description}
+        />
+      </Head>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
 
       <section className="container max-w-screen-xl mx-auto my-6">
