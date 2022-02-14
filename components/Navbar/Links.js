@@ -1,12 +1,31 @@
 import Link from "next/link";
 import Menu from "./Menu";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import Search from "./Search";
 
 export default function Links({ categories, aboutUs }) {
+  const ref = useRef();
+
   const [openMenu, setOpenMenu] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
+
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (openSearch && ref.current && !ref.current.contains(e.target)) {
+        setOpenSearch(false);
+      }
+    };
+
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [openSearch]);
 
   return (
     <div className="h-auto bg-gray-50 shadow-sm font-serif font-light">
@@ -56,7 +75,7 @@ export default function Links({ categories, aboutUs }) {
             </li>
           </ul>
         </div>
-        <div className="sm:relative">
+        <div ref={ref} className="sm:relative">
           {openSearch ? (
             <div onClick={() => setOpenSearch(!openSearch)}>
               <svg
@@ -92,7 +111,7 @@ export default function Links({ categories, aboutUs }) {
               </svg>
             </div>
           )}
-          {openSearch && <Search />}
+          {openSearch && <Search setOpenSearch={setOpenSearch} />}
         </div>
       </nav>
     </div>

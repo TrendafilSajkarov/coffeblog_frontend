@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 import { urlFor } from "../../lib/sanity";
 
-export default function Search() {
+export default function Search({ setOpenSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -80,9 +80,15 @@ export default function Search() {
                           <h4 className="uppercase text-yellow-600 text-xs ">
                             {post.categories.title}
                           </h4>
-                          <Link href={`/${post.categories.slug}/${post.slug}`}>
+                          <Link
+                            href={`/${post.categories.slug}/${post.slug}`}
+                            on
+                          >
                             <a>
-                              <h3 className="font-light group-hover:underline prose-sm text-base">
+                              <h3
+                                onClick={() => setOpenSearch(false)}
+                                className="font-light group-hover:underline prose-sm text-base"
+                              >
                                 {post.title}
                               </h3>
                             </a>
