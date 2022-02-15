@@ -26,13 +26,15 @@ export default function PostPage({
     <div className="">
       <Head>
         <title>{singlePost[0].title}</title>
+        <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
         <meta name="description" content={singlePost[0].description} />
-        <meta name="twitter:card" content="summary" />
-        {/* <meta name="twitter:site" content="@nytimesbits" />
-        <meta name="twitter:creator" content="@nickbilton" /> */}
-        <meta property="og:url" content={basePath} />
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* <meta name="twitter:site" content="@username of website. Either twitter:site or twitter:site:id is required." />
+        <meta name="twitter:creator" content="@username of content creator" />
+        <meta property="og:url" content={basePath} /> */}
         <meta property="og:title" content={singlePost[0].title} />
         <meta property="og:description" content={singlePost[0].description} />
+        <meta property="og:image:alt" content="" />
         <meta
           property="og:image"
           content={urlFor(singlePost[0].mainImage.asset).width(800).url()}
@@ -48,6 +50,7 @@ export default function PostPage({
             layout="fill"
             objectFit="cover"
             quality={100}
+            alt=""
           />
 
           <div className="absolute shadow-sm border-gray-200 border bg-white py-0 -bottom-6 left-5 right-5 md:left-20 md:right-20 lg:left-32 lg:right-32 flex items-center">
