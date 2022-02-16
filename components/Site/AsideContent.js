@@ -15,7 +15,7 @@ export default function AsideContent({
           <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3">
             About Us
           </h4>
-          <div className="prose-sm font-serif text-base">
+          <div className="prose-sm text-base font-medium">
             <div className="relative w-full h-52">
               <Image
                 src={urlFor(aboutUs.mainImage.asset).width(300).url()}
@@ -38,7 +38,7 @@ export default function AsideContent({
             return (
               <li
                 key={post._id}
-                className="h-24 w-full py-2 group border-b-2 border-red-300 last:border-none"
+                className="h-24 min-h-max w-full py-2 group border-b-2 border-red-300 last:border-none"
               >
                 <div className="h-full flex">
                   <div className="relative h-full w-4/12">
@@ -54,7 +54,7 @@ export default function AsideContent({
                     </h4>
                     <Link href={`/${post.categories.slug}/${post.slug}`}>
                       <a>
-                        <h3 className="font-light group-hover:underline prose-sm text-base">
+                        <h3 className="line-clamp-2 font-light group-hover:underline prose-sm text-base">
                           {post.title}
                         </h3>
                       </a>
