@@ -27,13 +27,13 @@ export default function Search({ setOpenSearch }) {
   return (
     <div className="absolute z-10 right-0 bg-gray-100 px-2">
       <div className="container lg:max-w-2xl mx-auto flex flex-col items-center justify-center md:justify-end">
-        <div className="sm:w-72 text-gray-600 py-2">
+        <div className="sm:w-full flex items-stretch bg-transparent text-gray-600 py-2">
           <form onSubmit={(e) => e.preventDefault()}>
             <input
               type="search"
               name="search"
               id="search"
-              className="bg-white h-10 px-2 xs:px-5 rounded-lg text-sm focus:outline-none focus:ring-slate-200 focus:border-collapse focus:ring-2 w-60 xs:w-72"
+              className="bg-white h-10 px-2 xs:px-5 rounded-lg text-sm focus:outline-none focus:ring-slate-200 focus:border-collapse focus:ring-2 w-full xs:w-72"
               placeholder="Search Posts..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -66,35 +66,29 @@ export default function Search({ setOpenSearch }) {
                   return (
                     <li
                       key={post._id}
-                      className="h-24 w-full py-2 group border-b-2 border-red-300 last:border-none"
+                      className="min-h-max w-full py-2 group border-b-2 border-red-300 last:border-none"
                     >
-                      <div className="h-full flex">
-                        <div className="relative h-full w-4/12">
+                      <div className="h-full grid grid-cols-3">
+                        <div className="relative col-span-1 h-full w-full">
                           <Image
                             src={urlFor(post.mainImage.asset).width(150).url()}
                             layout="fill"
                             objectFit="cover"
                           />
                         </div>
-                        <div className="flex flex-col font-serif pl-3">
-                          <h4 className="uppercase text-yellow-600 text-xs ">
+                        <div className="col-start-2 col-end-4 min-h-100 flex flex-col font-serif pl-3">
+                          <h4 className="uppercase text-yellow-600 text-xs whitespace-nowrap ">
                             {post.categories.title}
                           </h4>
-                          <Link
-                            href={`/${post.categories.slug}/${post.slug}`}
-                            on
-                          >
+                          <Link href={`/${post.categories.slug}/${post.slug}`}>
                             <a>
-                              <h3
-                                onClick={() => setOpenSearch(false)}
-                                className="font-light group-hover:underline prose-sm text-base"
-                              >
+                              <h3 className="line-clamp-3 font-light group-hover:underline prose-sm text-base">
                                 {post.title}
                               </h3>
                             </a>
                           </Link>
 
-                          <p className="text-xs prose-sm text-gray-400">
+                          <p className="justify-self-end text-xs prose-sm text-gray-400">
                             By {post.author.name} | {post.estimatedReadingTime}{" "}
                             min read
                           </p>

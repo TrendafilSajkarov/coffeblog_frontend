@@ -38,29 +38,29 @@ export default function AsideContent({
             return (
               <li
                 key={post._id}
-                className="h-24 min-h-max w-full py-2 group border-b-2 border-red-300 last:border-none"
+                className="min-h-max w-full py-2 group border-b-2 border-red-300 last:border-none"
               >
-                <div className="h-full flex">
-                  <div className="relative h-full w-4/12">
+                <div className="h-full grid grid-cols-3">
+                  <div className="relative col-span-1 h-full w-full">
                     <Image
                       src={urlFor(post.mainImage.asset).width(150).url()}
                       layout="fill"
                       objectFit="cover"
                     />
                   </div>
-                  <div className="flex flex-col font-serif pl-3">
-                    <h4 className="uppercase text-yellow-600 text-xs ">
+                  <div className="col-start-2 col-end-4 min-h-100 flex flex-col font-serif pl-3">
+                    <h4 className="uppercase text-yellow-600 text-xs whitespace-nowrap ">
                       {post.categories.title}
                     </h4>
                     <Link href={`/${post.categories.slug}/${post.slug}`}>
                       <a>
-                        <h3 className="line-clamp-2 font-light group-hover:underline prose-sm text-base">
+                        <h3 className="line-clamp-3 font-light group-hover:underline prose-sm text-base">
                           {post.title}
                         </h3>
                       </a>
                     </Link>
 
-                    <p className="text-xs prose-sm text-gray-400">
+                    <p className="justify-self-end text-xs prose-sm text-gray-400">
                       By {post.author.name} | {post.estimatedReadingTime} min
                       read
                     </p>
