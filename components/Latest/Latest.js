@@ -13,7 +13,8 @@ export default function Latest({ featuredPosts }) {
           objectFit="cover"
           src={urlFor(featuredPosts[0].mainImage).width(800).height(800).url()}
           layout="fill"
-          alt={featuredPosts[0].altText}
+          alt={featuredPosts[0].mainImage.altText}
+          priority
         />
         <div className="absolute bottom-0 h-2/5 max-h-200 w-full flex items-start">
           <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-2 px-6 mx-6 shadow-lg">
@@ -63,7 +64,7 @@ export default function Latest({ featuredPosts }) {
               .height(800)
               .url()}
             layout="fill"
-            alt={featuredPosts[1].altText}
+            alt={featuredPosts[1].mainImage.altText}
           />
           <div className="absolute bottom-0 h-2/5 max-h-36 w-full flex items-start">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
@@ -105,7 +106,7 @@ export default function Latest({ featuredPosts }) {
               .height(800)
               .url()}
             layout="fill"
-            alt={featuredPosts[2].altText}
+            alt={featuredPosts[2].mainImage.altText}
           />
           <div className="absolute bottom-0 h-2/5 max-h-36 w-full flex items-start">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
@@ -144,7 +145,7 @@ export default function Latest({ featuredPosts }) {
             objectFit="cover"
             src={urlFor(featuredPosts[3].mainImage).width(800).url()}
             layout="fill"
-            alt={featuredPosts[3].altText}
+            alt={featuredPosts[3].mainImage.altText}
           />
           <div className="absolute bottom-0 right-0 h-2/4 max-h-200 w-full flex items-start">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">

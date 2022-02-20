@@ -14,6 +14,7 @@ export default function Home({
   aboutUs,
   logo,
   title,
+  description,
   siteData,
   footer,
 }) {
@@ -21,6 +22,7 @@ export default function Home({
     <div>
       <Head>
         <title>{title}</title>
+        <meta name="description" content={description} />
         <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
       </Head>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
@@ -59,12 +61,14 @@ export async function getStaticProps({ preview = false }) {
   const layoutQuery = groq`
   *[_type == "layout"]{
     logo,
-    title
+    title,
+    description
   }
 `;
   const data1 = await getClient(preview).fetch(layoutQuery);
   const logo = data1[0].logo;
   const title = data1[0].title;
+  const description = data1[0].description;
 
   const footerQuery = groq`
     *[_type == "footer"]
@@ -129,6 +133,7 @@ export async function getStaticProps({ preview = false }) {
       categories,
       logo,
       title,
+      description,
       siteData,
       footer,
       aboutUs,
