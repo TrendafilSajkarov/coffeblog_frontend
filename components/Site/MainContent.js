@@ -53,7 +53,10 @@ export default function MainContent({
               min read
             </p>
             <p className="text-base line-clamp-5">{latestPost.excerpt}</p>
-            <Link href={`/${latestPost.categories.slug}/${latestPost.slug}`}>
+            <Link
+              href={`/${latestPost.categories.slug}/${latestPost.slug}`}
+              as={`/${latestPost.categories.slug}/${latestPost.slug}`}
+            >
               <a>
                 <button className="border-2 border-yellow-600 uppercase hover:underline shadow-md px-6 py-1 text-gray-600 text-xs">
                   Read More
@@ -126,7 +129,10 @@ export default function MainContent({
                   By {post.author.name} | {post.estimatedReadingTime} min read
                 </p>
                 <p className="text-base line-clamp-3">{post.excerpt}</p>
-                <Link href={`/${post.categories.slug}/${post.slug}`}>
+                <Link
+                  href={`/${post.categories.slug}/${post.slug}`}
+                  as={`/${post.categories.slug}/${post.slug}`}
+                >
                   <a>
                     <button className="border-2 border-yellow-600 uppercase hover:underline shadow-md px-6 py-1 mt-3 text-gray-600 text-xs">
                       Read More
