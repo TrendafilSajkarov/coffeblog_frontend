@@ -12,9 +12,9 @@ export default function AsideContent({
     <aside className="flex px-1 my-5 col-span-2 flex-col md:col-span-2 md:grid md:grid-cols-2 md:auto-rows-auto md:space-y-5 md:space-x-3 lg:flex lg:col-span-1 lg:flex-col ">
       {aboutUs && (
         <article className="w-full">
-          <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3">
+          <h3 className="uppercase font-serif text-yellow-600 text-xs mb-3">
             About Us
-          </h4>
+          </h3>
           <div className="prose-sm text-base font-medium">
             <div className="relative w-full h-52">
               <Image
@@ -31,9 +31,9 @@ export default function AsideContent({
         </article>
       )}
       <section className="mt-9">
-        <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3">
+        <h3 className="uppercase font-serif text-yellow-600 text-xs mb-3">
           Featured Posts
-        </h4>
+        </h3>
         <ul>
           {olderFeaturedPosts.map((post) => {
             return (
@@ -74,9 +74,9 @@ export default function AsideContent({
         </ul>
       </section>
       <section className="mt-9">
-        <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3">
+        <h3 className="uppercase font-serif text-yellow-600 text-xs mb-3">
           Categories
-        </h4>
+        </h3>
         <ul>
           <li>
             <Link href="/">

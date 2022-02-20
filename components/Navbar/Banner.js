@@ -18,7 +18,7 @@ export default function Banner({ logo }) {
       <Link href="/">
         <div className="relative h-full w-48 cursor-pointer">
           <Image
-            className="object-fill"
+            objectFit="cover"
             src={imageProps.src}
             loader={imageProps.loader}
             layout="fill"

@@ -50,7 +50,7 @@ export default function PostPage({
             layout="fill"
             objectFit="cover"
             quality={100}
-            alt=""
+            alt={singlePost[0].mainImage.altText}
           />
 
           <div className="absolute shadow-sm border-gray-200 border bg-white py-0 -bottom-6 left-5 right-5 md:left-20 md:right-20 lg:left-32 lg:right-32 flex items-center">
@@ -63,10 +63,10 @@ export default function PostPage({
               </div>
             </div>
             <div className="flex flex-1 flex-col items-center py-3 font-serif text-4xl">
-              <h4 className="uppercase text-yellow-600 text-base flex-grow-0">
+              <div className="uppercase text-yellow-600 text-base flex-grow-0">
                 {singlePost[0].categories.title}
-              </h4>
-              <h3 className="font-light">{singlePost[0].title}</h3>
+              </div>
+              <h1 className="font-light">{singlePost[0].title}</h1>
               <p className="text-xs text-gray-400">
                 By {singlePost[0].author.name} |{" "}
                 {singlePost[0].estimatedReadingTime} min read
