@@ -134,11 +134,13 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                         <div className="prose-sm font-serif text-xs">
                           <div className="relative w-full h-48">
                             <Image
-                              src={urlFor(aboutUs.mainImage.asset)
+                              src={urlFor(aboutUs.mainImage)
                                 .width(300)
+                                .height(300)
                                 .url()}
                               layout="fill"
                               objectFit="cover"
+                              alt={aboutUs.mainImage.altText}
                             />
                           </div>
                           <div className="text-sm">

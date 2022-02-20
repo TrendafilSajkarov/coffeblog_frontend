@@ -18,9 +18,10 @@ export default function AsideContent({
           <div className="prose-sm text-base font-medium">
             <div className="relative w-full h-52">
               <Image
-                src={urlFor(aboutUs.mainImage.asset).width(300).url()}
+                src={urlFor(aboutUs.mainImage).width(300).height(300).url()}
                 layout="fill"
                 objectFit="cover"
+                alt={aboutUs.mainImage.altText}
               />
             </div>
             <div className="">
@@ -43,9 +44,10 @@ export default function AsideContent({
                 <div className="h-full grid grid-cols-3">
                   <div className="relative col-span-1 h-full w-full">
                     <Image
-                      src={urlFor(post.mainImage.asset).width(150).url()}
+                      src={urlFor(post.mainImage).width(150).height(150).url()}
                       layout="fill"
                       objectFit="cover"
+                      alt={post.mainImage.altText}
                     />
                   </div>
                   <div className="col-start-2 col-end-4 min-h-100 flex flex-col font-serif pl-3">
@@ -78,8 +80,8 @@ export default function AsideContent({
         <ul>
           <li>
             <Link href="/">
-              <a className="flex font-serif justify-between group border-b-2 border-red-300">
-                <h3 className=" group-hover:text-red-300 font-light prose-sm text-base ">
+              <a className="pt-3 prose flex font-serif justify-between group border-b-2 border-red-300">
+                <h3 className=" group-hover:text-red-300 font-light prose text-base ">
                   Home
                 </h3>
               </a>
@@ -94,11 +96,11 @@ export default function AsideContent({
                     query: { category: category.slug },
                   }}
                 >
-                  <a className="flex font-serif justify-between group border-b-2 border-red-300">
-                    <h3 className=" group-hover:text-red-300 font-light prose-sm text-base ">
+                  <a className="pt-3 flex font-serif justify-between group border-b-2 border-red-300">
+                    <h3 className=" group-hover:text-red-300 font-light text-base ">
                       {category.title}
                     </h3>
-                    <h3 className="font-light group-hover:text-red-300 text-xs prose-sm text-gray-500 self-end">
+                    <h3 className="font-light group-hover:text-red-300 text-xs prose text-gray-500 self-end">
                       {category.posts.length} posts
                     </h3>
                   </a>

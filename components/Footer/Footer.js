@@ -17,6 +17,7 @@ export default function Footer({ footer }) {
                 src={imageProps.src}
                 loader={imageProps.loader}
                 layout="fill"
+                alt={footer[0].logo.altText}
               />
             </div>
           </Link>

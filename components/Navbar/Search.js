@@ -71,9 +71,13 @@ export default function Search({ setOpenSearch }) {
                       <div className="h-full grid grid-cols-3">
                         <div className="relative col-span-1 h-full w-full">
                           <Image
-                            src={urlFor(post.mainImage.asset).width(150).url()}
+                            src={urlFor(post.mainImage)
+                              .width(150)
+                              .height(150)
+                              .url()}
                             layout="fill"
                             objectFit="cover"
+                            alt={post.mainImage.altText}
                           />
                         </div>
                         <div className="col-start-2 col-end-4 min-h-100 flex flex-col font-serif pl-3">

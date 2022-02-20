@@ -28,6 +28,7 @@ export default function CategoriesPageMainContent({
                     src={urlFor(post.mainImage.asset).width(550).url()}
                     layout="fill"
                     objectFit="cover"
+                    alt={post.mainImage.altText}
                   />
                   <div className="absolute top-2 flex flex-col items-center bg-gray-100 bg-opacity-50 px-3 mx-3 shadow-lg">
                     <div className="text-2xl font-extrabold text-gray-700 ">
