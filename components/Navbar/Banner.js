@@ -22,6 +22,7 @@ export default function Banner({ logo }) {
             src={imageProps.src}
             loader={imageProps.loader}
             layout="fill"
+            alt={imageProps.alt}
           />
         </div>
       </Link>

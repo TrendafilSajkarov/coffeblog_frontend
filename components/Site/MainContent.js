@@ -21,10 +21,11 @@ export default function MainContent({
         <article className="prose-sm px-1 group text-center row-span-1 h-screen max-h-1000 min-h-600 flex flex-col items-center justify-center">
           <div className="relative w-full h-2/3 shadow-md">
             <Image
-              src={urlFor(latestPost.mainImage.asset).width(850).url()}
+              src={urlFor(latestPost.mainImage).width(800).height(800).url()}
               layout="fill"
               objectFit="cover"
               quality={100}
+              alt={latestPost.mainImage.altText}
             />
             <div className="absolute top-4 flex flex-col items-center bg-gray-100 bg-opacity-50 w py-2 px-6 mx-6 shadow-lg">
               <div className="text-4xl font-extrabold text-gray-700 ">
@@ -67,6 +68,16 @@ export default function MainContent({
           if (latestPost !== null && i === 0) {
             return null;
           }
+          let aspectRatio = post.mainImageMeta.dimensions.aspectRatio;
+          let dimentions;
+          if (aspectRatio >= 1.2) {
+            dimentions = { width: 800, height: 500 };
+          } else if (aspectRatio <= 0.8) {
+            dimentions = { width: 500, height: 800 };
+          } else {
+            dimentions = { width: 500, height: 500 };
+          }
+
           return (
             <div key={post._id} className="w-full md:w-2/4 mt-9 px-1 group">
               <div
@@ -77,12 +88,14 @@ export default function MainContent({
                 } w-full`}
               >
                 <Image
-                  src={urlFor(post.mainImage.asset)
-                    .width(500)
+                  src={urlFor(post.mainImage)
+                    .width(dimentions.width)
+                    .height(dimentions.height)
                     .quality(100)
                     .url()}
                   layout="fill"
                   objectFit="contain"
+                  alt={post.mainImage.altText}
                 />
                 <div
                   className={`absolute top-2 ${
