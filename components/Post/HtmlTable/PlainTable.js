@@ -1,4 +1,4 @@
-export default ({ props }) => {
+export default function PlainTable({ props }) {
   return (
     <div className="w-full overflow-auto">
       <table className="table-auto">
@@ -91,4 +91,4 @@ export default ({ props }) => {
       </table>
     </div>
   );
-};
+}

@@ -1,6 +1,6 @@
 import { urlFor } from "../../../lib/sanity";
 
-export default ({ imgArr }) => {
+export default function GridGallery({ imgArr }) {
   const img = imgArr.length;
   const rows = Math.ceil(img / 2);
   return (
@@ -23,4 +23,4 @@ export default ({ imgArr }) => {
       })}
     </figure>
   );
-};
+}

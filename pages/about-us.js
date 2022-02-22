@@ -18,6 +18,7 @@ export default function AboutPage({ categories, logo, aboutUs, footer }) {
             src={urlFor(aboutUs.mainImage).width(800).url()}
             layout="fill"
             objectFit="cover"
+            alt={aboutUs.mainImage.altText}
           />
         </div>
         <PortableText blocks={aboutUs.content} serializers={serializers} />
@@ -66,5 +67,6 @@ export async function getStaticProps(context) {
       footer,
       aboutUs,
     },
+    revalidate: 60,
   };
 }

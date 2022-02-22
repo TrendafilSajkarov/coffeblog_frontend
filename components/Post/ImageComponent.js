@@ -1,6 +1,6 @@
 import { urlFor } from "../../lib/sanity";
 
-export default (props) => {
+export default function ImageComponent(props) {
   return (
     <div>
       {props.node.metadata.metadata.dimensions.aspectRatio <= 0.9 ? (
@@ -22,4 +22,4 @@ export default (props) => {
       )}
     </div>
   );
-};
+}

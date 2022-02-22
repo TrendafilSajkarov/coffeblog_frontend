@@ -1,4 +1,4 @@
-export default ({ props }) => {
+export default function StyledTable({ props }) {
   return (
     <div className="flex flex-col w-full">
       <div className="-my-2 overflow-auto w-full">
@@ -117,4 +117,4 @@ export default ({ props }) => {
       </div>
     </div>
   );
-};
+}

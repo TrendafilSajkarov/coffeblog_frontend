@@ -15,7 +15,7 @@ export default function Banner({ logo }) {
           Subscribe
         </button>
       </div> */}
-      <Link href="/">
+      <Link href="/" passHref>
         <div className="relative h-full w-48 cursor-pointer">
           <Image
             objectFit="cover"

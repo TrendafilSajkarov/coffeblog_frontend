@@ -141,13 +141,14 @@ export async function getStaticProps(context) {
       featuredPosts,
       pages,
     },
+    revalidate: 60,
   };
 }
 
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
   const catQuery = groq`
-    *[_type == "category" || _type == "aboutUs"] | order(_createdAt) {
+    *[_type == "category"] | order(_createdAt) {
       title,
       "slug": slug.current,
       _id,

@@ -1,6 +1,6 @@
 import { urlFor } from "../../../lib/sanity";
 
-export default ({ imgArr }) => {
+export default function InlineGallery({ imgArr }) {
   return (
     <figure className="w-full flex justify-around">
       {imgArr.map((img) => {
@@ -21,4 +21,4 @@ export default ({ imgArr }) => {
       })}
     </figure>
   );
-};
+}

@@ -1,6 +1,6 @@
 import getVideoId from "get-video-id";
 
-export default (props) => {
+export default function YoutubeComponent(props) {
   const { id } = getVideoId(props.node.url || "");
   return (
     <iframe
@@ -13,4 +13,4 @@ export default (props) => {
       allowFullScreen
     ></iframe>
   );
-};
+}

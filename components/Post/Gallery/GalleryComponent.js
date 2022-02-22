@@ -1,7 +1,7 @@
 import GridGallery from "./GridGallery";
 import InlineGallery from "./InlineGallery";
 
-export default (props) => {
+export default function GalleryComponent(props) {
   return (
     <div>
       {props.node.display == "inline" && (
@@ -15,4 +15,4 @@ export default (props) => {
       )}
     </div>
   );
-};
+}

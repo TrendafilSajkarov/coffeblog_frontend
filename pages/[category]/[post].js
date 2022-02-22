@@ -188,6 +188,7 @@ export async function getStaticProps(context) {
       footer,
       aboutUs,
     }, // will be passed to the page component as props
+    revalidate: 60,
   };
 }
 

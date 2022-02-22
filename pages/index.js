@@ -138,5 +138,6 @@ export async function getStaticProps({ preview = false }) {
       footer,
       aboutUs,
     },
+    revalidate: 60,
   };
 }

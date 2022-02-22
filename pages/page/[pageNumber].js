@@ -131,6 +131,7 @@ export async function getStaticProps(context) {
       pages,
       aboutUs,
     },
+    revalidate: 60,
   };
 }
 
