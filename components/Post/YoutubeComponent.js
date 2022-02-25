@@ -4,8 +4,7 @@ export default function YoutubeComponent(props) {
   const { id } = getVideoId(props.node.url || "");
   return (
     <iframe
-      width="100%"
-      height="306"
+      className="w-full aspect-[16/9]"
       src={`https://www.youtube.com/embed/${id}`}
       title="YouTube video player"
       frameBorder="0"
