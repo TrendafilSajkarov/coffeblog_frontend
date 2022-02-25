@@ -18,7 +18,11 @@ export default function AsideContent({
           <div className="prose-sm text-base font-medium">
             <div className="relative w-full h-52">
               <Image
-                src={urlFor(aboutUs.mainImage).width(300).height(300).url()}
+                src={urlFor(aboutUs.mainImage)
+                  .width(300)
+                  .height(300)
+                  .auto("format")
+                  .url()}
                 layout="fill"
                 objectFit="cover"
                 alt={aboutUs.mainImage.altText}
@@ -44,7 +48,11 @@ export default function AsideContent({
                 <div className="h-full grid grid-cols-3">
                   <div className="relative col-span-1 h-full w-full">
                     <Image
-                      src={urlFor(post.mainImage).width(150).height(150).url()}
+                      src={urlFor(post.mainImage)
+                        .width(150)
+                        .height(150)
+                        .auto("format")
+                        .url()}
                       layout="fill"
                       objectFit="cover"
                       alt={post.mainImage.altText}

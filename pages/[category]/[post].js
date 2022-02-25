@@ -45,7 +45,10 @@ export default function PostPage({
       <section className="container max-w-screen-xl mx-auto my-6">
         <div className="relative w-full h-screen max-h-700 shadow-md">
           <Image
-            src={urlFor(singlePost[0].mainImage.asset).width(800).url()}
+            src={urlFor(singlePost[0].mainImage.asset)
+              .width(800)
+              .auto("format")
+              .url()}
             priority="true"
             layout="fill"
             objectFit="cover"

@@ -12,10 +12,12 @@ export default function InlineGallery({ imgArr }) {
                 .width(250)
                 .height(250)
                 .quality(100)
+                .auto("format")
                 .url()}
               width={250}
               height={250}
               objectFit="contain"
+              layout="intrinsic"
               alt={img.alt}
             />
             {img.caption && <figcaption>{img.caption}</figcaption>}

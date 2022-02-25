@@ -19,11 +19,15 @@ export default function Links({ categories, aboutUs }) {
       }
     };
 
-    document.addEventListener("mousedown", checkIfClickedOutside);
+    document.addEventListener("mousedown", checkIfClickedOutside, {
+      passive: true,
+    });
 
     return () => {
       // Cleanup the event listener
-      document.removeEventListener("mousedown", checkIfClickedOutside);
+      document.removeEventListener("mousedown", checkIfClickedOutside, {
+        passive: true,
+      });
     };
   }, [openSearch]);
 
