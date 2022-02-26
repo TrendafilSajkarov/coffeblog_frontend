@@ -66,7 +66,7 @@ export default function MainContent({
           </div>
         </article>
       )}
-      <section className="row-span-2 pt-5 flex flex-col md:flex-row md:flex-wrap md:justify-between md:items-center">
+      <section className="row-span-2 pt-5 flex flex-col md:flex-row md:flex-wrap md:items-center">
         {latestPosts.map((post, i) => {
           if (latestPost !== null && i === 0) {
             return null;
@@ -74,36 +74,29 @@ export default function MainContent({
           let aspectRatio = post.mainImageMeta.dimensions.aspectRatio;
           let dimentions;
           if (aspectRatio >= 1.2) {
-            dimentions = { width: 800, height: 500 };
+            dimentions = { width: 500, height: 400 };
           } else if (aspectRatio <= 0.8) {
-            dimentions = { width: 500, height: 800 };
+            dimentions = { width: 400, height: 600 };
           } else {
             dimentions = { width: 500, height: 500 };
           }
 
           return (
-            <div key={post._id} className="w-full md:w-2/4 mt-9 px-1 group">
-              <div
-                className={`relative h-80 ${
-                  post.mainImageMeta.dimensions.aspectRatio >= 1
-                    ? "md:h-60"
-                    : "md:h-96"
-                } w-full`}
-              >
+            <div key={post._id} className="w-full md:w-2/4 pt-5 px-1 group">
+              <div className={`relative w-full`}>
                 <Image
-                  src={urlFor(post.mainImage)
-                    .width(dimentions.width)
-                    .height(dimentions.height)
-                    .quality(100)
-                    .url()}
-                  layout="fill"
+                  src={urlFor(post.mainImage).width(400).quality(100).url()}
+                  width={dimentions.width}
+                  height={dimentions.height}
+                  layout="intrinsic"
                   objectFit="contain"
                   alt={post.mainImage.altText}
                 />
                 <div
-                  className={`absolute top-2 ${
-                    post.mainImageMeta.dimensions.aspectRatio <= 1 && "left-12"
-                  } flex flex-col items-center bg-gray-100 bg-opacity-50 px-3 mx-3 shadow-lg`}
+                  className={`absolute top-8 ${
+                    post.mainImageMeta.dimensions.aspectRatio <= 1 &&
+                    "left-1 top-3"
+                  } flex flex-col items-center bg-gray-100 bg-opacity-70 px-3 mx-3 shadow-md`}
                 >
                   <div className="text-2xl font-extrabold text-gray-700">
                     {getDate(post._createdAt)[0]}
