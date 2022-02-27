@@ -25,6 +25,7 @@ export default function CategoryPage({
       <Head>
         <title>{currentCategory[0].title}</title>
         <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        <meta name="description" content={currentCategory[0].description} />
       </Head>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
       <section className="container grid grid-cols-2 auto-rows-auto w-11/12 lg:grid-cols-3 gap-4 xl:w-3/4 max-w-screen-xl mx-auto my-6">
@@ -67,6 +68,7 @@ export async function getStaticProps(context) {
     {
       "currentCategory": *[_type == "category" && slug.current == '${context.params.category.toString()}'] {
           title,
+          description,
           "slug": slug.current,
           _id,
           "posts": *[_type == "post" && references(^._id)].title
