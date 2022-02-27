@@ -18,10 +18,12 @@ export default function Banner({ logo }) {
       <Link href="/" passHref>
         <div className="relative h-full w-48 cursor-pointer">
           <Image
+            width={imageProps.width}
+            height={imageProps.height}
             objectFit="cover"
             src={imageProps.src}
             loader={imageProps.loader}
-            layout="fill"
+            layout="intrinsic"
             alt={logo.altText}
           />
         </div>

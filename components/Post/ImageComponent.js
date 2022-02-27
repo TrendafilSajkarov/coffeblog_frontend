@@ -1,13 +1,19 @@
-import { urlFor } from "../../lib/sanity";
 import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
+import configuredSanityClient from "../../lib/configuredSanityClient";
 
 export default function ImageComponent(props) {
+  const imageProps = useNextSanityImage(
+    configuredSanityClient,
+    props.node.asset
+  );
+
   return (
     <figure className="flex flex-col items-center justify-center">
       <Image
-        src={urlFor(props.node.asset).width(400).auto("format").url()}
-        width={500}
-        height={400}
+        src={imageProps.src}
+        width={imageProps.width}
+        height={imageProps.height}
         objectFit="contain"
         layout="intrinsic"
         alt={props.node.altText}
