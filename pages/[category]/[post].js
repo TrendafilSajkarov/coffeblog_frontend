@@ -220,5 +220,5 @@ export async function getStaticPaths() {
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   // return { categories, fallback: false };
-  return { paths: allPosts, fallback: false };
+  return { paths: allPosts, fallback: "blocking" };
 }
