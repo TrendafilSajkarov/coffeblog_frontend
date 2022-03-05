@@ -1,4 +1,5 @@
 import Head from "next/head";
+import DefaultErrorPage from "next/error";
 
 import Navbar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
@@ -20,6 +21,19 @@ export default function CategoryPageWithNumber({
   pages,
   currentPage,
 }) {
+  // This includes setting the noindex header because static files always return a status 200 but the rendered not found page page should obviously not be indexed
+  if (currentPage > pages || (pages > 0 && currentPage === 0)) {
+    return (
+      <>
+        <Head>
+          <meta name="robots" content="noindex" />
+          <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        </Head>
+        <DefaultErrorPage statusCode={404} />
+      </>
+    );
+  }
+
   return (
     <div>
       <Head>
@@ -80,8 +94,17 @@ export async function getStaticProps(context) {
   const result2 = await getClient().fetch(currentCategoryQuery);
   const currentCategory = result2.currentCategory;
 
-  const count = currentCategory[0].posts.length / 10;
-  const pages = Math.floor(count);
+  function isInt(n) {
+    return n === +n && n === (n | 0);
+  }
+  let pagesInCat = currentCategory[0].posts.length / 10;
+  let pages;
+  if (isInt(pagesInCat)) {
+    pages = pagesInCat - 1;
+  } else {
+    pages = Math.floor(pagesInCat);
+  }
+
   const currentPage = parseInt(context.params.pageNumber);
 
   const featuredPostsQuery = groq`
@@ -147,6 +170,7 @@ export async function getStaticProps(context) {
       pages,
       currentPage,
     },
+    revalidate: 60,
   };
 }
 
@@ -165,11 +189,21 @@ export async function getStaticPaths() {
   `;
   const result = await getClient().fetch(postsQuerry);
 
+  function isInt(n) {
+    return n === +n && n === (n | 0);
+  }
+
   let pagesParams = [];
 
   result.categories.map((cat) => {
     let pagesPerCat = cat.posts.length / 10;
-    const pagesNum = Math.floor(pagesPerCat);
+    let pagesNum;
+    if (isInt(pagesPerCat)) {
+      pagesNum = pagesPerCat - 1;
+    } else {
+      pagesNum = Math.floor(pagesPerCat);
+    }
+
     if (pagesNum > 0) {
       for (let index = 1; index <= pagesNum; index++) {
         pagesParams.push({
@@ -183,6 +217,6 @@ export async function getStaticPaths() {
 
   return {
     paths: pagesParams,
-    fallback: false,
+    fallback: "blocking",
   };
 }

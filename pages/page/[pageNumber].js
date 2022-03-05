@@ -1,4 +1,6 @@
 import Head from "next/head";
+import DefaultErrorPage from "next/error";
+
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Site from "../../components/Site/Site";
@@ -17,6 +19,19 @@ export default function Page({
   pages,
   currentPage,
 }) {
+  // This includes setting the noindex header because static files always return a status 200 but the rendered not found page page should obviously not be indexed
+  if (currentPage > pages || (pages > 0 && currentPage === 0)) {
+    return (
+      <>
+        <Head>
+          <meta name="robots" content="noindex" />
+          <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        </Head>
+        <DefaultErrorPage statusCode={404} />
+      </>
+    );
+  }
+
   return (
     <div>
       <Head>
@@ -110,8 +125,17 @@ export async function getStaticProps(context) {
 `;
   const result = await getClient().fetch(postsQuerry);
 
-  let count = result.posts / 10;
-  const pages = Math.floor(count);
+  function isInt(n) {
+    return n === +n && n === (n | 0);
+  }
+
+  let pagesInCat = result.posts / 10;
+  let pages;
+  if (isInt(pagesInCat)) {
+    pages = pagesInCat - 1;
+  } else {
+    pages = Math.floor(pagesInCat);
+  }
   const currentPage = parseInt(context.params.pageNumber);
 
   const aboutUsQuery = groq`
@@ -145,8 +169,16 @@ export async function getStaticPaths() {
 `;
   const result = await getClient().fetch(postsQuerry);
 
-  let count = result.posts / 10;
-  const pages = Math.floor(count);
+  function isInt(n) {
+    return n === +n && n === (n | 0);
+  }
+  let pagesInCat = result.posts / 10;
+  let pages;
+  if (isInt(pagesInCat)) {
+    pages = pagesInCat - 1;
+  } else {
+    pages = Math.floor(pagesInCat);
+  }
 
   let pagesParams = [];
 
@@ -156,6 +188,6 @@ export async function getStaticPaths() {
 
   return {
     paths: pagesParams,
-    fallback: false,
+    fallback: "blocking",
   };
 }

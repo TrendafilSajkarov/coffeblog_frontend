@@ -124,8 +124,16 @@ export async function getStaticProps({ preview = false }) {
   `;
   const result = await getClient(preview).fetch(siteQuery);
 
-  const count = result.posts / 10;
-  const pages = Math.floor(count);
+  function isInt(n) {
+    return n === +n && n === (n | 0);
+  }
+  let pagesInCat = result.posts / 10;
+  let pages;
+  if (isInt(pagesInCat)) {
+    pages = pagesInCat - 1;
+  } else {
+    pages = Math.floor(pagesInCat);
+  }
   const siteData = { ...result, pages };
 
   return {

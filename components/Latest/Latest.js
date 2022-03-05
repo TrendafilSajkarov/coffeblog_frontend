@@ -42,7 +42,7 @@ export default function Latest({ featuredPosts }) {
             </Link>
             {featuredPosts[0].excerpt && (
               <div>
-                <p className="md:max-w-screen-sm prose-sm text-base font-serif text-white font-extralight line-clamp-3">
+                <p className="md:max-w-screen-sm prose-sm text-base font-sans text-white font-extralight line-clamp-3">
                   {featuredPosts[0].excerpt}
                 </p>
                 <p className="text-xs prose-sm text-gray-400">
@@ -172,7 +172,7 @@ export default function Latest({ featuredPosts }) {
                 </a>
               </Link>
 
-              <p className="prose-sm text-base font-serif text-white font-extralight line-clamp-3">
+              <p className="prose-sm text-base font-sans text-white font-extralight line-clamp-3">
                 {featuredPosts[3].excerpt}
               </p>
               <p className="text-xs prose-sm text-gray-400">

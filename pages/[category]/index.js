@@ -1,4 +1,5 @@
 import Head from "next/head";
+import DefaultErrorPage from "next/error";
 
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
@@ -12,6 +13,7 @@ import { urlFor } from "../../lib/sanity";
 export default function CategoryPage({
   categories,
   logo,
+  siteTitle,
   aboutUs,
   footer,
   latestPosts,
@@ -20,10 +22,25 @@ export default function CategoryPage({
   pages = 0,
   currentPage = 0,
 }) {
+  // This includes setting the noindex header because static files always return a status 200 but the rendered not found page page should obviously not be indexed
+  if (!currentCategory[0]) {
+    return (
+      <>
+        <Head>
+          <meta name="robots" content="noindex" />
+          <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        </Head>
+        <DefaultErrorPage statusCode={404} />
+      </>
+    );
+  }
+
   return (
     <div>
       <Head>
-        <title>{currentCategory[0].title}</title>
+        <title>
+          {currentCategory[0].title} | {siteTitle}
+        </title>
         <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
         <meta name="description" content={currentCategory[0].description} />
       </Head>
@@ -78,8 +95,16 @@ export async function getStaticProps(context) {
   const result2 = await getClient().fetch(currentCategoryQuery);
   const currentCategory = result2.currentCategory;
 
-  const count = currentCategory[0].posts.length / 10;
-  const pages = Math.floor(count);
+  function isInt(n) {
+    return n === +n && n === (n | 0);
+  }
+  let pagesInCat = currentCategory[0].posts.length / 10;
+  let pages;
+  if (isInt(pagesInCat)) {
+    pages = pagesInCat - 1;
+  } else {
+    pages = Math.floor(pagesInCat);
+  }
 
   const featuredPostsQuery = groq`
   {
@@ -114,11 +139,13 @@ export async function getStaticProps(context) {
 
   const layoutQuery = groq`
     *[_type == "layout"]{
-      logo
+      logo,
+      title
     }
   `;
   const data1 = await getClient().fetch(layoutQuery);
   const logo = data1[0].logo;
+  const siteTitle = data1[0].title;
 
   const footerQuery = groq`
       *[_type == "footer"]
@@ -136,6 +163,7 @@ export async function getStaticProps(context) {
     props: {
       categories,
       logo,
+      siteTitle,
       footer,
       aboutUs,
       latestPosts,
@@ -168,5 +196,5 @@ export async function getStaticPaths() {
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   // return { categories, fallback: false };
-  return { paths: cats, fallback: false };
+  return { paths: cats, fallback: "blocking" };
 }

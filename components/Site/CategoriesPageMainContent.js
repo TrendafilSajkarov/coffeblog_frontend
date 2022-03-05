@@ -30,14 +30,14 @@ export default function CategoriesPageMainContent({
                     objectFit="cover"
                     alt={post.mainImage.altText}
                   />
-                  <div className="absolute top-2 flex flex-col items-center bg-gray-100 bg-opacity-50 px-3 mx-3 shadow-lg">
+                  {/* <div className="absolute top-2 flex flex-col items-center bg-gray-100 bg-opacity-50 px-3 mx-3 shadow-lg">
                     <div className="text-2xl font-extrabold text-gray-700 ">
                       {getDate(post._createdAt)[0]}
                     </div>
                     <div className="text-base font-medium h-auto text-gray-700">
                       {getDate(post._createdAt)[1]}
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="flex flex-1 flex-col justify-between items-center font-serif">
                   <h4 className="uppercase text-yellow-600 text-xs ">
@@ -54,7 +54,9 @@ export default function CategoriesPageMainContent({
                   <p className="text-xs text-gray-400">
                     By {post.author.name} | {post.estimatedReadingTime} min read
                   </p>
-                  <p className="text-base line-clamp-5">{post.excerpt}</p>
+                  <p className="text-base font-sans line-clamp-5">
+                    {post.excerpt}
+                  </p>
                   <Link href={`/${currentCategory[0].slug}/${post.slug}`}>
                     <a>
                       <button className="border-2 border-yellow-600 uppercase hover:underline shadow-md px-6 py-1 mt-6 text-gray-600 text-xs">

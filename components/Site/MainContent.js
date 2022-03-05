@@ -59,7 +59,9 @@ export default function MainContent({
               By {latestPost.author.name} | {latestPost.estimatedReadingTime}{" "}
               min read
             </p>
-            <p className="text-base line-clamp-5">{latestPost.excerpt}</p>
+            <p className="text-base font-sans line-clamp-5">
+              {latestPost.excerpt}
+            </p>
             <Link
               href={`/${latestPost.categories.slug}/${latestPost.slug}`}
               as={`/${latestPost.categories.slug}/${latestPost.slug}`}
@@ -131,7 +133,9 @@ export default function MainContent({
                 <p className="text-xs text-gray-400">
                   By {post.author.name} | {post.estimatedReadingTime} min read
                 </p>
-                <p className="text-base line-clamp-3">{post.excerpt}</p>
+                <p className="text-base font-sans line-clamp-3">
+                  {post.excerpt}
+                </p>
                 <Link
                   href={`/${post.categories.slug}/${post.slug}`}
                   as={`/${post.categories.slug}/${post.slug}`}

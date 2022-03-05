@@ -11,7 +11,7 @@ import { groq } from "next-sanity";
 
 import Image from "next/image";
 import Head from "next/head";
-import { useRouter } from "next/router";
+import DefaultErrorPage from "next/error";
 
 export default function PostPage({
   categories,
@@ -21,7 +21,19 @@ export default function PostPage({
   singlePost,
   featuredPosts,
 }) {
-  const { basePath } = useRouter();
+  // This includes setting the noindex header because static files always return a status 200 but the rendered not found page page should obviously not be indexed
+  if (!singlePost[0]) {
+    return (
+      <>
+        <Head>
+          <meta name="robots" content="noindex" />
+          <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        </Head>
+        <DefaultErrorPage statusCode={404} />
+      </>
+    );
+  }
+
   return (
     <div className="">
       <Head>
