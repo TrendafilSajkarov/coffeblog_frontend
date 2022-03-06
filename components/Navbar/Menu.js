@@ -94,7 +94,7 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                       </h4>
                       <ul>
                         <li>
-                          <Link href="/">
+                          <Link href="/" passHref>
                             <a className="flex font-serif justify-between group border-b-2 border-red-300">
                               <h3 className=" group-hover:text-red-300 font-light prose-sm text-base ">
                                 Home
@@ -110,6 +110,7 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                                   pathname: "/[category]",
                                   query: { category: category.slug },
                                 }}
+                                passHref
                               >
                                 <a className="flex font-serif justify-between group border-b-2 border-red-300">
                                   <h3 className=" group-hover:text-red-300 font-light prose-sm text-base ">
@@ -128,7 +129,7 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
 
                     {aboutUs && (
                       <article className="w-full md:w-3/4">
-                        <Link href="/about-us">
+                        <Link href="/about-us" passHref>
                           <h4 className="uppercase hover:cursor-pointer hover:text-red-300 font-serif text-yellow-600 text-xs mb-3">
                             About Us
                           </h4>

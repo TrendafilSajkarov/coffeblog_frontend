@@ -12,7 +12,7 @@ export default function AsideContent({
     <aside className="flex px-1 my-5 col-span-2 flex-col md:col-span-2 md:grid md:grid-cols-2 md:auto-rows-auto md:space-y-5 md:space-x-3 lg:flex lg:col-span-1 lg:flex-col ">
       {aboutUs && (
         <article className="w-full">
-          <Link href="/about-us">
+          <Link href="/about-us" passHref>
             <h3 className="uppercase hover:cursor-pointer hover:text-red-300 font-serif text-yellow-600 text-xs mb-3">
               About Us
             </h3>
@@ -64,7 +64,10 @@ export default function AsideContent({
                     <h4 className="uppercase text-yellow-600 text-xs whitespace-nowrap ">
                       {post.categories.title}
                     </h4>
-                    <Link href={`/${post.categories.slug}/${post.slug}`}>
+                    <Link
+                      href={`/${post.categories.slug}/${post.slug}`}
+                      passHref
+                    >
                       <a>
                         <h3 className="line-clamp-3 font-light group-hover:underline prose-sm text-base">
                           {post.title}
@@ -89,7 +92,7 @@ export default function AsideContent({
         </h3>
         <ul>
           <li>
-            <Link href="/">
+            <Link href="/" passHref>
               <a className="pt-3 prose flex font-serif justify-between group border-b-2 border-red-300">
                 <h3 className=" group-hover:text-red-300 font-light prose text-base ">
                   Home
@@ -105,6 +108,7 @@ export default function AsideContent({
                     pathname: "/[category]",
                     query: { category: category.slug },
                   }}
+                  passHref
                 >
                   <a className="pt-3 flex font-serif justify-between group border-b-2 border-red-300">
                     <h3 className=" group-hover:text-red-300 font-light text-base ">
