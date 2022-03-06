@@ -12,9 +12,11 @@ export default function AsideContent({
     <aside className="flex px-1 my-5 col-span-2 flex-col md:col-span-2 md:grid md:grid-cols-2 md:auto-rows-auto md:space-y-5 md:space-x-3 lg:flex lg:col-span-1 lg:flex-col ">
       {aboutUs && (
         <article className="w-full">
-          <h3 className="uppercase font-serif text-yellow-600 text-xs mb-3">
-            About Us
-          </h3>
+          <Link href="/about-us">
+            <h3 className="uppercase hover:cursor-pointer hover:text-red-300 font-serif text-yellow-600 text-xs mb-3">
+              About Us
+            </h3>
+          </Link>
           <div className="prose-sm text-base font-medium">
             <div className="relative w-full h-52">
               <Image
@@ -118,7 +120,7 @@ export default function AsideContent({
           })}
         </ul>
       </section>
-      <section className="mt-12 max-w-screen-sm self-center">
+      {/* <section className="mt-12 max-w-screen-sm self-center">
         <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3">
           Subscribe
         </h4>
@@ -146,7 +148,7 @@ export default function AsideContent({
             </button>
           </form>
         </div>
-      </section>
+      </section> */}
     </aside>
   );
 }

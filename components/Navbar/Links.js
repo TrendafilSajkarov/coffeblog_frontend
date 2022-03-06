@@ -41,7 +41,7 @@ export default function Links({ categories, aboutUs }) {
         />
       )}
       <nav className="relative container mx-auto flex justify-around items-center">
-        <div onClick={() => setOpenMenu(true)}>
+        <div className="hover:cursor-pointer" onClick={() => setOpenMenu(true)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -81,7 +81,10 @@ export default function Links({ categories, aboutUs }) {
         </div>
         <div ref={ref} className="sm:relative">
           {openSearch ? (
-            <div onClick={() => setOpenSearch(!openSearch)}>
+            <div
+              className="hover:cursor-pointer"
+              onClick={() => setOpenSearch(!openSearch)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 my-1"
@@ -98,7 +101,10 @@ export default function Links({ categories, aboutUs }) {
               </svg>
             </div>
           ) : (
-            <div onClick={() => setOpenSearch(!openSearch)}>
+            <div
+              className="hover:cursor-pointer"
+              onClick={() => setOpenSearch(!openSearch)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 my-1"

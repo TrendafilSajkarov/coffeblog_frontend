@@ -21,7 +21,7 @@ export default function MainContent({
 
   return (
     <main className="col-span-2 grid grid-cols-1 auto-rows-auto">
-      <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3 px-4">
+      <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3 px-1">
         Latest Posts
       </h4>
       {latestPost && (
@@ -43,13 +43,13 @@ export default function MainContent({
               </div>
             </div> */}
           </div>
-          <div className="flex-col items-center font-serif">
+          <div className="flex flex-col items-center font-serif">
             <h4 className="uppercase text-yellow-600 text-xs ">
               {latestPost.categories.title}
             </h4>
             <Link href={`/${latestPost.categories.slug}/${latestPost.slug}`}>
               <a>
-                <h3 className="text- font-light group-hover:underline">
+                <h3 className="font-light group-hover:underline">
                   {latestPost.title}
                 </h3>
               </a>

@@ -128,9 +128,11 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
 
                     {aboutUs && (
                       <article className="w-full md:w-3/4">
-                        <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3">
-                          About Us
-                        </h4>
+                        <Link href="/about-us">
+                          <h4 className="uppercase hover:cursor-pointer hover:text-red-300 font-serif text-yellow-600 text-xs mb-3">
+                            About Us
+                          </h4>
+                        </Link>
                         <div className="prose-sm font-serif text-xs">
                           <div className="relative w-full h-48">
                             <Image
@@ -149,7 +151,7 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                         </div>
                       </article>
                     )}
-                    <section className="my-10 w-full md:w-3/4">
+                    {/* <section className="my-10 w-full md:w-3/4">
                       <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3">
                         Subscribe
                       </h4>
@@ -177,7 +179,7 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                           </button>
                         </form>
                       </div>
-                    </section>
+                    </section> */}
                   </div>
                 </div>
                 {/* <!-- /End replace --> */}

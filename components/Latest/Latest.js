@@ -16,7 +16,7 @@ export default function Latest({ featuredPosts }) {
           alt={featuredPosts[0].mainImage.altText}
           priority
         />
-        <div className="absolute bottom-0 h-2/5 max-h-200 w-full flex items-start">
+        <div className="absolute bottom-0 min-h-1/4 h max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
           <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-2 px-6 mx-6 shadow-lg">
             <div className="text-3xl font-extrabold text-white ">
               {getDate(featuredPosts[0]._createdAt)[0]}
@@ -26,7 +26,7 @@ export default function Latest({ featuredPosts }) {
             </div>
           </div>
           <div className="pl-2 md:pl-0 flex flex-col items-start">
-            <div className="bg-gray-100 bg-opacity-70 shadow-lg">
+            <div className="bg-gray-100 bg-opacity-90 shadow-lg">
               <h4 className="uppercase text-yellow-600 text-xs px-2">
                 {featuredPosts[0].categories.title}
               </h4>
@@ -42,7 +42,7 @@ export default function Latest({ featuredPosts }) {
             </Link>
             {featuredPosts[0].excerpt && (
               <div>
-                <p className="md:max-w-screen-sm prose-sm text-base font-sans text-white font-extralight line-clamp-3">
+                <p className="md:max-w-screen-sm prose-sm text-base font-sans text-white font-extralight line-clamp-6">
                   {featuredPosts[0].excerpt}
                 </p>
                 <p className="text-xs prose-sm text-gray-400">
@@ -66,7 +66,7 @@ export default function Latest({ featuredPosts }) {
             layout="fill"
             alt={featuredPosts[1].mainImage.altText}
           />
-          <div className="absolute bottom-0 h-2/5 max-h-36 w-full flex items-start">
+          <div className="absolute bottom-0 min-h-2/5 max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
                 {getDate(featuredPosts[1]._createdAt)[0]}
@@ -76,7 +76,7 @@ export default function Latest({ featuredPosts }) {
               </div>
             </div>
             <div className="pl-2 md:pl-0 flex flex-col items-start">
-              <div className="bg-gray-100 bg-opacity-70 shadow-lg">
+              <div className="bg-gray-100 bg-opacity-90 shadow-lg">
                 <h4 className="uppercase text-yellow-600 text-xs px-2">
                   {featuredPosts[1].categories.title}
                 </h4>
@@ -108,7 +108,7 @@ export default function Latest({ featuredPosts }) {
             layout="fill"
             alt={featuredPosts[2].mainImage.altText}
           />
-          <div className="absolute bottom-0 h-2/5 max-h-36 w-full flex items-start">
+          <div className="absolute bottom-0 min-h-2/5 max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
                 {getDate(featuredPosts[2]._createdAt)[0]}
@@ -118,7 +118,7 @@ export default function Latest({ featuredPosts }) {
               </div>
             </div>
             <div className="pl-2 md:pl-0 flex flex-col items-start">
-              <div className="bg-gray-100 bg-opacity-70 shadow-lg">
+              <div className="bg-gray-100 bg-opacity-90 shadow-lg">
                 <h4 className="uppercase text-yellow-600 text-xs px-2">
                   {featuredPosts[2].categories.title}
                 </h4>
@@ -147,7 +147,7 @@ export default function Latest({ featuredPosts }) {
             layout="fill"
             alt={featuredPosts[3].mainImage.altText}
           />
-          <div className="absolute bottom-0 right-0 h-2/4 max-h-200 w-full flex items-start">
+          <div className="absolute bottom-0 right-0 min-h-1/4 max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
                 {getDate(featuredPosts[3]._createdAt)[0]}
@@ -157,7 +157,7 @@ export default function Latest({ featuredPosts }) {
               </div>
             </div>
             <div className="pl-2 md:pl-0 flex flex-col items-start">
-              <div className="bg-gray-100 bg-opacity-70 shadow-lg">
+              <div className="bg-gray-100 bg-opacity-90 shadow-lg">
                 <h4 className="uppercase text-yellow-600 text-xs px-2">
                   {featuredPosts[3].categories.title}
                 </h4>
@@ -172,7 +172,7 @@ export default function Latest({ featuredPosts }) {
                 </a>
               </Link>
 
-              <p className="prose-sm text-base font-sans text-white font-extralight line-clamp-3">
+              <p className="prose-sm text-base font-sans text-white font-extralight line-clamp-6">
                 {featuredPosts[3].excerpt}
               </p>
               <p className="text-xs prose-sm text-gray-400">
