@@ -55,7 +55,7 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                 <span className="sr-only">Close panel</span>
                 {/* <!-- Heroicon name: outline/x --> */}
                 <svg
-                  className="h-6 w-6"
+                  className="h-6 w-6 text-white bg-slate-900 rounded-sm"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -75,7 +75,7 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
             <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
               <div className="px-4 sm:px-6">
                 <h2
-                  className="text-lg font-medium text-gray-900"
+                  className="text-xl font-medium text-gray-900"
                   id="slide-over-title"
                 >
                   Menu

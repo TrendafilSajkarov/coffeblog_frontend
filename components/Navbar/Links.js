@@ -32,7 +32,7 @@ export default function Links({ categories, aboutUs }) {
   }, [openSearch]);
 
   return (
-    <div className="h-auto bg-gray-50 shadow-sm font-serif font-light">
+    <div className="h-auto w-full fixed top-0 z-50 bg-gray-50 bg-opacity-90 shadow-sm font-serif font-light">
       {openMenu && (
         <Menu
           setOpenMenu={setOpenMenu}
@@ -41,7 +41,10 @@ export default function Links({ categories, aboutUs }) {
         />
       )}
       <nav className="relative container mx-auto flex justify-around items-center">
-        <div className="hover:cursor-pointer" onClick={() => setOpenMenu(true)}>
+        <div
+          className="hover:cursor-pointer hover:border hover:border-slate-600 rounded border border-transparent"
+          onClick={() => setOpenMenu(true)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
