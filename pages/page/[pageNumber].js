@@ -63,6 +63,7 @@ export async function getStaticProps(context) {
         ...,
           "body": [],
           "slug": slug.current,
+          "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
           "categories": categories[0]->{
             _id,
             title,
