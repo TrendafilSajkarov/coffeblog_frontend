@@ -51,6 +51,7 @@ export default function PostPage({
           property="og:image"
           content={urlFor(singlePost[0].mainImage.asset).width(800).url()}
         />
+        <meta property="og:type" content="website" />
       </Head>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
 
