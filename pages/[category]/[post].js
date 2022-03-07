@@ -46,20 +46,11 @@ export default function PostPage({
         <meta property="og:url" content={basePath} /> */}
         <meta property="og:title" content={singlePost[0].title} />
         <meta property="og:description" content={singlePost[0].description} />
-        <meta
-          property="og:image:alt"
-          content={singlePost[0].mainImage.altText}
-        />
+        <meta property="og:image:alt" content="" />
         <meta
           property="og:image"
-          itemprop="image"
           content={urlFor(singlePost[0].mainImage.asset).width(800).url()}
         />
-        <meta
-          property="og:image:secure_url"
-          content={urlFor(singlePost[0].mainImage.asset).width(800).url()}
-        />
-        <meta property="og:type" content="website" />
       </Head>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
 
