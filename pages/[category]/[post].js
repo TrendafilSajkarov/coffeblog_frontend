@@ -49,7 +49,6 @@ export default function PostPage({
         <meta property="og:image:alt" content="" />
         <meta
           property="og:image"
-          itemprop="image"
           content={urlFor(singlePost[0].mainImage.asset).width(800).url()}
         />
         <meta property="og:type" content="website" />
