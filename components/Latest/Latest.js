@@ -66,7 +66,7 @@ export default function Latest({ featuredPosts }) {
             layout="fill"
             alt={featuredPosts[1].mainImage.altText}
           />
-          <div className="absolute bottom-0 min-h-2/5 max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
+          <div className="absolute overflow-clip bottom-0 min-h-2/5 max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
                 {getDate(featuredPosts[1]._createdAt)[0]}
@@ -85,7 +85,7 @@ export default function Latest({ featuredPosts }) {
                 href={`/${featuredPosts[1].categories.slug}/${featuredPosts[1].slug}`}
               >
                 <a>
-                  <h3 className="text-xl font-light font-serif text-white prose-sm group-hover:underline">
+                  <h3 className="line-clamp-5 md:line-clamp-none text-xl font-light font-serif text-white prose-sm group-hover:underline">
                     {featuredPosts[1].title}
                   </h3>
                 </a>
@@ -108,7 +108,7 @@ export default function Latest({ featuredPosts }) {
             layout="fill"
             alt={featuredPosts[2].mainImage.altText}
           />
-          <div className="absolute bottom-0 min-h-2/5 max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
+          <div className="absolute overflow-clip bottom-0 min-h-2/5 max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
                 {getDate(featuredPosts[2]._createdAt)[0]}
@@ -127,7 +127,7 @@ export default function Latest({ featuredPosts }) {
                 href={`/${featuredPosts[2].categories.slug}/${featuredPosts[2].slug}`}
               >
                 <a>
-                  <h3 className="text-xl font-light font-serif text-white group-hover:underline">
+                  <h3 className="line-clamp-5 md:line-clamp-none text-xl font-light font-serif text-white group-hover:underline">
                     {featuredPosts[2].title}
                   </h3>
                 </a>

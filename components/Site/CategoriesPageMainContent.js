@@ -45,7 +45,7 @@ export default function CategoriesPageMainContent({
                   </h4>
                   <Link href={`/${currentCategory[0].slug}/${post.slug}`}>
                     <a>
-                      <h3 className="text-lg font-medium group-hover:underline">
+                      <h3 className="line-clamp-3 sm:line-clamp-3 text-lg font-medium group-hover:underline">
                         {post.title}
                       </h3>
                     </a>
@@ -54,12 +54,12 @@ export default function CategoriesPageMainContent({
                   <p className="text-xs text-gray-400">
                     By {post.author.name} | {post.estimatedReadingTime} min read
                   </p>
-                  <p className="text-base font-sans line-clamp-5">
+                  <p className="text-base font-sans line-clamp-2 md:line-clamp-5">
                     {post.excerpt}
                   </p>
                   <Link href={`/${currentCategory[0].slug}/${post.slug}`}>
                     <a>
-                      <button className="border-2 border-yellow-600 uppercase hover:underline shadow-md px-6 py-1 mt-6 text-gray-600 text-xs">
+                      <button className="whitespace-nowrap px-5 border-2 border-yellow-600 uppercase hover:underline shadow-md xs:px-6 xs:py-1 xs:mt-1 text-gray-600 text-xs">
                         Read More
                       </button>
                     </a>
