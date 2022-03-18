@@ -9,7 +9,7 @@ export default function Banner({ logo }) {
   // console.log(imageProps);
 
   return (
-    <div className="container mx-auto mt-3 flex h-24 justify-around items-center">
+    <div className="container mx-auto mt-3 flex h-auto justify-around items-center">
       {/* <div className="flex-1 flex justify-center">
         <button className="border-2 font-serif border-yellow-600 uppercase hover:underline shadow-md px-4">
           Subscribe

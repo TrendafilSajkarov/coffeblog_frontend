@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import Image from "next/image";
+import Head from "next/head";
 
 import { urlFor, PortableText } from "../lib/sanity";
 import { serializers } from "../lib/serializers";
@@ -8,9 +9,19 @@ import { serializers } from "../lib/serializers";
 import { getClient } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 
-export default function AboutPage({ categories, logo, aboutUs, footer }) {
+export default function AboutPage({
+  categories,
+  logo,
+  title,
+  aboutUs,
+  footer,
+}) {
   return (
     <div>
+      <Head>
+        <title>About Us | {title}</title>
+        <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+      </Head>
       <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
       <section className="container mx-auto pt-5 space-y-5 flex flex-col prose">
         <div className="relative w-full h-96">
@@ -48,11 +59,13 @@ export async function getStaticProps(context) {
 
   const layoutQuery = groq`
     *[_type == "layout"]{
-      logo
+      logo,
+      title
     }
   `;
   const data1 = await getClient().fetch(layoutQuery);
   const logo = data1[0].logo;
+  const title = data1[0].title;
 
   const footerQuery = groq`
       *[_type == "footer"]
@@ -64,6 +77,7 @@ export async function getStaticProps(context) {
     props: {
       categories,
       logo,
+      title,
       footer,
       aboutUs,
     },
