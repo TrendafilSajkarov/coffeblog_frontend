@@ -6,7 +6,6 @@ import Link from "next/link";
 
 export default function Banner({ logo }) {
   const imageProps = useNextSanityImage(configuredSanityClient, logo);
-  // console.log(imageProps);
 
   return (
     <div className="container mx-auto mt-3 flex h-auto justify-around items-center">
