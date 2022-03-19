@@ -9,7 +9,7 @@ export default function Footer({ footer }) {
   return (
     <footer className="bg-gray-50 w-full mt-10 py-4">
       <div className="container mx-auto flex flex-col items-center">
-        <div className="container mx-auto my-3 flex h-24 justify-around items-center">
+        <div className="container mx-auto my-3 flex h-auto justify-around items-center">
           <Link href="/" passHref>
             <div className="relative h-full w-48 cursor-pointer">
               <Image
