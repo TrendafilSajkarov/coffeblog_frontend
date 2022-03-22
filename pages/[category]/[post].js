@@ -85,7 +85,7 @@ export default function PostPage({
               <div className="uppercase text-yellow-600 text-base flex-grow-0">
                 {singlePost[0].categories.title}
               </div>
-              <h1 className="font-light">{singlePost[0].title}</h1>
+              <h1 className="font-light px-1">{singlePost[0].title}</h1>
               <p className="text-xs text-gray-400">
                 By {singlePost[0].author.name} |{" "}
                 {singlePost[0].estimatedReadingTime} min read
