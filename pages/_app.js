@@ -1,7 +1,13 @@
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
 
+import { useEffect } from "react";
+import TagManager from "react-gtm-module";
+
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    TagManager.initialize({ gtmId: "GTM-MNR26RX" });
+  }, []);
   return (
     <div>
       <Head>
