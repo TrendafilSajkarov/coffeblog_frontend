@@ -38,4 +38,6 @@ export const getStaticProps = async (ctx) => {
   return getServerSideSitemap(ctx, fields);
 };
 
-export default function SiteMap() {}
+export default function SiteMap() {
+  return null;
+}
