@@ -9,6 +9,7 @@ export default function ImageComponent(props) {
   );
 
   return (
+    // <pre>{JSON.stringify(props.node, null, 2)}</pre>
     <figure className="flex flex-col items-center justify-center">
       <Image
         src={imageProps.src}
@@ -18,7 +19,18 @@ export default function ImageComponent(props) {
         layout="intrinsic"
         alt={props.node.altText}
       />
-      {props.node.caption && <figcaption>{props.node.caption}</figcaption>}
+      {props.node.metadata?.creditLine && (
+        <figcaption className="text-slate-400">
+          {`${props.node.metadata?.creditLine}${
+            props.node.metadata?.source?.name === "unsplash"
+              ? "  -  " + props.node.metadata?.source.url
+              : ""
+          }`}
+        </figcaption>
+      )}
+      {props.node.caption && (
+        <figcaption className="text-black">{props.node.caption}</figcaption>
+      )}
     </figure>
   );
 }
