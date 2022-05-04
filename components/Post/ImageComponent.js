@@ -19,15 +19,20 @@ export default function ImageComponent(props) {
         layout="intrinsic"
         alt={props.node.altText}
       />
-      {props.node.metadata?.creditLine && (
-        <figcaption className="text-slate-400">
-          {`${props.node.metadata?.creditLine}${
-            props.node.metadata?.source?.name === "unsplash"
-              ? "  -  " + props.node.metadata?.source.url
-              : ""
-          }`}
-        </figcaption>
+      {props.node.attribution && (
+        <figcaption>{props.node.attribution}</figcaption>
       )}
+      {props.node.attribution
+        ? null
+        : props.node.metadata?.creditLine && (
+            <figcaption className="text-slate-400">
+              {`${props.node.metadata?.creditLine}${
+                props.node.metadata?.source?.name === "unsplash"
+                  ? "  -  " + props.node.metadata?.source.url
+                  : ""
+              }`}
+            </figcaption>
+          )}
       {props.node.caption && (
         <figcaption className="text-black">{props.node.caption}</figcaption>
       )}
