@@ -20,7 +20,9 @@ export default function ImageComponent(props) {
         alt={props.node.altText}
       />
       {props.node.attribution && (
-        <figcaption>{props.node.attribution}</figcaption>
+        <figcaption className="text-slate-400">
+          {props.node.attribution}
+        </figcaption>
       )}
       {props.node.attribution
         ? null
