@@ -113,10 +113,6 @@ export default function PostPage({
   );
 }
 
-// "url": "${
-//   process.env.SITE_ADDRESS
-// }" + categories[0]->{slug.current} + @.item->slug.current,
-
 export async function getStaticProps(context) {
   const singlePostQuery = groq`
         *[_type == "post" && slug.current == "${context.params.post.toString()}"]{
