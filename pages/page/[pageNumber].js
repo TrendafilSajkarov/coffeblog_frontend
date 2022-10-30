@@ -20,7 +20,11 @@ export default function Page({
   currentPage,
 }) {
   // This includes setting the noindex header because static files always return a status 200 but the rendered not found page page should obviously not be indexed
-  if (currentPage > pages || (pages > 0 && currentPage === 0)) {
+  if (
+    currentPage > pages ||
+    (pages > 0 && currentPage === 0) ||
+    currentPage < 0
+  ) {
     return (
       <>
         <Head>
