@@ -3,7 +3,12 @@ import Link from "next/link";
 
 import { urlFor } from "../../lib/sanity";
 
-export default function Menu({ setOpenMenu, aboutUs, categories }) {
+export default function Menu({
+  setOpenMenu,
+  aboutUs,
+  categories,
+  recipeNavbar,
+}) {
   return (
     // <!-- This example requires Tailwind CSS v2.0+ -->
     <div
@@ -112,7 +117,7 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                                 }}
                                 passHref
                               >
-                                <a className="flex font-serif justify-between group border-b-2 border-red-300">
+                                <a className="pt-2 flex font-serif justify-between group border-b-2 border-red-300">
                                   <h3 className=" group-hover:text-red-300 font-light prose-sm text-base ">
                                     {category.title}
                                   </h3>
@@ -124,6 +129,49 @@ export default function Menu({ setOpenMenu, aboutUs, categories }) {
                             </li>
                           );
                         })}
+                        <li>
+                          <ul>
+                            <li>
+                              <Link href="/recipes" passHref>
+                                <a className="pt-2 flex font-serif justify-between group border-b-2 border-red-300">
+                                  <h3 className=" group-hover:text-red-300 font-light text-base ">
+                                    Recipes
+                                  </h3>
+                                  <h3 className="font-light group-hover:text-red-300 text-xs prose text-gray-500 self-end">
+                                    {recipeNavbar &&
+                                      recipeNavbar[0].totalRecipes}{" "}
+                                    total recipes
+                                  </h3>
+                                </a>
+                              </Link>
+                            </li>
+                            {recipeNavbar &&
+                              recipeNavbar.map((recipeTag) => {
+                                return (
+                                  <li key={recipeTag._id}>
+                                    <Link
+                                      href={{
+                                        pathname: "/recipes/[recipeTag]",
+                                        query: {
+                                          recipeTag: recipeTag.slug.current,
+                                        },
+                                      }}
+                                      passHref
+                                    >
+                                      <a className="pt-2 flex font-serif justify-between group border-b-2 border-red-300">
+                                        <h3 className=" group-hover:text-red-300 font-light text-base ">
+                                          - {recipeTag.title}
+                                        </h3>
+                                        <h3 className="font-light group-hover:text-red-300 text-xs prose text-gray-500 self-end">
+                                          {recipeTag.recipesInThisTag} recipes
+                                        </h3>
+                                      </a>
+                                    </Link>
+                                  </li>
+                                );
+                              })}
+                          </ul>
+                        </li>
                       </ul>
                     </section>
 

@@ -20,6 +20,8 @@ export default function PostPage({
   footer,
   singlePost,
   featuredPosts,
+  featuredRecipes,
+  recipeNavbar,
 }) {
   // This includes setting the noindex header because static files always return a status 200 but the rendered not found page page should obviously not be indexed
   if (!singlePost[0]) {
@@ -56,7 +58,12 @@ export default function PostPage({
         />
         <meta property="og:type" content="website" />
       </Head>
-      <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
+      <Navbar
+        categories={categories}
+        aboutUs={aboutUs}
+        logo={logo}
+        recipeNavbar={recipeNavbar}
+      />
 
       <section className="container max-w-screen-xl mx-auto my-6">
         <div className="relative w-full h-screen max-h-700 shadow-md">
@@ -105,6 +112,8 @@ export default function PostPage({
             aboutUs={aboutUs}
             olderFeaturedPosts={featuredPosts}
             categories={categories}
+            recipeNavbar={recipeNavbar}
+            featuredRecipes={featuredRecipes}
           />
         </section>
       </section>
@@ -124,7 +133,14 @@ export async function getStaticProps(context) {
                 _type == "internalLink" => {
                   "postSlug": @.reference->slug.current,
                   "categorySlug": @.reference->categories[0]->slug.current           
-                }
+                },
+                _type == "internalRecipeLink" => {
+                  "recipeSlug": @.reference->slug.current,
+                  "recipeTagSlug": @.reference->recipeTags[0]->slug.current
+                },
+                _type == "internalCategoryLink" => {
+                  "categorySlug": @.reference->slug.current,
+                },
               },
               _type == "image" => {
                 "metadata": @.asset->
@@ -157,11 +173,29 @@ export async function getStaticProps(context) {
             },
             "mainImageUrl": mainImage.asset->url,
             "author": author->{name}
+        },
+        "featuredRecipes": *[_type == "recipe" && isFeaturedRecipe == true] | order(_createdAt desc)[0...10]{
+          "title": title,
+          "description": description,
+          "_id": _id,
+          "_createdAt": _createdAt,
+          "_updatedAt": _updatedAt,
+          "mainImage": mainImage,
+          "mainImageUrl": mainImage.asset->url,
+          "mainImageAlt": mainImage.altText,
+          "slug": slug.current,
+          "author": author->{name},
+          "recipeTags": recipeTags[0]->{
+            "description": description,
+            "title": title,
+            "slug": slug.current
+          }
         }
       }
       `;
   const result = await getClient().fetch(featuredPostsQuery);
   const featuredPosts = result.featuredPosts;
+  const featuredRecipes = result.featuredRecipes;
 
   const postQuery = groq`
       *[_type == "category"] | order(_createdAt) {
@@ -194,14 +228,29 @@ export async function getStaticProps(context) {
   const aboutUsArr = Array.from(data4);
   const aboutUs = aboutUsArr[0];
 
+  //=========================================
+  const recipeNavbarQuery = groq`
+    *[_type == "recipeTag"]{
+      ...,
+      "recipesInThisTag": count(*[_type == "recipe" && references(^._id)]),
+      "totalRecipes": count(*[_type == "recipe"])
+    }
+  `;
+  const navbarData = await getClient().fetch(recipeNavbarQuery);
+  const recipeNavbar = Array.from(navbarData);
+
+  //==========================================================
+
   return {
     props: {
       featuredPosts,
+      featuredRecipes,
       singlePost,
       categories,
       logo,
       footer,
       aboutUs,
+      recipeNavbar,
     }, // will be passed to the page component as props
     revalidate: 60,
   };

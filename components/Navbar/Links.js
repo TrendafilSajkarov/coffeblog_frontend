@@ -4,7 +4,12 @@ import { useState, useEffect, useRef } from "react";
 
 import Search from "./Search";
 
-export default function Links({ categories, aboutUs }) {
+export default function Links({
+  categories,
+  aboutUs,
+  isRecipeNavbarActive,
+  recipeNavbar,
+}) {
   const ref = useRef();
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -38,6 +43,7 @@ export default function Links({ categories, aboutUs }) {
           setOpenMenu={setOpenMenu}
           aboutUs={aboutUs}
           categories={categories}
+          recipeNavbar={recipeNavbar}
         />
       )}
       <nav className="relative container mx-auto flex justify-around items-center">
@@ -65,19 +71,36 @@ export default function Links({ categories, aboutUs }) {
           <ul className="flex justify-around">
             <li>
               <Link href="/">
-                <a className="uppercase hover:underline">HOME</a>
+                <a className="uppercase hover:bg-yellow-600 hover:text-white py-2 px-1">
+                  HOME
+                </a>
               </Link>
             </li>
             {categories.map((category) => (
               <li key={category._id}>
                 <Link href={`/${category.slug}`}>
-                  <a className="uppercase hover:underline">{category.title}</a>
+                  <a className="uppercase hover:bg-yellow-600 hover:text-white py-2 px-1">
+                    {category.title}
+                  </a>
                 </Link>
               </li>
             ))}
             <li>
+              <Link href={`/recipes`}>
+                <a
+                  className={`uppercase ${
+                    isRecipeNavbarActive && "bg-yellow-600 text-white py-2 px-1"
+                  } hover:bg-yellow-600 hover:text-white py-2 px-1`}
+                >
+                  Recipes
+                </a>
+              </Link>
+            </li>
+            <li>
               <Link href={`/${aboutUs.slug.current}`}>
-                <a className="uppercase hover:underline">{aboutUs.title}</a>
+                <a className="uppercase hover:bg-yellow-600 hover:text-white py-2 px-1">
+                  {aboutUs.title}
+                </a>
               </Link>
             </li>
           </ul>
@@ -127,6 +150,32 @@ export default function Links({ categories, aboutUs }) {
           {openSearch && <Search setOpenSearch={setOpenSearch} />}
         </div>
       </nav>
+      {isRecipeNavbarActive && (
+        <nav className="relative hidden md:inline-block w-full h-70 bg-yellow-600">
+          <div className="container mx-auto">
+            <ul className="flex justify-center space-x-4">
+              <li>
+                <Link href="/recipes">
+                  <a className="uppercase hover:underline text-white">
+                    All Recipes
+                  </a>
+                </Link>
+              </li>
+              {recipeNavbar.map((recipeTag) => {
+                return (
+                  <li key={recipeTag._id}>
+                    <Link href={`/recipes/${recipeTag.slug.current}`}>
+                      <a className="uppercase hover:underline text-white">
+                        {recipeTag.title}
+                      </a>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </nav>
+      )}
     </div>
   );
 }

@@ -60,3 +60,31 @@ export function getDate(date) {
   }
   return ["01", "Apr"];
 }
+
+export function isNumeric(str) {
+  if (typeof str != "string") return false; // we only process strings!
+  return (
+    !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+    !isNaN(parseFloat(str))
+  ); // ...and ensure strings of whitespace fail
+}
+
+// This function takes minutes as an integer and outputs values of time in ISO 8601
+// For example MinutesToDuration("10") returns string "PT10M" or MinutesToDuration("90") returns "PT1H30M"
+export function MinutesToDuration(s) {
+  let days = Math.floor(s / 1440);
+  s = s - days * 1440;
+  let hours = Math.floor(s / 60);
+  s = s - hours * 60;
+
+  let dur = "PT";
+  if (days > 0) {
+    dur += days + "D";
+  }
+  if (hours > 0) {
+    dur += hours + "H";
+  }
+  dur += s + "M";
+
+  return dur;
+}

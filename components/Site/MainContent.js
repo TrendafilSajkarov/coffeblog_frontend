@@ -20,8 +20,8 @@ export default function MainContent({
   );
 
   return (
-    <main className="col-span-2 grid grid-cols-1 auto-rows-auto">
-      <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3 px-1">
+    <main className="col-span-2 grid grid-cols-1 auto-rows-auto h-fit">
+      <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3 px-1 ">
         Latest Posts
       </h4>
       {latestPost && (
@@ -43,19 +43,19 @@ export default function MainContent({
               </div>
             </div> */}
           </div>
-          <div className="flex flex-col items-center font-serif">
-            <h4 className="uppercase text-yellow-600 text-xs ">
+          <div className="flex flex-col items-center font-serif border-t-2 border-yellow-600">
+            <h4 className="uppercase text-white bg-yellow-600 px-2 -translate-y-1/2 text-xs m-0 ">
               {latestPost.categories.title}
             </h4>
             <Link href={`/${latestPost.categories.slug}/${latestPost.slug}`}>
               <a>
-                <h3 className="font-light group-hover:underline">
+                <h3 className="font-light group-hover:underline mt-0">
                   {latestPost.title}
                 </h3>
               </a>
             </Link>
 
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-400 m-0">
               By {latestPost.author.name} | {latestPost.estimatedReadingTime}{" "}
               min read
             </p>
@@ -68,7 +68,7 @@ export default function MainContent({
             >
               <a>
                 <button className="border-2 border-yellow-600 uppercase hover:underline shadow-md px-6 py-1 text-gray-600 text-xs">
-                  Read More
+                  Read Post
                 </button>
               </a>
             </Link>
@@ -95,13 +95,13 @@ export default function MainContent({
               key={post._id}
               className="relative w-full md:w-2/4 pt-5 px-1 group"
             >
-              <div className={`relative w-full flex justify-center`}>
+              <div className={`relative w-full flex`}>
                 <Image
                   src={urlFor(post.mainImage).width(400).quality(100).url()}
                   width={dimentions.width}
                   height={dimentions.height}
                   layout="intrinsic"
-                  objectFit="contain"
+                  objectFit="cover"
                   alt={post.mainImage.altText}
                 />
               </div>
@@ -118,13 +118,13 @@ export default function MainContent({
                   {getDate(post._createdAt)[1]}
                 </div>
               </div> */}
-              <div className="flex flex-col items-center font-serif mb-5">
-                <h4 className="uppercase text-yellow-600 text-xs ">
+              <div className="flex flex-col items-center font-serif mb-5 border-t-2 border-yellow-600">
+                <h4 className="uppercase text-xs -translate-y-1/2 bg-yellow-600 text-white px-3 ">
                   {post.categories.title}
                 </h4>
                 <Link href={`/${post.categories.slug}/${post.slug}`}>
                   <a>
-                    <h3 className="text-lg font-medium group-hover:underline">
+                    <h3 className="text-lg text-center font-medium group-hover:underline">
                       {post.title}
                     </h3>
                   </a>
@@ -142,7 +142,7 @@ export default function MainContent({
                 >
                   <a>
                     <button className="border-2 border-yellow-600 uppercase hover:underline shadow-md px-6 py-1 mt-3 text-gray-600 text-xs">
-                      Read More
+                      Read Post
                     </button>
                   </a>
                 </Link>

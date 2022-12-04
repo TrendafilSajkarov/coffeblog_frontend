@@ -17,6 +17,7 @@ export default function Home({
   description,
   siteData,
   footer,
+  recipeNavbar,
 }) {
   return (
     <div>
@@ -25,7 +26,12 @@ export default function Home({
         <meta name="description" content={description} />
         <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
       </Head>
-      <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
+      <Navbar
+        categories={categories}
+        aboutUs={aboutUs}
+        logo={logo}
+        recipeNavbar={recipeNavbar}
+      />
       <Latest featuredPosts={siteData.featuredFourPosts} />
       <Site
         currentPage={0}
@@ -34,6 +40,8 @@ export default function Home({
         categories={categories}
         aboutUs={aboutUs}
         olderFeaturedPosts={siteData.olderFeaturedPosts}
+        recipeNavbar={recipeNavbar}
+        featuredRecipes={siteData.featuredRecipes}
       />
       <Footer footer={footer} />
     </div>
@@ -118,6 +126,23 @@ export async function getStaticProps({ preview = false }) {
       "mainImageUrl": mainImage.asset->url,
       "author": author->{name}  
   }, 
+  "featuredRecipes": *[_type == "recipe" && isFeaturedRecipe == true] | order(_createdAt desc)[0...10]{
+    "title": title,
+    "description": description,
+    "_id": _id,
+    "_createdAt": _createdAt,
+    "_updatedAt": _updatedAt,
+    "mainImage": mainImage,
+    "mainImageUrl": mainImage.asset->url,
+    "mainImageAlt": mainImage.altText,
+    "slug": slug.current,
+    "author": author->{name},
+    "recipeTags": recipeTags[0]->{
+      "description": description,
+      "title": title,
+      "slug": slug.current
+    }
+  },
   "posts": count(*[_type == "post"]),
   "logo": *[_type == "layout"]{logo}
   }
@@ -136,6 +161,19 @@ export async function getStaticProps({ preview = false }) {
   }
   const siteData = { ...result, pages };
 
+  //=========================================
+  const recipeNavbarQuery = groq`
+  *[_type == "recipeTag"]{
+    ...,
+    "recipesInThisTag": count(*[_type == "recipe" && references(^._id)]),
+    "totalRecipes": count(*[_type == "recipe"])
+  }
+`;
+  const navbarData = await getClient().fetch(recipeNavbarQuery);
+  const recipeNavbar = Array.from(navbarData);
+
+  //==========================================================
+
   return {
     props: {
       categories,
@@ -145,6 +183,7 @@ export async function getStaticProps({ preview = false }) {
       siteData,
       footer,
       aboutUs,
+      recipeNavbar,
     },
     revalidate: 60,
   };

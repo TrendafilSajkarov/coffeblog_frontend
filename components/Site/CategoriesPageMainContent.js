@@ -40,12 +40,12 @@ export default function CategoriesPageMainContent({
                   </div> */}
                 </div>
                 <div className="flex flex-1 flex-col justify-between items-center font-serif">
-                  <h4 className="uppercase text-yellow-600 text-xs ">
+                  <h4 className="uppercase text-white bg-yellow-600 px-2 text-xs ">
                     {currentCategory[0].title}
                   </h4>
                   <Link href={`/${currentCategory[0].slug}/${post.slug}`}>
                     <a>
-                      <h3 className="line-clamp-3 sm:line-clamp-3 text-lg font-medium group-hover:underline">
+                      <h3 className="line-clamp-3 sm:line-clamp-3 text-lg text-center font-medium group-hover:underline">
                         {post.title}
                       </h3>
                     </a>
@@ -60,7 +60,7 @@ export default function CategoriesPageMainContent({
                   <Link href={`/${currentCategory[0].slug}/${post.slug}`}>
                     <a>
                       <button className="whitespace-nowrap px-5 border-2 border-yellow-600 uppercase hover:underline shadow-md xs:px-6 xs:py-1 xs:mt-1 text-gray-600 text-xs">
-                        Read More
+                        Read Post
                       </button>
                     </a>
                   </Link>

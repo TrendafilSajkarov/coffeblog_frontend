@@ -15,6 +15,7 @@ export default function AboutPage({
   title,
   aboutUs,
   footer,
+  recipeNavbar,
 }) {
   return (
     <div>
@@ -22,7 +23,12 @@ export default function AboutPage({
         <title>About Us | {title}</title>
         <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
       </Head>
-      <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
+      <Navbar
+        categories={categories}
+        aboutUs={aboutUs}
+        logo={logo}
+        recipeNavbar={recipeNavbar}
+      />
       <section className="container mx-auto pt-5 space-y-5 flex flex-col prose">
         <div className="relative w-full h-96">
           <Image
@@ -73,6 +79,19 @@ export async function getStaticProps(context) {
   const data2 = await getClient().fetch(footerQuery);
   const footer = Array.from(data2);
 
+  //=========================================
+  const recipeNavbarQuery = groq`
+    *[_type == "recipeTag"]{
+      ...,
+      "recipesInThisTag": count(*[_type == "recipe" && references(^._id)]),
+      "totalRecipes": count(*[_type == "recipe"])
+    }
+  `;
+  const navbarData = await getClient().fetch(recipeNavbarQuery);
+  const recipeNavbar = Array.from(navbarData);
+
+  //==========================================================
+
   return {
     props: {
       categories,
@@ -80,6 +99,7 @@ export async function getStaticProps(context) {
       title,
       footer,
       aboutUs,
+      recipeNavbar,
     },
     revalidate: 60,
   };

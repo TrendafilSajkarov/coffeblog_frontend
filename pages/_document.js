@@ -18,7 +18,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           rel="stylesheet"
         />
       </Head>
-      <body>
+      <body className="selection:bg-yellow-600 selection:text-white">
         <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNR26RX"

@@ -8,6 +8,8 @@ export default function Site({
   olderFeaturedPosts,
   pages = 0,
   currentPage = 0,
+  recipeNavbar,
+  featuredRecipes,
 }) {
   const latestPost = latestPosts[0];
   return (
@@ -22,6 +24,8 @@ export default function Site({
         aboutUs={aboutUs}
         olderFeaturedPosts={olderFeaturedPosts}
         categories={categories}
+        recipeNavbar={recipeNavbar}
+        featuredRecipes={featuredRecipes}
       />
     </section>
   );

@@ -18,8 +18,10 @@ export default function CategoryPageWithNumber({
   latestPosts,
   currentCategory,
   featuredPosts,
+  featuredRecipes,
   pages,
   currentPage,
+  recipeNavbar,
 }) {
   // This includes setting the noindex header because static files always return a status 200 but the rendered not found page page should obviously not be indexed
   if (
@@ -44,7 +46,12 @@ export default function CategoryPageWithNumber({
         <title>{currentCategory[0].title}</title>
         <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
       </Head>
-      <Navbar categories={categories} aboutUs={aboutUs} logo={logo} />
+      <Navbar
+        categories={categories}
+        aboutUs={aboutUs}
+        logo={logo}
+        recipeNavbar={recipeNavbar}
+      />
       <section className="container grid grid-cols-2 auto-rows-auto w-11/12 lg:grid-cols-3 gap-4 xl:w-3/4 max-w-screen-xl mx-auto my-6">
         <CategoriesPageMainContent
           latestPosts={latestPosts}
@@ -56,6 +63,8 @@ export default function CategoryPageWithNumber({
           aboutUs={aboutUs}
           olderFeaturedPosts={featuredPosts}
           categories={categories}
+          recipeNavbar={recipeNavbar}
+          featuredRecipes={featuredRecipes}
         />
       </section>
       <Footer footer={footer} />
@@ -125,11 +134,29 @@ export async function getStaticProps(context) {
           },
           "mainImageUrl": mainImage.asset->url,
           "author": author->{name}
+      },
+      "featuredRecipes": *[_type == "recipe" && isFeaturedRecipe == true] | order(_createdAt desc)[0...10]{
+        "title": title,
+        "description": description,
+        "_id": _id,
+        "_createdAt": _createdAt,
+        "_updatedAt": _updatedAt,
+        "mainImage": mainImage,
+        "mainImageUrl": mainImage.asset->url,
+        "mainImageAlt": mainImage.altText,
+        "slug": slug.current,
+        "author": author->{name},
+        "recipeTags": recipeTags[0]->{
+          "description": description,
+          "title": title,
+          "slug": slug.current
+        }
       }
     }  
     `;
   const result = await getClient().fetch(featuredPostsQuery);
   const featuredPosts = result.featuredPosts;
+  const featuredRecipes = result.featuredRecipes;
 
   const postQuery = groq`
       *[_type == "category"] | order(_createdAt) {
@@ -162,6 +189,19 @@ export async function getStaticProps(context) {
   const aboutUsArr = Array.from(data3);
   const aboutUs = aboutUsArr[0];
 
+  //=========================================
+  const recipeNavbarQuery = groq`
+    *[_type == "recipeTag"]{
+      ...,
+      "recipesInThisTag": count(*[_type == "recipe" && references(^._id)]),
+      "totalRecipes": count(*[_type == "recipe"])
+    }
+  `;
+  const navbarData = await getClient().fetch(recipeNavbarQuery);
+  const recipeNavbar = Array.from(navbarData);
+
+  //==========================================================
+
   return {
     props: {
       categories,
@@ -171,8 +211,10 @@ export async function getStaticProps(context) {
       latestPosts,
       currentCategory,
       featuredPosts,
+      featuredRecipes,
       pages,
       currentPage,
+      recipeNavbar,
     },
     revalidate: 60,
   };
