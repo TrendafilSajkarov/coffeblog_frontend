@@ -32,7 +32,7 @@ export default function MainContent({
               layout="fill"
               objectFit="cover"
               quality={100}
-              alt={imageProps.altText}
+              alt={latestPost.mainImage.altText}
             />
             {/* <div className="absolute top-4 flex flex-col items-center bg-gray-100 bg-opacity-50 w py-2 px-6 mx-6 shadow-lg">
               <div className="text-4xl font-extrabold text-gray-700 ">
