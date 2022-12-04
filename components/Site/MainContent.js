@@ -75,7 +75,7 @@ export default function MainContent({
           </div>
         </article>
       )}
-      <section className="row-span-2 pt-5 flex flex-col md:flex-row md:flex-wrap md:items-center">
+      <section className="row-span-2 pt-5 flex flex-col sm:flex-row sm:flex-wrap md:items-center items-center">
         {latestPosts.map((post, i) => {
           if (latestPost !== null && i === 0) {
             return null;
@@ -93,9 +93,9 @@ export default function MainContent({
           return (
             <div
               key={post._id}
-              className="relative w-full md:w-2/4 pt-5 px-1 group"
+              className="relative max-w-lg w-full sm:w-2/4 pt-5 px-1 group"
             >
-              <div className={`relative w-full flex`}>
+              <div className={`relative w-full flex justify-center`}>
                 <Image
                   src={urlFor(post.mainImage).width(400).quality(100).url()}
                   width={dimentions.width}
@@ -119,7 +119,7 @@ export default function MainContent({
                 </div>
               </div> */}
               <div className="flex flex-col items-center font-serif mb-5 border-t-2 border-yellow-600">
-                <h4 className="uppercase text-xs -translate-y-1/2 bg-yellow-600 text-white px-3 ">
+                <h4 className="uppercase text-xs -translate-y-1/2 bg-yellow-600 text-white px-3 whitespace-nowrap">
                   {post.categories.title}
                 </h4>
                 <Link href={`/${post.categories.slug}/${post.slug}`}>
