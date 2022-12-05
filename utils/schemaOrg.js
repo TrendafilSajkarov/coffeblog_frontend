@@ -47,7 +47,7 @@ export function loadRecipeSchema(recipe) {
             recipe.categories.slug
           }/${recipe.slug.current}#${step._key}",
           "image": "${urlFor(step.seoImage.asset).url()}"          
-          ${step.seoHowToTip ? tipString(step.seoHowToTip) : ","}
+          ${step.seoHowToTip ? tipString(step.seoHowToTip) : ""}
         }`;
       })}]
     }`;
