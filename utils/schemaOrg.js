@@ -23,12 +23,12 @@ export function loadCaroselSchema(recipes) {
 
 export function loadRecipeSchema(recipe) {
   function tipString(tip) {
-    return `"itemListElement": [
+    return `,"itemListElement": [
       {
         "@type": "HowToTip",
         "text": "${tip}"
       }
-    ],`;
+    ]`;
   }
 
   let recipeCat = recipe.recipeCategory.map((cat) => `"${cat}"`);
@@ -46,8 +46,8 @@ export function loadRecipeSchema(recipe) {
           "url": "https://coffeenatedstories.com/recipes/${
             recipe.categories.slug
           }/${recipe.slug.current}#${step._key}",
-          ${step.seoHowToTip && tipString(step.seoHowToTip)}
-          "image": "${urlFor(step.seoImage.asset).url()}"
+          "image": "${urlFor(step.seoImage.asset).url()}"          
+          ${step.seoHowToTip ? tipString(step.seoHowToTip) : ","}
         }`;
       })}]
     }`;
