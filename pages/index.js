@@ -32,7 +32,10 @@ export default function Home({
         logo={logo}
         recipeNavbar={recipeNavbar}
       />
-      <Latest featuredPosts={siteData.featuredFourPosts} />
+      <Latest
+        featuredPosts={siteData.featuredFourPosts}
+        featuredRecipes={siteData.featuredRecipes}
+      />
       <Site
         currentPage={0}
         pages={siteData.pages}
