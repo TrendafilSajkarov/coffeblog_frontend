@@ -280,6 +280,30 @@ export async function getStaticProps(context) {
   const recipeQuery = groq`
     *[_type == "recipe" && slug.current == "${context.params.recipe.toString()}"]{
       ...,
+      recipeBody[]{
+        ...,
+        markDefs[]{
+          ...,
+          _type == "internalLink" => {
+            "postSlug": @.reference->slug.current,
+            "categorySlug": @.reference->categories[0]->slug.current
+          },
+          _type == "internalRecipeLink" => {
+            "recipeSlug": @.reference->slug.current,
+            "recipeTagSlug": @.reference->recipeTags[0]->slug.current
+          },
+          _type == "internalCategoryLink" => {
+            "categorySlug": @.reference->slug.current,
+          },
+        },
+        _type == "image" => {
+          "metadata": @.asset->
+        },
+        images[]{
+          ...,
+          "asset": @.asset->
+        }
+      },
       "stepByStep": recipesSteps.ingredients[]{
         ...,
         steps[]{
