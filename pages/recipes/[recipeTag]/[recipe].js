@@ -53,6 +53,22 @@ export default function Recipe({
           type="application/ld+json"
           dangerouslySetInnerHTML={loadRecipeSchema(singleRecipe[0])}
         />
+        <meta name="description" content={singleRecipe[0].description} />
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* <meta name="twitter:site" content="@username of website. Either twitter:site or twitter:site:id is required." />
+        <meta name="twitter:creator" content="@username of content creator" />
+        <meta property="og:url" content={basePath} /> */}
+        <meta property="og:title" content={singleRecipe[0].title} />
+        <meta property="og:description" content={singleRecipe[0].description} />
+        <meta
+          property="og:image:alt"
+          content={singleRecipe[0].mainImage.altText}
+        />
+        <meta
+          property="og:image"
+          content={urlFor(singleRecipe[0].mainImage.asset).width(800).url()}
+        />
+        <meta property="og:type" content="website" />
       </Head>
       <Navbar
         categories={categories}
