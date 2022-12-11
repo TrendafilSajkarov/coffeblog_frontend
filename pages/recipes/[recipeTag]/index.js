@@ -21,6 +21,7 @@ export default function Recipes({
   pages,
   currentTagSlug,
   currentTagTitle,
+  currentTagDescription,
   recipeTagDontExist = false,
   recipeNavbar,
 }) {
@@ -44,6 +45,7 @@ export default function Recipes({
           type="application/ld+json"
           dangerouslySetInnerHTML={loadCaroselSchema(latestRecipes)}
         />
+        <meta name="description" content={currentTagDescription} />
       </Head>
       <Navbar
         categories={categories}
@@ -140,6 +142,7 @@ export async function getStaticProps(context) {
     },
     "slug": slug.current
     },
+    "description": description,
     "recipesInTag": count(*[_type == "recipe" && references(^._id)])
   }
     `;
@@ -149,6 +152,7 @@ export async function getStaticProps(context) {
   let latestRecipes = currentRecipeTag[0].recipes;
 
   const recipeCount = currentRecipeTag[0].recipesInTag;
+  const currentTagDescription = currentRecipeTag[0].description;
   const currentTagSlug = currentRecipeTag[0].slug.current.toString();
   const currentTagTitle = currentRecipeTag[0].title.toString();
 
@@ -173,6 +177,7 @@ export async function getStaticProps(context) {
       pages,
       currentTagSlug,
       currentTagTitle,
+      currentTagDescription,
       recipeNavbar,
     },
     revalidate: 60,

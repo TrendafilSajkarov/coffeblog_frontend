@@ -24,6 +24,7 @@ export default function Recipes({
   isPageNumberNaN,
   currentTagSlug,
   currentTagTitle,
+  currentTagDescription,
   recipeNavbar,
 }) {
   // This includes setting the noindex header because static files always return a status 200 but the rendered not found page page should obviously not be indexed
@@ -52,6 +53,7 @@ export default function Recipes({
           type="application/ld+json"
           dangerouslySetInnerHTML={loadCaroselSchema(latestRecipes)}
         />
+        <meta name="description" content={currentTagDescription} />
       </Head>
       <Navbar
         categories={categories}
@@ -152,7 +154,8 @@ export async function getStaticProps(context) {
     },
     "slug": slug.current
     },
-    "recipesInTag": count(*[_type == "recipe" && references(^._id)])
+    "recipesInTag": count(*[_type == "recipe" && references(^._id)]),
+    "description": description
   }
     `;
   const recipeTag = await getClient().fetch(recipeTagQuery);
@@ -162,6 +165,7 @@ export async function getStaticProps(context) {
   const recipeCount = currentRecipeTag[0].recipesInTag;
   const currentTagSlug = currentRecipeTag[0].slug.current.toString();
   const currentTagTitle = currentRecipeTag[0].title.toString();
+  const currentTagDescription = currentRecipeTag[0].description.toString();
 
   function isInt(n) {
     return n === +n && n === (n | 0);
@@ -186,6 +190,7 @@ export async function getStaticProps(context) {
       isPageNumberNaN,
       currentTagSlug,
       currentTagTitle,
+      currentTagDescription,
       recipeNavbar,
     },
     revalidate: 60,

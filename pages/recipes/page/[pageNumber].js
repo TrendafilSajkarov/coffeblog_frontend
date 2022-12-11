@@ -51,6 +51,10 @@ export default function Recipes({
           type="application/ld+json"
           dangerouslySetInnerHTML={loadCaroselSchema(latestRecipes)}
         />
+        <meta
+          name="description"
+          content="In our Recipes category discover many recipes and guides for making coffee and many other coffee drinks."
+        />
       </Head>
       <Navbar
         categories={categories}
