@@ -31,7 +31,7 @@ export default function Recipes({
         />
         <meta
           name="description"
-          content="In our Recipes category discover many recipes and guides for making coffee and many other coffee drinks."
+          content="Our recipes are easy to follow and use simple, accessible ingredients and equipment so that you can enjoy your favorite coffee drinks at home. Whether you're a seasoned barista or just starting, we hope you find something new and tasty. Happy brewing!"
         />
       </Head>
       <Navbar
