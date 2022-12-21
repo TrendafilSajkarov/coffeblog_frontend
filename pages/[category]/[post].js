@@ -29,7 +29,7 @@ export default function PostPage({
       <>
         <Head>
           <meta name="robots" content="noindex" />
-          <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+          <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         </Head>
         <DefaultErrorPage statusCode={404} />
       </>
@@ -40,7 +40,7 @@ export default function PostPage({
     <div className="">
       <Head>
         <title>{singlePost[0].title}</title>
-        <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         <meta name="description" content={singlePost[0].description} />
         <meta name="twitter:card" content="summary_large_image" />
         {/* <meta name="twitter:site" content="@username of website. Either twitter:site or twitter:site:id is required." />

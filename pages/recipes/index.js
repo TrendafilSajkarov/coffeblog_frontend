@@ -24,7 +24,7 @@ export default function Recipes({
     <div>
       <Head>
         <title>Recipes | {title}</title>
-        <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={loadCaroselSchema(latestRecipes)}

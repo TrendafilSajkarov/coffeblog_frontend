@@ -21,7 +21,7 @@ export default function AboutPage({
     <div>
       <Head>
         <title>About Us | {title}</title>
-        <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
       </Head>
       <Navbar
         categories={categories}

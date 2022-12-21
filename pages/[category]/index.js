@@ -30,7 +30,7 @@ export default function CategoryPage({
       <>
         <Head>
           <meta name="robots" content="noindex" />
-          <link rel="icon" href={urlFor(logo?.asset).width(20).url()} />
+          <link rel="icon" href={urlFor(logo?.asset).width(144).url()} />
         </Head>
         <DefaultErrorPage statusCode={404} />
       </>
@@ -43,7 +43,7 @@ export default function CategoryPage({
         <title>
           {currentCategory[0].title} | {siteTitle}
         </title>
-        <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         <meta name="description" content={currentCategory[0].description} />
       </Head>
       <Navbar

@@ -25,7 +25,7 @@ export default function Home({
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={loadWebSiteSchema(title)}

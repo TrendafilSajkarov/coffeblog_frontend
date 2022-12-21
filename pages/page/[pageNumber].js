@@ -30,7 +30,7 @@ export default function Page({
       <>
         <Head>
           <meta name="robots" content="noindex" />
-          <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+          <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         </Head>
         <DefaultErrorPage statusCode={404} />
       </>
@@ -41,7 +41,7 @@ export default function Page({
     <div>
       <Head>
         <title>{title}</title>
-        <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
       </Head>
       <Navbar
         categories={categories}
