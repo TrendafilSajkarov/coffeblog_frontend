@@ -1,6 +1,19 @@
 import { urlFor } from "../lib/sanity";
 import { MinutesToDuration } from "../utils/utils";
 
+export function loadWebSiteSchema(webSiteData) {
+  return {
+    __html: `
+            {
+              "@context" : "https://schema.org",
+              "@type" : "WebSite",
+              "name" : "${webSiteData}",
+              "url" : "https://www.coffeenatedstories.com/"
+            }
+    `,
+  };
+}
+
 export function loadCaroselSchema(recipes) {
   return {
     __html: `

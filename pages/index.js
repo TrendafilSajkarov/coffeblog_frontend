@@ -8,6 +8,7 @@ import Footer from "../components/Footer/Footer";
 import { getClient } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 import { urlFor } from "../lib/sanity";
+import { loadWebSiteSchema } from "../utils/schemaOrg";
 
 export default function Home({
   categories,
@@ -25,6 +26,10 @@ export default function Home({
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="icon" href={urlFor(logo.asset).width(20).url()} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={loadWebSiteSchema(title)}
+        />
       </Head>
       <Navbar
         categories={categories}
