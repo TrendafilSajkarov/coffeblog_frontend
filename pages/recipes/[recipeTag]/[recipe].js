@@ -99,7 +99,7 @@ export default function Recipe({
               <div className="text-4xl font-extrabold text-gray-700 ">
                 {getDate(singleRecipe[0]._updatedAt)[0]}
               </div>
-              <div className="text-base font-medium h-auto text-gray-700">
+              <div className="text-base font-medium h-auto text-gray-700 whitespace-nowrap">
                 {getDate(singleRecipe[0]._updatedAt)[1]}{" "}
                 {getDate(singleRecipe[0]._updatedAt)[3]}
               </div>

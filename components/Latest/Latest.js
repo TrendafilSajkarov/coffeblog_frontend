@@ -79,7 +79,7 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
               <div className="text-3xl font-extrabold text-white">
                 {getDate(featuredRecipes[0]._updatedAt)[0]}
               </div>
-              <div className="text-base font-medium h-auto text-white">
+              <div className="text-base font-medium h-auto text-white whitespace-nowrap">
                 {getDate(featuredRecipes[0]._updatedAt)[1]}{" "}
                 {getDate(featuredRecipes[0]._updatedAt)[3]}
               </div>
@@ -124,7 +124,7 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
               <div className="text-3xl font-extrabold text-white">
                 {getDate(featuredRecipes[1]._updatedAt)[0]}
               </div>
-              <div className="text-base font-medium h-auto text-white">
+              <div className="text-base font-medium h-auto text-white whitespace-nowrap">
                 {getDate(featuredRecipes[1]._updatedAt)[1]}{" "}
                 {getDate(featuredRecipes[1]._updatedAt)[3]}
               </div>
