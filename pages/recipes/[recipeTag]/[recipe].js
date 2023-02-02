@@ -93,11 +93,15 @@ export default function Recipe({
 
           <div className="absolute shadow-sm border-gray-200 border bg-white py-0 -bottom-6 left-5 right-5 md:left-20 md:right-20 lg:left-32 lg:right-32 flex items-center">
             <div className="hidden top-4 md:flex flex-col items-center bg-gray-100 bg-opacity-50 w py-2 px-6 mx-6 shadow-lg">
+              <div className="text-xs font-medium text-gray-700 uppercase">
+                Updated on
+              </div>
               <div className="text-4xl font-extrabold text-gray-700 ">
-                {getDate(singleRecipe[0]._createdAt)[0]}
+                {getDate(singleRecipe[0]._updatedAt)[0]}
               </div>
               <div className="text-base font-medium h-auto text-gray-700">
-                {getDate(singleRecipe[0]._createdAt)[1]}
+                {getDate(singleRecipe[0]._updatedAt)[1]}{" "}
+                {getDate(singleRecipe[0]._updatedAt)[3]}
               </div>
             </div>
             <div className="flex flex-1 flex-col items-center py-3 font-serif text-center text-4xl">
@@ -108,6 +112,11 @@ export default function Recipe({
               <p className="text-xs text-gray-400">
                 By {singleRecipe[0].author.name} | Preparation:{" "}
                 {singleRecipe[0].recipeInfo.totalTime} min
+              </p>
+              <p className="md:hidden text-xs text-gray-400">
+                Updated On: {getDate(singleRecipe[0]._updatedAt)[1]}{" "}
+                {getDate(singleRecipe[0]._updatedAt)[0]}{" "}
+                {getDate(singleRecipe[0]._updatedAt)[2]}
               </p>
             </div>
           </div>

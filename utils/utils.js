@@ -17,6 +17,8 @@ export function getDate(date) {
     let rez = date.toString();
     let arr = rez.split("-");
     let day = arr[2].split("T")[0];
+    let year = arr[0];
+    let shortYear = "'" + year[2] + year[3];
     let month;
     switch (arr[1]) {
       case "01":
@@ -56,7 +58,7 @@ export function getDate(date) {
         month = "DEC";
         break;
     }
-    return [day, month];
+    return [day, month, year, shortYear];
   }
   return ["01", "Apr"];
 }

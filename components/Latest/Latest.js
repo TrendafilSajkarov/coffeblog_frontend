@@ -19,10 +19,11 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
         <div className="absolute bottom-0 min-h-1/4 h max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
           <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-2 px-6 mx-6 shadow-lg">
             <div className="text-3xl font-extrabold text-white ">
-              {getDate(featuredPosts[0]._createdAt)[0]}
+              {getDate(featuredPosts[0]._updatedAt)[0]}
             </div>
-            <div className="text-base font-medium h-auto text-white">
-              {getDate(featuredPosts[0]._createdAt)[1]}
+            <div className="text-base font-medium h-auto text-white whitespace-nowrap">
+              {getDate(featuredPosts[0]._updatedAt)[1]}{" "}
+              {getDate(featuredPosts[0]._updatedAt)[3]}
             </div>
           </div>
           <div className="pl-2 md:pl-0 flex flex-col items-start">
@@ -50,6 +51,11 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
                     By {featuredPosts[0].author.name} |{" "}
                     {featuredPosts[0].estimatedReadingTime} min read
                   </p>
+                  <p className="md:hidden text-xs prose-sm px-1 bg-opacity-50 bg-gray-600 text-gray-100">
+                    Updated On: {getDate(featuredPosts[0]._updatedAt)[1]}{" "}
+                    {getDate(featuredPosts[0]._updatedAt)[0]}{" "}
+                    {getDate(featuredPosts[0]._updatedAt)[2]}
+                  </p>
                 </div>
               </div>
             )}
@@ -71,10 +77,11 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
           <div className="absolute overflow-clip bottom-0 min-h-2/5 max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
-                {getDate(featuredRecipes[0]._createdAt)[0]}
+                {getDate(featuredRecipes[0]._updatedAt)[0]}
               </div>
               <div className="text-base font-medium h-auto text-white">
-                {getDate(featuredRecipes[0]._createdAt)[1]}
+                {getDate(featuredRecipes[0]._updatedAt)[1]}{" "}
+                {getDate(featuredRecipes[0]._updatedAt)[3]}
               </div>
             </div>
             <div className="pl-2 md:pl-0 flex flex-col items-start">
@@ -115,10 +122,11 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
           <div className="absolute overflow-clip bottom-0 min-h-2/5 max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
-                {getDate(featuredRecipes[1]._createdAt)[0]}
+                {getDate(featuredRecipes[1]._updatedAt)[0]}
               </div>
               <div className="text-base font-medium h-auto text-white">
-                {getDate(featuredRecipes[1]._createdAt)[1]}
+                {getDate(featuredRecipes[1]._updatedAt)[1]}{" "}
+                {getDate(featuredRecipes[1]._updatedAt)[3]}
               </div>
             </div>
             <div className="pl-2 md:pl-0 flex flex-col items-start">
@@ -156,10 +164,11 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
           <div className="absolute bottom-0 right-0 min-h-1/4 max-h-full w-full flex items-start bg-slate-600 bg-opacity-40 py-3">
             <div className="hidden md:flex flex-col items-center bg-gray-600 bg-opacity-50 w py-1 px-4 mx-4 shadow-lg">
               <div className="text-3xl font-extrabold text-white">
-                {getDate(featuredPosts[1]._createdAt)[0]}
+                {getDate(featuredPosts[1]._updatedAt)[0]}
               </div>
-              <div className="text-base font-medium h-auto text-white">
-                {getDate(featuredPosts[1]._createdAt)[1]}
+              <div className="text-base font-medium h-auto text-white whitespace-nowrap">
+                {getDate(featuredPosts[1]._updatedAt)[1]}{" "}
+                {getDate(featuredPosts[1]._updatedAt)[3]}
               </div>
             </div>
             <div className="pl-2 md:pl-0 flex flex-col items-start">
@@ -181,10 +190,17 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
               <p className="prose-sm text-base font-sans text-white font-extralight line-clamp-6">
                 {featuredPosts[1].excerpt}
               </p>
-              <p className="text-xs prose-sm px-1 bg-gray-600 bg-opacity-50 text-gray-100">
-                By {featuredPosts[1].author.name} |{" "}
-                {featuredPosts[1].estimatedReadingTime} min read
-              </p>
+              <div className="flex">
+                <p className="text-xs prose-sm px-1 bg-opacity-50 bg-gray-600 text-gray-100">
+                  By {featuredPosts[1].author.name} |{" "}
+                  {featuredPosts[1].estimatedReadingTime} min read
+                </p>
+                <p className="md:hidden text-xs prose-sm px-1 bg-opacity-50 bg-gray-600 text-gray-100">
+                  Updated On: {getDate(featuredPosts[1]._updatedAt)[1]}{" "}
+                  {getDate(featuredPosts[1]._updatedAt)[0]}{" "}
+                  {getDate(featuredPosts[1]._updatedAt)[2]}
+                </p>
+              </div>
             </div>
           </div>
         </div>
