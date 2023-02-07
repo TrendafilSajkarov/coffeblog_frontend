@@ -10,7 +10,12 @@ export default function ProguctsGalleryComponent(props) {
           {props.node.productGalleryName && (
             <h4 className="text-left flex">
               <div className="relative w-10 h-10">
-                <Image src="/Scroll.png" layout="fill" objectFit="contain" />
+                <Image
+                  src="/Scroll.png"
+                  alt="Horizontal Scroll"
+                  layout="fill"
+                  objectFit="contain"
+                />
               </div>
               <div className="pr-3">{props.node.productGalleryName}</div>
             </h4>

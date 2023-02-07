@@ -60,10 +60,10 @@ export default function TermsAndConditions({ footer }) {
         <p>
           We want to inform you that whenever you visit our Service, we collect
           information that your browser sends to us that is called Log Data.
-          This Log Data may include information such as your computer’s Internet
-          Protocol ("IP") address, browser version, pages of our Service that
-          you visit, the time and date of your visit, the time spent on those
-          pages, and other statistics.
+          This Log Data may include information such as your computer&apos;s
+          Internet Protocol (&apos;IP&apos;) address, browser version, pages of
+          our Service that you visit, the time and date of your visit, the time
+          spent on those pages, and other statistics.
         </p>
 
         <h2>Cookies</h2>
@@ -71,15 +71,16 @@ export default function TermsAndConditions({ footer }) {
         <p>
           Cookies are files with small amount of data that is commonly used an
           anonymous unique identifier. These are sent to your browser from the
-          website that you visit and are stored on your computer’s hard drive.
+          website that you visit and are stored on your computer&apos;s hard
+          drive.
         </p>
 
         <p>
-          Our website uses these "cookies" to collection information and to
-          improve our Service. You have the option to either accept or refuse
-          these cookies, and know when a cookie is being sent to your computer.
-          If you choose to refuse our cookies, you may not be able to use some
-          portions of our Service.
+          Our website uses these &apos;cookies&apos; to collection information
+          and to improve our Service. You have the option to either accept or
+          refuse these cookies, and know when a cookie is being sent to your
+          computer. If you choose to refuse our cookies, you may not be able to
+          use some portions of our Service.
         </p>
 
         <h2>Service Providers</h2>
@@ -124,7 +125,7 @@ export default function TermsAndConditions({ footer }) {
           or practices of any third-party sites or services.
         </p>
 
-        <p>Children's Privacy</p>
+        <p>Children&apos;s Privacy</p>
 
         <p>
           Our Services do not address anyone under the age of 13. We do not
