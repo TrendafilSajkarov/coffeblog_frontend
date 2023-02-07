@@ -37,7 +37,7 @@ export default function Footer({ footer }) {
           {footer[0].content}
         </p>
         <p className="py-4 text-center">
-          Copyright ©{date.getFullYear()} Coffeenated Stories All rights
+          Copyright ©{date.getFullYear()} Coffeenated Stories. All rights
           reserved
         </p>
       </div>
