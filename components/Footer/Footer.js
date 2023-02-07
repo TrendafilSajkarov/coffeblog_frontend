@@ -6,6 +6,7 @@ import configuredSanityClient from "../../lib/configuredSanityClient";
 
 export default function Footer({ footer }) {
   const imageProps = useNextSanityImage(configuredSanityClient, footer[0].logo);
+  let date = new Date();
   return (
     <footer className="bg-gray-50 w-full mt-10 py-4">
       <div className="container mx-auto flex flex-col items-center">
@@ -24,10 +25,21 @@ export default function Footer({ footer }) {
             </div>
           </Link>
         </div>
-        <p className="prose-sm font-serif text-xs w-2/5 text-center border-b-2 border-gray-300 pb-4">
+        <div className="flex mx-auto space-x-6 pb-3 prose-sm prose-a:text-sky-600 ">
+          <Link href="/terms-and-conditions" passHref>
+            <a rel="noopener nofollow noreferrer">Terms and Conditions</a>
+          </Link>
+          <Link href="/privacy-policy" passHref>
+            <a rel="noopener nofollow noreferrer">Privacy Policy</a>
+          </Link>
+        </div>
+        <p className="prose-sm font-serif text-xs lg:w-2/5 xs:w-3/4 text-center border-b-2 border-gray-300 pb-4">
           {footer[0].content}
         </p>
-        <p className="py-4">Copyright ©2022 All rights reserved</p>
+        <p className="py-4 text-center">
+          Copyright ©{date.getFullYear()} Coffeenated Stories All rights
+          reserved
+        </p>
       </div>
     </footer>
   );

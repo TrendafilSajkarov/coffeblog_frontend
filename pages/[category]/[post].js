@@ -158,6 +158,13 @@ export async function getStaticProps(context) {
               _type == "image" => {
                 "metadata": @.asset->
               },
+              _type == "productsGallery" => {
+                ...,
+                allProducts[]{
+                  ...,
+                  "asset": @.asset->
+                }
+              },
               images[]{
                 ...,
                 "asset": @.asset->
