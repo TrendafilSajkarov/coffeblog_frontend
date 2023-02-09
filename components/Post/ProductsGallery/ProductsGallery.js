@@ -58,7 +58,7 @@ export default function ProguctsGalleryComponent(props) {
                     <p className="p-1">{product.productDescription}</p>
                   </div>
                 </div>
-                <div className="pb-4 hover:scale-x-105 ease-in-out duration-75">
+                <div className="pb-4">
                   <Link href={product.affiliateLink} passHref>
                     <a
                       target={product.targetBlank && "_blank"}
