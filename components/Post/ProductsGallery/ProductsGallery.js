@@ -21,12 +21,12 @@ export default function ProguctsGalleryComponent(props) {
             </h4>
           )}
         </div>
-        <div className="flex content-between overflow-x-scroll space-x-3 shadow-lg">
+        <div className="flex snap-x content-between overflow-x-scroll space-x-3 shadow-lg">
           {props.node.allProducts.map((product, i) => {
             return (
               <div
                 key={product._key}
-                className="flex flex-col justify-between items-center shadow-lg max-w-sm"
+                className="flex snap-start flex-col justify-between items-center shadow-lg max-w-sm"
               >
                 <div className="flex flex-col space-y-4">
                   <span className={`text-center bg-yellow-600 text-white`}>
@@ -58,7 +58,7 @@ export default function ProguctsGalleryComponent(props) {
                     <p className="p-1">{product.productDescription}</p>
                   </div>
                 </div>
-                <div className="pb-4">
+                <div className="pb-4 hover:scale-x-105 ease-in-out duration-75">
                   <Link href={product.affiliateLink} passHref>
                     <a
                       target={product.targetBlank && "_blank"}
