@@ -331,6 +331,14 @@ export async function getStaticProps(context) {
             "asset": @.asset->
           }
         },
+        _type == "productProCon" => {
+          ...,
+          "productImageObject": @.productImage.asset->
+        },
+        _type == "productFeatures" => {
+          ...,
+          "productImageObject": @.productWithFeaturesImage.asset->
+        },
         images[]{
           ...,
           "asset": @.asset->
@@ -361,6 +369,14 @@ export async function getStaticProps(context) {
             ...,
             "asset": @.asset->
           }
+        },
+        _type == "productProCon" => {
+          ...,
+          "productImageObject": @.productImage.asset->
+        },
+        _type == "productFeatures" => {
+          ...,
+          "productImageObject": @.productWithFeaturesImage.asset->
         },
         images[]{
           ...,
