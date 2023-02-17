@@ -165,6 +165,10 @@ export async function getStaticProps(context) {
                   "asset": @.asset->
                 }
               },
+              _type == "productProCon" => {
+                ...,
+                "productImageObject": @.productImage.asset->
+              },
               images[]{
                 ...,
                 "asset": @.asset->

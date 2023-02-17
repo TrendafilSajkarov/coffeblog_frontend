@@ -7,7 +7,31 @@ export default function ProguctsGalleryComponent(props) {
     <div>
       <div>
         <div className="flex align-sub">
-          {props.node.productGalleryName && (
+          {props.node.headingImportance == "H2" ? (
+            <h2 className="text-left flex">
+              <div className="relative w-10 h-10">
+                <Image
+                  src="/Scroll.png"
+                  alt="Horizontal Scroll"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
+              <div className="pr-3">{props.node.productGalleryName}</div>
+            </h2>
+          ) : props.node.headingImportance == "H3" ? (
+            <h3 className="text-left flex">
+              <div className="relative w-10 h-10">
+                <Image
+                  src="/Scroll.png"
+                  alt="Horizontal Scroll"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
+              <div className="pr-3">{props.node.productGalleryName}</div>
+            </h3>
+          ) : props.node.headingImportance == "H4" ? (
             <h4 className="text-left flex">
               <div className="relative w-10 h-10">
                 <Image
@@ -19,6 +43,30 @@ export default function ProguctsGalleryComponent(props) {
               </div>
               <div className="pr-3">{props.node.productGalleryName}</div>
             </h4>
+          ) : props.node.headingImportance == "H5" ? (
+            <h5 className="text-left flex">
+              <div className="relative w-10 h-10">
+                <Image
+                  src="/Scroll.png"
+                  alt="Horizontal Scroll"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
+              <div className="pr-3">{props.node.productGalleryName}</div>
+            </h5>
+          ) : (
+            <h6 className="text-left flex">
+              <div className="relative w-10 h-10">
+                <Image
+                  src="/Scroll.png"
+                  alt="Horizontal Scroll"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
+              <div className="pr-3">{props.node.productGalleryName}</div>
+            </h6>
           )}
         </div>
         <div className="flex snap-x content-between overflow-x-scroll space-x-3 shadow-lg">
@@ -44,7 +92,7 @@ export default function ProguctsGalleryComponent(props) {
                       alt={product.alt}
                     />
                   </div>
-                  <div className="prose-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-h4:text-slate-800 prose-h4:text-lg prose-h4:text-center prose-h4:font-semibold">
+                  <div className="prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-center prose-headings:text-gray-600 prose-headings:drop-shadow-md prose-headings:font-extralight">
                     <Link href={product.affiliateLink} passHref>
                       <a
                         target={product.targetBlank && "_blank"}
@@ -55,7 +103,20 @@ export default function ProguctsGalleryComponent(props) {
                         <h4>{product.productName}</h4>
                       </a>
                     </Link>
-                    <p className="p-1">{product.productDescription}</p>
+                    <p className="p-1 text-justify">
+                      {product.productDescription}
+                    </p>
+                    {product.productFeatures && (
+                      <ul>
+                        {product.productFeatures.map((feature, i) => {
+                          return (
+                            <li className="list-inside" key={i}>
+                              {feature}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
                   </div>
                 </div>
                 <div className="pb-4">
@@ -66,7 +127,7 @@ export default function ProguctsGalleryComponent(props) {
                         product.noopener && "noopener"
                       } ${product.noreferrer && "noreferrer"}`}
                     >
-                      <button className="border-4 border-yellow-600 uppercase hover:underline shadow-md px-4 py-1 text-gray-600 text-sm font-medium">
+                      <button className="border border-gray-900 bg-yellow-300 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
                         {product.buttonText}
                       </button>
                     </a>
