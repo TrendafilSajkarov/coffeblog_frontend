@@ -44,6 +44,17 @@ export default function Recipe({
       </>
     );
   }
+  if (!singleRecipe[0]) {
+    return (
+      <>
+        <Head>
+          <meta name="robots" content="noindex" />
+          <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
+        </Head>
+        <DefaultErrorPage statusCode={404} />
+      </>
+    );
+  }
   return (
     <div>
       <Head>
