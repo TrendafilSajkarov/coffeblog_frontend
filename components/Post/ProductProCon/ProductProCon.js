@@ -80,7 +80,12 @@ export default function ProductProConComponent(props) {
             <p className="text-justify">{props.node.productDescription}</p>
           </div>
           <div className="relative sm:col-span-2">
-            <Image
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `${props.node.productWithFeaturesAmazonImage}`,
+              }}
+            />
+            {/* <Image
               src={urlFor(props.node.productImageObject.url)
                 .width(350)
                 .quality(100)
@@ -89,7 +94,7 @@ export default function ProductProConComponent(props) {
               objectFit="contain"
               layout="fill"
               alt={props.node.productImage.productImageAlt}
-            />
+            /> */}
           </div>
         </div>
 

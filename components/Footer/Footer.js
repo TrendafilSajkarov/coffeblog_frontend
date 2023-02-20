@@ -33,9 +33,19 @@ export default function Footer({ footer }) {
             <a rel="noopener nofollow noreferrer">Privacy Policy</a>
           </Link>
         </div>
-        <p className="prose-sm font-serif text-xs lg:w-2/5 xs:w-3/4 text-center border-b-2 border-gray-300 pb-4">
+        <p className="prose-sm font-serif text-xs lg:w-2/5 xs:w-3/4 text-center">
           {footer[0].content}
         </p>
+        <div className="prose-sm text-xs mb-3 text-center border-b-2 border-gray-300 pb-4">
+          <div className="">
+            <div className="px-4 py-1 font-serif">
+              <strong className="font-sans">Affiliate Disclaimer:</strong>{" "}
+              CoffeenatedStories.com is a member of the Amazon Associates
+              Program, and as an Amazon Associate, we earn from qualifying
+              purchases.
+            </div>
+          </div>
+        </div>
         <p className="py-4 text-center">
           Copyright ©{date.getFullYear()} Coffeenated Stories. All rights
           reserved

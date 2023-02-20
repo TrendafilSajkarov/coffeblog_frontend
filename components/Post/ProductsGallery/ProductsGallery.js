@@ -81,7 +81,12 @@ export default function ProguctsGalleryComponent(props) {
                     {product.cardCaption}
                   </span>
                   <div className="relative w-64 h-72">
-                    <Image
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: `${product.productWithFeaturesAmazonImage}`,
+                      }}
+                    />
+                    {/* <Image
                       src={urlFor(product.asset.url)
                         .width(250)
                         .quality(100)
@@ -90,7 +95,7 @@ export default function ProguctsGalleryComponent(props) {
                       objectFit="contain"
                       layout="fill"
                       alt={product.alt}
-                    />
+                    /> */}
                   </div>
                   <div className="prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-center prose-headings:text-gray-600 prose-headings:drop-shadow-md prose-headings:font-extralight">
                     <Link href={product.affiliateLink} passHref>
