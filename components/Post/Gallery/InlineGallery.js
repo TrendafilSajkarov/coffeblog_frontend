@@ -5,7 +5,7 @@ export default function InlineGallery({ imgArr }) {
   return (
     <figure className="w-full flex flex-col">
       <div className="w-full flex justify-around">
-        {imgArr.map((img) => {
+        {imgArr.map((img, i) => {
           return (
             <div key={img._key} className="relative px-1">
               <Image
@@ -22,7 +22,7 @@ export default function InlineGallery({ imgArr }) {
                 alt={img.alt}
               />
               {img.caption && (
-                <figcaption key={img._key} className="text-black">
+                <figcaption key={i} className="text-black">
                   {img.caption}
                 </figcaption>
               )}
@@ -31,18 +31,19 @@ export default function InlineGallery({ imgArr }) {
         })}
       </div>
       <div className="flex flex-col place-items-end">
-        {imgArr.map((img) => {
+        {imgArr.map((img, i) => {
           if (img.attribution) {
             return (
-              <figcaption key={img._id} className="text-slate-400">
+              <figcaption key={i} className="text-slate-400 overflow-x-clip">
                 {img.attribution}
               </figcaption>
             );
           } else if (img.asset?.creditLine) {
             return (
-              <figcaption key={img.asset._id} className="text-slate-400">{`${
-                img.asset?.creditLine
-              }${
+              <figcaption
+                key={img.asset._id}
+                className="text-slate-400 overflow-x-clip"
+              >{`${img.asset?.creditLine}${
                 img.asset?.source?.name === "unsplash"
                   ? "  -  " + img.asset?.source.url
                   : ""

@@ -94,7 +94,7 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
                 </h4>
               </div>
               <Link
-                href={`recipes/${featuredRecipes[0].recipeTags.slug}/${featuredRecipes[0].slug}`}
+                href={`/recipes/${featuredRecipes[0].recipeTags.slug}/${featuredRecipes[0].slug}`}
               >
                 <a>
                   <h3 className="line-clamp-5 md:line-clamp-none text-xl font-light font-serif text-white prose-sm group-hover:underline">
@@ -139,7 +139,7 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
                 </h4>
               </div>
               <Link
-                href={`recipes/${featuredRecipes[1].recipeTags.slug}/${featuredRecipes[1].slug}`}
+                href={`/recipes/${featuredRecipes[1].recipeTags.slug}/${featuredRecipes[1].slug}`}
               >
                 <a>
                   <h3 className="line-clamp-5 md:line-clamp-none text-xl font-light font-serif text-white group-hover:underline">
