@@ -1,16 +1,10 @@
 export default function AmazonBannerComponent(props) {
   return (
-    <div>
+    <div className="w-full ">
       <div
-        className="max-w-full hidden sm:block"
+        className="max-w-full flex justify-center"
         dangerouslySetInnerHTML={{
-          __html: `${props.node.amzHorizontalBannerScriptCode}`,
-        }}
-      />
-      <div
-        className="max-w-full sm:hidden"
-        dangerouslySetInnerHTML={{
-          __html: `${props.node.amzSquareBannerScriptCode}`,
+          __html: `${props.node.amzHorizontalBannerIframeCode}`,
         }}
       />
     </div>
