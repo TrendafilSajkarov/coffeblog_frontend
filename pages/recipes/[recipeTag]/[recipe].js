@@ -136,7 +136,7 @@ export default function Recipe({
           <article className="col-span-2 px-1 md:px-4 flex flex-col items-center">
             <div className="prose w-full prose-th:text-base prose-th:font-medium prose-th:py-1 prose-img:mx-auto prose-figcaption:italic prose-figcaption:text-xs prose-figcaption:text-center prose-a:text-blue-600 font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-serif">
               {singleRecipe[0].disclaimer && (
-                <div className="bg-yellow-600 max-w-xl mt-10 prose py-1 px-1">
+                <div className="bg-yellow-600 max-w-xl mt-10 prose py-1 px-1 selection:bg-white selection:text-yellow-600">
                   <div className="border border-white border-dashed">
                     <div className="text-white px-3 py-1">
                       <strong>Disclaimer:</strong> CoffeenatedStories.com is a

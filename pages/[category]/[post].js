@@ -117,7 +117,7 @@ export default function PostPage({
         <section className="container grid grid-cols-2 auto-rows-auto w-11/12 lg:grid-cols-3 gap-4 xl:w-3/4 max-w-screen-xl mx-auto my-6">
           <article className="col-span-2 px-1 md:px-4 flex flex-col items-center">
             {singlePost[0].disclaimer && (
-              <div className="bg-yellow-600 max-w-xl mt-10 prose">
+              <div className="bg-yellow-600 max-w-xl mt-10 prose selection:bg-white selection:text-yellow-600">
                 <div className="border border-white border-dashed m-1">
                   <div className="text-white px-4 py-1">
                     <strong>Disclaimer:</strong> CoffeenatedStories.com is a
