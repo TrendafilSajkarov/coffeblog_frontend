@@ -5,6 +5,7 @@ import Image from "next/image";
 export default function YoutubeComponent(props) {
   const { id } = getVideoId(props.node.url || "");
   const [imageClicked, setImageClicked] = useState(false);
+  let test = getVideoId(props.node.url || "");
 
   const onThumbnailClick = () => {
     setImageClicked(true);
