@@ -9,7 +9,7 @@ export default function ProductWithFeaturesComponent(props) {
       <div className="bg-white w-full shadow-md">
         {props.node.productWithFeaturesLabel && (
           <div className="flex flex-col justify-center bg-yellow-600">
-            <span className="text-center text-white drop-shadow-xl">
+            <span className="text-center text-white drop-shadow-xl selection:bg-white selection:text-yellow-600">
               {props.node.productWithFeaturesLabel}
             </span>
           </div>

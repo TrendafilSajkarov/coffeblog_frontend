@@ -77,7 +77,9 @@ export default function ProguctsGalleryComponent(props) {
                 className="flex snap-start flex-col justify-between items-center shadow-lg max-w-sm"
               >
                 <div className="flex flex-col space-y-4">
-                  <span className={`text-center bg-yellow-600 text-white`}>
+                  <span
+                    className={`text-center bg-yellow-600 text-white selection:bg-white selection:text-yellow-600`}
+                  >
                     {product.cardCaption}
                   </span>
                   <div className="relative w-64 h-72">
