@@ -95,7 +95,7 @@ export function loadRecipeSchema(recipe) {
         },
         "recipeIngredient": [${recipeIng}],
         "recipeInstructions": [${recipeIns}]
-        ${recipe.recipeVideo ? `,${recipe.recipeVideo}` : ""}
+        ${recipe.recipeVideo ? `, "video": ${recipe.recipeVideo}` : ""}
       }
     `,
   };
