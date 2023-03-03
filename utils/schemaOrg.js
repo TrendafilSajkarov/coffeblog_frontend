@@ -94,9 +94,8 @@ export function loadRecipeSchema(recipe) {
           "fatContent": "${recipe.recipeInfo.fatContent}"
         },
         "recipeIngredient": [${recipeIng}],
-        "recipeInstructions": [${recipeIns}]${
-      recipe.recipeVideo ? `,${recipe.recipeVideo}` : ""
-    }
+        "recipeInstructions": [${recipeIns}]
+        ${recipe.recipeVideo ? `,${recipe.recipeVideo}` : ""}
       }
     `,
   };
