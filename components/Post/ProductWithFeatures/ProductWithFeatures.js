@@ -61,7 +61,9 @@ export default function ProductWithFeaturesComponent(props) {
                     props.node.noopener && "noopener"
                   } ${props.node.noreferrer && "noreferrer"}`}
                 >
-                  <h5>{props.node.productWithFeaturesName}</h5>
+                  <h5 className="font-medium text-3xl font-serif text-gray-700">
+                    {props.node.productWithFeaturesName}
+                  </h5>
                 </a>
               </Link>
             ) : (
@@ -73,7 +75,9 @@ export default function ProductWithFeaturesComponent(props) {
                     props.node.noopener && "noopener"
                   } ${props.node.noreferrer && "noreferrer"}`}
                 >
-                  <h6>{props.node.productWithFeaturesName}</h6>
+                  <h6 className="font-medium text-3xl font-serif text-gray-700">
+                    {props.node.productWithFeaturesName}
+                  </h6>
                 </a>
               </Link>
             )}
@@ -81,8 +85,9 @@ export default function ProductWithFeaturesComponent(props) {
               {props.node.productWithFeaturesDescription}
             </p>
           </div>
-          <div className="relative sm:col-span-2">
+          <div className="relative sm:col-span-2 flex flex-col justify-center content-center">
             <div
+              className=""
               dangerouslySetInnerHTML={{
                 __html: `${props.node.productWithFeaturesAmazonImage}`,
               }}

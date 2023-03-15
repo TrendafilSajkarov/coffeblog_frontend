@@ -53,7 +53,9 @@ export default function ProguctsGalleryComponent(props) {
                   objectFit="contain"
                 />
               </div>
-              <div className="pr-3">{props.node.productGalleryName}</div>
+              <div className="pr-3 font-medium px-1 text-3xl font-serif text-gray-700">
+                {props.node.productGalleryName}
+              </div>
             </h5>
           ) : (
             <h6 className="text-left flex">
@@ -65,7 +67,9 @@ export default function ProguctsGalleryComponent(props) {
                   objectFit="contain"
                 />
               </div>
-              <div className="pr-3">{props.node.productGalleryName}</div>
+              <div className="pr-3 font-medium px-1 text-3xl font-serif text-gray-700">
+                {props.node.productGalleryName}
+              </div>
             </h6>
           )}
         </div>
@@ -107,7 +111,23 @@ export default function ProguctsGalleryComponent(props) {
                           product.noopener && "noopener"
                         } ${product.noreferrer && "noreferrer"}`}
                       >
-                        <h4>{product.productName}</h4>
+                        {props.node.headingImportance == "H2" ? (
+                          <h3 className="text-center">{product.productName}</h3>
+                        ) : props.node.headingImportance == "H3" ? (
+                          <h4 className="text-center">{product.productName}</h4>
+                        ) : props.node.headingImportance == "H4" ? (
+                          <h5 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                            {product.productName}
+                          </h5>
+                        ) : props.node.headingImportance == "H5" ? (
+                          <h6 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                            {product.productName}
+                          </h6>
+                        ) : (
+                          <h6 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                            {product.productName}
+                          </h6>
+                        )}
                       </a>
                     </Link>
                     <p className="p-1 text-justify">
