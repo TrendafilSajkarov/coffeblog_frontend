@@ -14,7 +14,7 @@ export default function ProductWithFeaturesComponent(props) {
             </span>
           </div>
         )}
-        <div className="w-full grid grid-rows-2 sm:grid-cols-5 sm:grid-rows-1 gap-3 py-4 px-3">
+        <div className="w-full grid grid-flow-row auto-rows-max sm:grid-cols-5 sm:grid-rows-1 gap-3 py-4 px-3">
           <div className="prose-sm order-last sm:order-first sm:col-span-3 text-center prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-headings:text-gray-600 prose-headings:drop-shadow-md prose-headings:font-extralight">
             {props.node.productWithFeaturesNameImportance == "H2" ? (
               <Link href={props.node.affiliateLink} passHref>
@@ -61,7 +61,7 @@ export default function ProductWithFeaturesComponent(props) {
                     props.node.noopener && "noopener"
                   } ${props.node.noreferrer && "noreferrer"}`}
                 >
-                  <h5 className="font-medium text-3xl font-serif text-gray-700">
+                  <h5 className="font-medium text-3xl mt-4 mb-2 font-serif text-gray-700">
                     {props.node.productWithFeaturesName}
                   </h5>
                 </a>
@@ -75,7 +75,7 @@ export default function ProductWithFeaturesComponent(props) {
                     props.node.noopener && "noopener"
                   } ${props.node.noreferrer && "noreferrer"}`}
                 >
-                  <h6 className="font-medium text-3xl font-serif text-gray-700">
+                  <h6 className="font-medium text-3xl mt-4 mb-2 font-serif text-gray-700">
                     {props.node.productWithFeaturesName}
                   </h6>
                 </a>

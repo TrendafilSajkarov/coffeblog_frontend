@@ -61,7 +61,7 @@ export default function ProductProConComponent(props) {
                     props.node.noopener && "noopener"
                   } ${props.node.noreferrer && "noreferrer"}`}
                 >
-                  <h5 className="font-medium text-3xl font-serif text-gray-700">
+                  <h5 className="font-medium mt-4 mb-2 text-3xl font-serif text-gray-700">
                     {props.node.productName}
                   </h5>
                 </a>
@@ -75,7 +75,7 @@ export default function ProductProConComponent(props) {
                     props.node.noopener && "noopener"
                   } ${props.node.noreferrer && "noreferrer"}`}
                 >
-                  <h6 className="font-medium text-3xl font-serif text-gray-700">
+                  <h6 className="font-medium mt-4 mb-2 text-3xl font-serif text-gray-700">
                     {props.node.productName}
                   </h6>
                 </a>

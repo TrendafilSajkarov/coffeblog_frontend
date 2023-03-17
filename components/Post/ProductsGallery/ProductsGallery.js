@@ -44,7 +44,7 @@ export default function ProguctsGalleryComponent(props) {
               <div className="pr-3">{props.node.productGalleryName}</div>
             </h4>
           ) : props.node.headingImportance == "H5" ? (
-            <h5 className="text-left flex">
+            <h5 className="text-left flex mt-4 mb-2">
               <div className="relative w-10 h-10">
                 <Image
                   src="/Scroll.png"
@@ -58,7 +58,7 @@ export default function ProguctsGalleryComponent(props) {
               </div>
             </h5>
           ) : (
-            <h6 className="text-left flex">
+            <h6 className="text-left flex mt-4 mb-2">
               <div className="relative w-10 h-10">
                 <Image
                   src="/Scroll.png"
