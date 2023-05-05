@@ -92,7 +92,7 @@ export default function ProductProConComponent(props) {
             {/* <Image
               src={urlFor(props.node.productImageObject.url)
                 .width(350)
-                .quality(100)
+                .quality(90)
                 .auto("format")
                 .url()}
               objectFit="contain"
