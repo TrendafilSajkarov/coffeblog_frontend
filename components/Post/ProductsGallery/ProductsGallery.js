@@ -4,7 +4,7 @@ import { urlFor } from "../../../lib/sanity";
 
 export default function ProguctsGalleryComponent(props) {
   return (
-    <div>
+    <div className="pb-6">
       <div>
         <div className="flex align-sub">
           {props.node.headingImportance == "H2" ? (

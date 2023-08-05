@@ -5,7 +5,7 @@ import { urlFor } from "../../../lib/sanity";
 
 export default function ProductWithFeaturesComponent(props) {
   return (
-    <div>
+    <div className="py-6">
       <div className="bg-white w-full shadow-md">
         {props.node.productWithFeaturesLabel && (
           <div className="flex flex-col justify-center bg-yellow-600">
