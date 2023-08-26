@@ -4,9 +4,9 @@ import { urlFor } from "../../../lib/sanity";
 
 export default function MiniProdGalleryComponent(props) {
   return (
-    <div className="pb-6">
+    <div className="pb-6 px-2 flex justify-center">
       <div>
-        <div className="grid grid-cols-2 auto-rows-auto gap-2 space-x-3">
+        <div className="grid grid-cols-1 auto-rows-auto gap-4 sm:grid-cols-2 sm:gap-2">
           {props.node.allMiniProducts.map((product, i) => {
             return (
               <div
@@ -19,9 +19,10 @@ export default function MiniProdGalleryComponent(props) {
                   >
                     {product.cardCaption}
                   </span>
-                  <div className="grid grid-cols-2 gap-1">
-                    <div className="flex items-center justify-center">
+                  <div className="grid grid-cols-5 grid-rows-1 ">
+                    <div className="col-span-2">
                       <div
+                        className=""
                         dangerouslySetInnerHTML={{
                           __html: `${product.miniProductAmazonImage}`,
                         }}
@@ -37,7 +38,7 @@ export default function MiniProdGalleryComponent(props) {
                       alt={product.alt}
                     /> */}
                     </div>
-                    <div className="flex align-middle items-center prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-center prose-headings:text-gray-600 prose-headings:drop-shadow-md prose-headings:font-extralight">
+                    <div className="px-1 col-span-3 flex justify-evenly align-middle items-center prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-2xl prose-headings:text-center prose-headings:text-gray-700 prose-headings:drop-shadow-md prose-headings:font-extralight">
                       <Link href={product.affiliateLink} passHref>
                         <a
                           target={product.targetBlank && "_blank"}
@@ -71,22 +72,24 @@ export default function MiniProdGalleryComponent(props) {
                     </div>
                   </div>
                 </div>
-                <p className="prose-sm px-3 my-3">
-                  {product.miniProductDescription}
-                </p>
-                <div className="pb-4">
-                  <Link href={product.affiliateLink} passHref>
-                    <a
-                      target={product.targetBlank && "_blank"}
-                      rel={`${product.nofollow && "nofollow"} ${
-                        product.noopener && "noopener"
-                      } ${product.noreferrer && "noreferrer"}`}
-                    >
-                      <button className="border whitespace-normal border-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-400 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
-                        Check Features and <br /> Price on Amazon
-                      </button>
-                    </a>
-                  </Link>
+                <div className="flex grow snap-start flex-col justify-between items-center bg-gradient-to-t from-amber-100 to-white">
+                  <p className="prose-sm px-3 my-3 grow justify-self-stretch font-medium">
+                    {product.miniProductDescription}
+                  </p>
+                  <div className="pb-4">
+                    <Link href={product.affiliateLink} passHref>
+                      <a
+                        target={product.targetBlank && "_blank"}
+                        rel={`${product.nofollow && "nofollow"} ${
+                          product.noopener && "noopener"
+                        } ${product.noreferrer && "noreferrer"}`}
+                      >
+                        <button className="border whitespace-normal border-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-400 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
+                          Check all Features <br /> and Price on Amazon
+                        </button>
+                      </a>
+                    </Link>
+                  </div>
                 </div>
               </div>
             );
