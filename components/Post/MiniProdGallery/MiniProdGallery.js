@@ -11,7 +11,7 @@ export default function MiniProdGalleryComponent(props) {
             return (
               <div
                 key={product._key}
-                className="flex snap-start flex-col justify-between items-center shadow-lg max-w-sm"
+                className="flex snap-start flex-col justify-between items-center shadow-lg max-w-sm bg-gradient-to-l from-amber-50 to-white sm:bg-gradient-to-l sm:from-white sm:to-white"
               >
                 <div className="flex flex-col">
                   <span
@@ -20,7 +20,7 @@ export default function MiniProdGalleryComponent(props) {
                     {product.cardCaption}
                   </span>
                   <div className="grid grid-cols-5 grid-rows-1 ">
-                    <div className="col-span-2">
+                    <div className="col-span-2 flex flex-col justify-around">
                       <div
                         className=""
                         dangerouslySetInnerHTML={{
@@ -38,7 +38,7 @@ export default function MiniProdGalleryComponent(props) {
                       alt={product.alt}
                     /> */}
                     </div>
-                    <div className="px-1 col-span-3 flex justify-evenly align-middle items-center prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-2xl prose-headings:text-center prose-headings:text-gray-700 prose-headings:drop-shadow-md prose-headings:font-extralight">
+                    <div className="px-1 col-span-3 flex flex-col justify-evenly align-middle items-center prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-2xl prose-headings:text-center prose-headings:text-gray-700 prose-headings:drop-shadow-md prose-headings:font-extralight">
                       <Link href={product.affiliateLink} passHref>
                         <a
                           target={product.targetBlank && "_blank"}
@@ -69,11 +69,14 @@ export default function MiniProdGalleryComponent(props) {
                           )}
                         </a>
                       </Link>
+                      <p className="sm:hidden prose-sm px-3 my-3 grow justify-self-stretch font-medium">
+                        {product.miniProductDescription}
+                      </p>
                     </div>
                   </div>
                 </div>
-                <div className="flex grow snap-start flex-col justify-between items-center bg-gradient-to-t from-amber-100 to-white">
-                  <p className="prose-sm px-3 my-3 grow justify-self-stretch font-medium">
+                <div className="px-4 flex grow snap-start flex-col justify-between items-center sm:bg-gradient-to-t sm:from-amber-100 sm:to-white">
+                  <p className="hidden sm:block prose-sm px-3 my-3 grow justify-self-stretch font-medium">
                     {product.miniProductDescription}
                   </p>
                   <div className="pb-4">
@@ -84,8 +87,8 @@ export default function MiniProdGalleryComponent(props) {
                           product.noopener && "noopener"
                         } ${product.noreferrer && "noreferrer"}`}
                       >
-                        <button className="border whitespace-normal border-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-400 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
-                          Check all Features <br /> and Price on Amazon
+                        <button className="sm:mx-4 p-4 border whitespace-normal border-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-400 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
+                          Check all Features and Price on Amazon
                         </button>
                       </a>
                     </Link>
