@@ -78,7 +78,7 @@ export default function ProguctsGalleryComponent(props) {
             return (
               <div
                 key={product._key}
-                className="flex snap-start flex-col justify-between items-center shadow-lg max-w-sm"
+                className="flex snap-start flex-col justify-between items-center shadow-lg max-w-sm bg-gradient-to-b from-white to-amber-50"
               >
                 <div className="flex flex-col space-y-4">
                   <span
@@ -86,7 +86,7 @@ export default function ProguctsGalleryComponent(props) {
                   >
                     {product.cardCaption}
                   </span>
-                  <div className="relative w-64 h-72">
+                  <div className="relative w-64 h-72 self-center">
                     <div
                       dangerouslySetInnerHTML={{
                         __html: `${product.productWithFeaturesAmazonImage}`,

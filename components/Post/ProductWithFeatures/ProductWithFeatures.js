@@ -107,37 +107,39 @@ export default function ProductWithFeaturesComponent(props) {
           </div>
         </div>
 
-        <div className="">
+        <div className="bg-gradient-to-t from-amber-100 to-white">
           <div className="">
-            {props.node.productFeatures && (
-              <ul className="w-full px-1 grid grid-flow-row-dense grid-cols-1 prose prose-ul:p-1 prose-li:font-semibold prose-li:text-base prose-li:marker:text-yellow-600 prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-center prose-headings:text-gray-600 gap-2 text-gray-900">
-                {props.node.productFeatures.map((feature, i) => {
-                  return (
-                    <li
-                      className="list-inside m-0 marker:bg-yellow-600"
-                      key={i}
-                    >
-                      {feature}
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
+            <div className="">
+              {props.node.productFeatures && (
+                <ul className="w-full px-1 grid grid-flow-row-dense grid-cols-1 prose prose-ul:p-1 prose-li:font-semibold prose-li:text-base prose-li:marker:text-yellow-600 prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-center prose-headings:text-gray-600 gap-2 text-gray-900">
+                  {props.node.productFeatures.map((feature, i) => {
+                    return (
+                      <li
+                        className="list-inside m-0 marker:bg-yellow-600"
+                        key={i}
+                      >
+                        {feature}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
           </div>
-        </div>
-        <div className="bg-white py-3 flex justify-center">
-          <Link href={props.node.affiliateLink} passHref>
-            <a
-              target={props.node.targetBlank && "_blank"}
-              rel={`${props.node.nofollow && "nofollow"} ${
-                props.node.noopener && "noopener"
-              } ${props.node.noreferrer && "noreferrer"}`}
-            >
-              <button className="border border-gray-900 bg-yellow-300 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
-                {props.node.buttonText}
-              </button>
-            </a>
-          </Link>
+          <div className="py-3 flex justify-center">
+            <Link href={props.node.affiliateLink} passHref>
+              <a
+                target={props.node.targetBlank && "_blank"}
+                rel={`${props.node.nofollow && "nofollow"} ${
+                  props.node.noopener && "noopener"
+                } ${props.node.noreferrer && "noreferrer"}`}
+              >
+                <button className="border border-gray-900 bg-yellow-300 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
+                  {props.node.buttonText}
+                </button>
+              </a>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
