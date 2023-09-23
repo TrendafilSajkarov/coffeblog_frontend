@@ -9,6 +9,7 @@ import { getClient } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 import { urlFor } from "../lib/sanity";
 import { loadWebSiteSchema } from "../utils/schemaOrg";
+import { loadOrganisationSchema } from "../utils/schemaOrg";
 
 export default function Home({
   categories,
@@ -29,6 +30,10 @@ export default function Home({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={loadWebSiteSchema(title)}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={loadOrganisationSchema(title)}
         />
       </Head>
       <Navbar

@@ -8,8 +8,28 @@ export function loadWebSiteSchema(webSiteData) {
               "@context" : "https://schema.org",
               "@type" : "WebSite",
               "name" : "${webSiteData}",
-              "url" : "https://www.coffeenatedstories.com/"
+              "url" : "https://www.coffeenatedstories.com/",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://www.coffeenatedstories.com/api/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
             }
+    `,
+  };
+}
+
+export function loadOrganisationSchema(webSiteData) {
+  return {
+    __html: `
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "${webSiteData}",
+              "url": "https://www.coffeenatedstories.com/",
+              "logo": "https://cdn.sanity.io/images/7hvwvfev/production/297a44b30dcf560719975e4a37d1bde34ce10848-500x500.png",
+              "sameAs": "https://www.youtube.com/@coffeenatedstories"
+    }
     `,
   };
 }
