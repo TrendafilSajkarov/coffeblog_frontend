@@ -361,6 +361,12 @@ export async function getStaticProps(context) {
           ...,
           "productImageObject": @.productWithFeaturesImage.asset->
         },
+        _type == "amazonBanner" => {
+          ...,
+        },
+        _type == "textPlusImageGallery" => {
+          ...,
+        },
         images[]{
           ...,
           "asset": @.asset->
@@ -400,6 +406,12 @@ export async function getStaticProps(context) {
           ...,
           "productImageObject": @.productWithFeaturesImage.asset->
         },
+        _type == "amazonBanner" => {
+          ...,
+        },
+        _type == "textPlusImageGallery" => {
+          ...,
+        },
         images[]{
           ...,
           "asset": @.asset->
@@ -427,6 +439,12 @@ export async function getStaticProps(context) {
             },
             _type == "image" => {
               "metadata": @.asset->
+            },
+            _type == "amazonBanner" => {
+              ...,
+            },
+            _type == "textPlusImageGallery" => {
+              ...,
             },
             images[]{
               ...,

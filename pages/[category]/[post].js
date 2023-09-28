@@ -12,7 +12,6 @@ import { groq } from "next-sanity";
 import Image from "next/image";
 import Head from "next/head";
 import DefaultErrorPage from "next/error";
-import Script from "next/script";
 
 export default function PostPage({
   categories,
@@ -193,6 +192,9 @@ export async function getStaticProps(context) {
                 "productImageObject": @.productWithFeaturesImage.asset->
               },
               _type == "amazonBanner" => {
+                ...,
+              },
+              _type == "textPlusImageGallery" => {
                 ...,
               },
               images[]{
