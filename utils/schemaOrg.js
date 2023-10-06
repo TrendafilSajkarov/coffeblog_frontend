@@ -8,10 +8,14 @@ export function loadWebSiteSchema(webSiteData) {
               "@context" : "https://schema.org",
               "@type" : "WebSite",
               "name" : "${webSiteData}",
+              "alternateName" : "CS",
               "url" : "https://www.coffeenatedstories.com/",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://www.coffeenatedstories.com/api/search?q={search_term_string}",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://www.coffeenatedstories.com/api/search?q={search_term_string}"
+                },
                 "query-input": "required name=search_term_string"
               }
             }
