@@ -131,6 +131,7 @@ export default function PostPage({
                           className="font-semibold text-lg text-sky-900"
                           href="https://amzn.to/3Qbdsl6"
                           target="_blank"
+                          rel="noreferrer"
                         >
                           Amazon Prime
                         </a>
@@ -142,6 +143,7 @@ export default function PostPage({
                           className="font-bold text-xl text-sky-900 whitespace-nowrap"
                           href="https://amzn.to/46CPzZz"
                           target="_blank"
+                          rel="noreferrer"
                         >
                           Prime Day Deals
                         </a>
