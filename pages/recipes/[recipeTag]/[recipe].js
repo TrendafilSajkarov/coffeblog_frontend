@@ -134,7 +134,7 @@ export default function Recipe({
         </div>
         <section className="container grid grid-cols-2 auto-rows-auto w-11/12 lg:grid-cols-3 gap-4 xl:w-3/4 max-w-screen-xl mx-auto my-6">
           <article className="col-span-2 px-1 md:px-4 flex flex-col items-center">
-            <div className="prose w-full prose-th:text-base prose-th:font-medium prose-th:py-1 prose-img:mx-auto prose-figcaption:italic prose-figcaption:text-xs prose-figcaption:text-center prose-a:text-blue-600 font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-serif">
+            <div className="prose w-full prose-th:text-base prose-th:font-medium prose-th:py-1 prose-img:mx-auto prose-figcaption:italic prose-figcaption:text-xs prose-figcaption:text-center prose-a:text-blue-900 font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-serif">
               {singleRecipe[0].disclaimer && (
                 <div className="bg-yellow-600 max-w-xl mt-10 prose py-1 px-1 selection:bg-white selection:text-yellow-600">
                   <div className="border border-white border-dashed">
@@ -143,37 +143,39 @@ export default function Recipe({
                       member of the Amazon Associates Program, and as an Amazon
                       Associate, we earn from qualifying purchases.
                     </div>
-                  </div>
-                  <div className="bg-sky-500 border-2 text-center border-white my-2 mx-3 px-2 text-white shadow-sm shadow-white">
-                    <p>
-                      With that being said, enroll in{" "}
-                      <div>
-                        <a
-                          className="font-semibold text-lg text-sky-900"
-                          href="https://amzn.to/3Qbdsl6"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Amazon Prime
-                        </a>
-                      </div>{" "}
-                      and unlock incredible savings of up to{" "}
-                      <span className="text-xl font-semibold">40%</span> during{" "}
-                      <div>
-                        <a
-                          className="font-bold text-xl text-sky-900 whitespace-nowrap"
-                          href="https://amzn.to/46CPzZz"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Prime Day Deals
-                        </a>
-                      </div>
-                      <span className="font-semibold whitespace-nowrap">
-                        {" "}
-                        on October 10th and 11th
-                      </span>{" "}
-                    </p>
+
+                    <div className="bg-sky-500 border-2 text-center border-white my-2 mx-3 px-2 text-white shadow-sm shadow-white">
+                      <p className="font-medium">
+                        With that being said, enroll in{" "}
+                        <div className="text-gray-100">
+                          <a
+                            className="font-semibold text-lg"
+                            href="https://amzn.to/3Qbdsl6"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Amazon Prime
+                          </a>
+                        </div>{" "}
+                        and unlock incredible savings of up to{" "}
+                        <span className="text-xl font-semibold">40%</span>{" "}
+                        during{" "}
+                        <div>
+                          <a
+                            className="font-bold text-xl text-gray-900 whitespace-nowrap"
+                            href="https://amzn.to/46CPzZz"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Prime Day Deals
+                          </a>
+                        </div>
+                        <span className="font-semibold whitespace-nowrap">
+                          {" "}
+                          on October 10th and 11th
+                        </span>{" "}
+                      </p>
+                    </div>
                   </div>
                 </div>
               )}
