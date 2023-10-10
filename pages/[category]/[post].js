@@ -226,6 +226,9 @@ export async function getStaticProps(context) {
               _type == "textPlusImageGallery" => {
                 ...,
               },
+              _type == "adPlaceholder" => {
+                "adPlaceholder": @->
+              },
               images[]{
                 ...,
                 "asset": @.asset->
