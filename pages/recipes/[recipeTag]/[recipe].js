@@ -144,6 +144,37 @@ export default function Recipe({
                       Associate, we earn from qualifying purchases.
                     </div>
                   </div>
+                  <div className="bg-sky-500 border-2 text-center border-white my-2 mx-3 px-2 text-white shadow-sm shadow-white">
+                    <p>
+                      With that being said, enroll in{" "}
+                      <div>
+                        <a
+                          className="font-semibold text-lg text-sky-900"
+                          href="https://amzn.to/3Qbdsl6"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Amazon Prime
+                        </a>
+                      </div>{" "}
+                      and unlock incredible savings of up to{" "}
+                      <span className="text-xl font-semibold">40%</span> during{" "}
+                      <div>
+                        <a
+                          className="font-bold text-xl text-sky-900 whitespace-nowrap"
+                          href="https://amzn.to/46CPzZz"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Prime Day Deals
+                        </a>
+                      </div>
+                      <span className="font-semibold whitespace-nowrap">
+                        {" "}
+                        on October 10th and 11th
+                      </span>{" "}
+                    </p>
+                  </div>
                 </div>
               )}
               <PortableText
