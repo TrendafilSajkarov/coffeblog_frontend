@@ -144,7 +144,7 @@ export default function Recipe({
                       Associate, we earn from qualifying purchases.
                     </div>
 
-                    <div className="bg-sky-500 border-2 text-center border-white my-2 mx-3 px-2 text-white shadow-sm shadow-white">
+                    {/* <div className="bg-sky-500 border-2 text-center border-white my-2 mx-3 px-2 text-white shadow-sm shadow-white">
                       <p className="font-medium">
                         With that being said, enroll in{" "}
                         <div className="text-gray-100">
@@ -175,7 +175,7 @@ export default function Recipe({
                           on October 10th and 11th
                         </span>{" "}
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               )}

@@ -123,7 +123,7 @@ export default function PostPage({
                     member of the Amazon Associates Program, and as an Amazon
                     Associate, we earn from qualifying purchases.
                   </div>
-                  <div className="bg-sky-500 border-2 text-center border-white my-2 mx-3 px-2 text-white shadow-sm shadow-white">
+                  {/* <div className="bg-sky-500 border-2 text-center border-white my-2 mx-3 px-2 text-white shadow-sm shadow-white">
                     <p>
                       With that being said, enroll in{" "}
                       <div>
@@ -153,7 +153,7 @@ export default function PostPage({
                         on October 10th and 11th
                       </span>{" "}
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             )}
