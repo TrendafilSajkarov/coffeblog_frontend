@@ -100,14 +100,19 @@ export default function PostPage({
                 {singlePost[0].title}
               </h1>
               <div className="w-full flex justify-around">
-                <p className="text-xs text-gray-400">
-                  By {singlePost[0].author.name} |{" "}
-                  {singlePost[0].estimatedReadingTime} min read
+                <p className="text-xs flex flex-col sm:flex-row md:block text-gray-500 text-center">
+                  <span className="">By {singlePost[0].author.name} | </span>
+                  <span className="whitespace-nowrap sm:pl-1 md:pl-0">
+                    {singlePost[0].estimatedReadingTime} min read
+                  </span>
                 </p>
-                <p className="md:hidden text-xs text-gray-400">
-                  Updated On: {getDate(singlePost[0]._updatedAt)[1]}{" "}
-                  {getDate(singlePost[0]._updatedAt)[0]}{" "}
-                  {getDate(singlePost[0]._updatedAt)[2]}
+                <p className="flex flex-col sm:flex-row md:hidden text-xs text-gray-500">
+                  <span className="">Updated On: </span>
+                  <span className="whitespace-nowrap sm:pl-1">
+                    {getDate(singlePost[0]._updatedAt)[1]}{" "}
+                    {getDate(singlePost[0]._updatedAt)[0]}{" "}
+                    {getDate(singlePost[0]._updatedAt)[2]}
+                  </span>
                 </p>
               </div>
             </div>
