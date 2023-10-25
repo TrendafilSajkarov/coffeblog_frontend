@@ -4,7 +4,7 @@ import { urlFor } from "../../../lib/sanity";
 
 export default function MiniProdGalleryComponent(props) {
   return (
-    <div className="pb-6 px-2 flex justify-center">
+    <div className="pb-6 sm:px-2 flex justify-center">
       {props.node?.allMiniProducts.length === 1 ? (
         <div>
           <div className="grid grid-cols-1 auto-rows-auto gap-4 sm:grid-cols-1 sm:gap-2">
@@ -102,12 +102,12 @@ export default function MiniProdGalleryComponent(props) {
         </div>
       ) : (
         <div>
-          <div className="grid grid-cols-1 auto-rows-auto gap-4 sm:grid-cols-2 sm:gap-2">
+          <div className="grid grid-cols-1 auto-rows-auto gap-4 xs:grid-cols-2 xs:gap-2">
             {props.node.allMiniProducts.map((product, i) => {
               return (
                 <div
                   key={product._key}
-                  className="flex snap-start flex-col justify-between items-center shadow-lg max-w-sm bg-gradient-to-l from-amber-50 to-white sm:bg-gradient-to-l sm:from-white sm:to-white"
+                  className="flex snap-start flex-col justify-between items-center shadow-lg max-w-sm bg-gradient-to-b from-white to-amber-50 sm:bg-gradient-to-l sm:from-white sm:to-white"
                 >
                   <div className="flex flex-col">
                     <span
@@ -115,8 +115,8 @@ export default function MiniProdGalleryComponent(props) {
                     >
                       {product.cardCaption}
                     </span>
-                    <div className="grid grid-cols-5 grid-rows-1 ">
-                      <div className="col-span-2 flex flex-col justify-around">
+                    <div className="grid grid-cols-5 grid-rows-1 row-auto">
+                      <div className="col-span-5 sm:col-span-2 flex flex-col justify-around">
                         <div
                           className=""
                           dangerouslySetInnerHTML={{
@@ -134,7 +134,7 @@ export default function MiniProdGalleryComponent(props) {
                       alt={product.alt}
                     /> */}
                       </div>
-                      <div className="px-1 col-span-3 flex flex-col justify-evenly align-middle items-center prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-2xl prose-headings:text-center prose-headings:text-gray-700 prose-headings:drop-shadow-md prose-headings:font-extralight">
+                      <div className="px-1 col-span-5 sm:col-span-3 flex flex-col justify-evenly align-middle items-center prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-2xl prose-headings:text-center prose-headings:text-gray-700 prose-headings:drop-shadow-md prose-headings:font-extralight">
                         <Link href={product.affiliateLink} passHref>
                           <a
                             target={product.targetBlank && "_blank"}
@@ -171,7 +171,7 @@ export default function MiniProdGalleryComponent(props) {
                       </div>
                     </div>
                   </div>
-                  <div className="px-4 flex grow snap-start flex-col justify-between items-center sm:bg-gradient-to-t sm:from-amber-100 sm:to-white">
+                  <div className="px-4 flex grow snap-start flex-col justify-end items-center sm:bg-gradient-to-t sm:from-amber-100 sm:to-white">
                     <p className="hidden sm:block prose-sm px-3 my-3 grow justify-self-stretch font-medium">
                       {product.miniProductDescription}
                     </p>
