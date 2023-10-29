@@ -11,7 +11,7 @@ export default function ImageComponent(props) {
 
   return (
     // <pre>{JSON.stringify(props.node, null, 2)}</pre>
-    <figure className="flex flex-col items-center justify-center">
+    <figure className="flex flex-col items-center justify-center bg-gradient-to-b from-white to-slate-50 shadow-md p-1 pb-2">
       <Image
         src={urlFor(props.node.asset)
           .width(
@@ -29,17 +29,22 @@ export default function ImageComponent(props) {
         height={imageProps.height}
         objectFit="contain"
         layout="intrinsic"
-        alt={props.node.altText}
+        alt={props.node.altText || ""}
       />
+      {props.node.caption && (
+        <figcaption className="text-black font-medium">
+          {props.node.caption}
+        </figcaption>
+      )}
       {props.node.attribution && (
-        <figcaption className="text-slate-400">
+        <figcaption className="text-slate-500">
           {props.node.attribution}
         </figcaption>
       )}
       {props.node.attribution
         ? null
         : props.node.metadata?.creditLine && (
-            <figcaption className="text-slate-400">
+            <figcaption className="text-slate-500">
               {`${props.node.metadata?.creditLine}${
                 props.node.metadata?.source?.name === "unsplash"
                   ? "  -  " + props.node.metadata?.source.url
@@ -47,9 +52,6 @@ export default function ImageComponent(props) {
               }`}
             </figcaption>
           )}
-      {props.node.caption && (
-        <figcaption className="text-black">{props.node.caption}</figcaption>
-      )}
     </figure>
   );
 }

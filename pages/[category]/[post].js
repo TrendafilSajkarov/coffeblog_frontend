@@ -236,12 +236,16 @@ export async function getStaticProps(context) {
               _type == "adPlaceholder" => {
                 "adPlaceholder": @->
               },
+              _type == "richParagraph" => {
+                ...,
+                "paragraphImageMeta": @.paragraphImage.asset->
+              },
               images[]{
                 ...,
                 "asset": @.asset->
               }
             },
-            "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+            "estimatedReadingTime": round(length(pt::text(body)) / 5 / 250 ),
             "mainImageUrl": mainImage.asset->url,
             "author": author->{name},
             "categories": categories[0]->{title, "slug": slug.current}

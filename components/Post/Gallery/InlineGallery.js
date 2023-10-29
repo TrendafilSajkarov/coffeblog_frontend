@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function InlineGallery({ imgArr }) {
   return (
-    <figure className="w-full flex flex-col">
-      <div className="w-full flex justify-around">
+    <figure className="w-full flex flex-col bg-gradient-to-b from-white to-slate-50 shadow-md p-1 pb-2">
+      <div className="w-full flex justify-between">
         {imgArr.map((img, i) => {
           return (
             <div key={img._key} className="relative px-1">
@@ -22,7 +22,7 @@ export default function InlineGallery({ imgArr }) {
                 alt={img.alt}
               />
               {img.caption && (
-                <figcaption key={i} className="text-black">
+                <figcaption key={i} className="text-black font-medium">
                   {img.caption}
                 </figcaption>
               )}
@@ -34,7 +34,7 @@ export default function InlineGallery({ imgArr }) {
         {imgArr.map((img, i) => {
           if (img.attribution) {
             return (
-              <figcaption key={i} className="text-slate-400 overflow-x-clip">
+              <figcaption key={i} className="text-slate-500 overflow-x-clip">
                 {img.attribution}
               </figcaption>
             );
@@ -42,7 +42,7 @@ export default function InlineGallery({ imgArr }) {
             return (
               <figcaption
                 key={img.asset._id}
-                className="text-slate-400 overflow-x-clip"
+                className="text-slate-500 overflow-x-clip"
               >{`${img.asset?.creditLine}${
                 img.asset?.source?.name === "unsplash"
                   ? "  -  " + img.asset?.source.url

@@ -5,7 +5,7 @@ export default function GridGallery({ imgArr }) {
   const img = imgArr.length;
   const rows = Math.ceil(img / 2);
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col bg-gradient-to-b from-white to-slate-50 shadow-md p-1 pb-2">
       <figure className={`w-full grid gap-y-3 grid-cols-2 grid-rows-${rows}`}>
         {imgArr.map((img) => {
           return (
@@ -27,7 +27,9 @@ export default function GridGallery({ imgArr }) {
                 alt={img.alt}
               />
               {img.caption && (
-                <figcaption className="text-black">{img.caption}</figcaption>
+                <figcaption className="text-black font-medium pb-2">
+                  {img.caption}
+                </figcaption>
               )}
             </div>
           );
@@ -37,13 +39,13 @@ export default function GridGallery({ imgArr }) {
         {imgArr.map((img) => {
           if (img.attribution) {
             return (
-              <figcaption key={img._id} className="text-slate-400">
+              <figcaption key={img._id} className="text-slate-500">
                 {img.attribution}
               </figcaption>
             );
           } else if (img.asset?.creditLine) {
             return (
-              <figcaption key={img.asset._id} className="text-slate-400">{`${
+              <figcaption key={img.asset._id} className="text-slate-500">{`${
                 img.asset?.creditLine
               }${
                 img.asset?.source?.name === "unsplash"
