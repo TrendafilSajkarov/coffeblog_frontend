@@ -89,7 +89,7 @@ export default function MiniProdGalleryComponent(props) {
                           } ${product.noreferrer && "noreferrer"}`}
                         >
                           <button className="sm:mx-4 p-4 border whitespace-normal border-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-400 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
-                            Check all Features and Price on Amazon
+                            Check Price on Amazon
                           </button>
                         </a>
                       </Link>
