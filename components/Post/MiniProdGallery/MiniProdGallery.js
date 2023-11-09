@@ -40,7 +40,7 @@ export default function MiniProdGalleryComponent(props) {
                   /> */}
                       </div>
                       <div className="px-1 col-span-3 flex flex-col justify-evenly align-middle items-center prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-2xl prose-headings:text-center prose-headings:text-gray-700 prose-headings:drop-shadow-md prose-headings:font-extralight">
-                        <Link href={product.affiliateLink} passHref>
+                        <Link href={`${product.affiliateLink}`} passHref>
                           <a
                             target={product.targetBlank && "_blank"}
                             rel={`${product.nofollow && "nofollow"} ${
@@ -81,7 +81,7 @@ export default function MiniProdGalleryComponent(props) {
                       {product.miniProductDescription}
                     </p>
                     <div className="pb-4">
-                      <Link href={product.affiliateLink} passHref>
+                      <Link href={`${product.affiliateLink}`} passHref>
                         <a
                           target={product.targetBlank && "_blank"}
                           rel={`${product.nofollow && "nofollow"} ${
@@ -135,7 +135,7 @@ export default function MiniProdGalleryComponent(props) {
                     /> */}
                       </div>
                       <div className="px-1 col-span-5 sm:col-span-3 flex flex-col justify-evenly align-middle items-center prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-2xl prose-headings:text-center prose-headings:text-gray-700 prose-headings:drop-shadow-md prose-headings:font-extralight">
-                        <Link href={product.affiliateLink} passHref>
+                        <Link href={`${product.affiliateLink}`} passHref>
                           <a
                             target={product.targetBlank && "_blank"}
                             rel={`${product.nofollow && "nofollow"} ${
@@ -176,7 +176,7 @@ export default function MiniProdGalleryComponent(props) {
                       {product.miniProductDescription}
                     </p>
                     <div className="pb-4">
-                      <Link href={product.affiliateLink} passHref>
+                      <Link href={`${product.affiliateLink}`} passHref>
                         <a
                           target={product.targetBlank && "_blank"}
                           rel={`${product.nofollow && "nofollow"} ${
