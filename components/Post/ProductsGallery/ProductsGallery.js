@@ -86,12 +86,27 @@ export default function ProguctsGalleryComponent(props) {
                   >
                     {product.cardCaption}
                   </span>
-                  <div className="relative w-64 h-72 self-center">
-                    <div
+                  <div className="w-64 h-56 self-center">
+                    {/* <div
                       dangerouslySetInnerHTML={{
                         __html: `${product.productWithFeaturesAmazonImage}`,
                       }}
-                    />
+                    /> */}
+                    <Link href={product.affiliateLink} passHref>
+                      <a
+                        className=""
+                        target={product.targetBlank && "_blank"}
+                        rel={`${product.nofollow ? "nofollow" : ""} ${
+                          product.noopener ? "noopener" : ""
+                        } ${product.noreferrer ? "noreferrer" : ""}`}
+                      >
+                        <img
+                          className="h-full object-top"
+                          src={product.imageLink}
+                          alt={product.productName}
+                        ></img>
+                      </a>
+                    </Link>
                     {/* <Image
                       src={urlFor(product.asset.url)
                         .width(250)
@@ -103,7 +118,7 @@ export default function ProguctsGalleryComponent(props) {
                       alt={product.alt}
                     /> */}
                   </div>
-                  <div className="prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-center prose-headings:text-gray-600 prose-headings:drop-shadow-md prose-headings:font-extralight">
+                  <div className="prose-sm pt-3 prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-center prose-headings:text-gray-600 prose-headings:drop-shadow-md prose-headings:font-extralight">
                     <Link href={product.affiliateLink} passHref>
                       <a
                         target={product.targetBlank && "_blank"}

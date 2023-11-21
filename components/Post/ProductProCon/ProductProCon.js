@@ -84,11 +84,24 @@ export default function ProductProConComponent(props) {
             <p className="text-justify">{props.node.productDescription}</p>
           </div>
           <div className="relative sm:col-span-2">
-            <div
+            {/* <div
               dangerouslySetInnerHTML={{
                 __html: `${props.node.productWithFeaturesAmazonImage}`,
               }}
-            />
+            /> */}
+            <Link href={props.node.affiliateLink} passHref>
+              <a
+                target={props.node.targetBlank && "_blank"}
+                rel={`${props.node.nofollow ? "nofollow" : ""} ${
+                  props.node.noopener ? "noopener" : ""
+                } ${props.node.noreferrer ? "noreferrer" : ""}`}
+              >
+                <img
+                  src={props.node.imageLink}
+                  alt={props.node.productName || ""}
+                ></img>
+              </a>
+            </Link>
             {/* <Image
               src={urlFor(props.node.productImageObject.url)
                 .width(350)

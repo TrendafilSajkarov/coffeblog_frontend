@@ -86,12 +86,25 @@ export default function ProductWithFeaturesComponent(props) {
             </p>
           </div>
           <div className="relative sm:col-span-2 flex flex-col justify-center content-center">
-            <div
+            {/* <div
               className=""
               dangerouslySetInnerHTML={{
                 __html: `${props.node.productWithFeaturesAmazonImage}`,
               }}
-            />
+            /> */}
+            <Link href={props.node.affiliateLink} passHref>
+              <a
+                target={props.node.targetBlank && "_blank"}
+                rel={`${props.node.nofollow ? "nofollow" : ""} ${
+                  props.node.noopener ? "noopener" : ""
+                } ${props.node.noreferrer ? "noreferrer" : ""}`}
+              >
+                <img
+                  src={props.node.imageLink}
+                  alt={props.node.productWithFeaturesName || ""}
+                ></img>
+              </a>
+            </Link>
             {/* <Image
               src={urlFor(props.node.productImageObject.url)
                 .width(350)

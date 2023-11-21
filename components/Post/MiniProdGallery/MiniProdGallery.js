@@ -22,22 +22,31 @@ export default function MiniProdGalleryComponent(props) {
                     </span>
                     <div className="grid grid-cols-5 grid-rows-1 ">
                       <div className="col-span-2 flex flex-col justify-around">
-                        <div
+                        {/* <div
                           className=""
                           dangerouslySetInnerHTML={{
                             __html: `${product.miniProductAmazonImage}`,
                           }}
-                        />
+                        /> */}
+                        <Link href={product.affiliateLink || "/"} passHref>
+                          <a
+                            target={product.targetBlank && "_blank"}
+                            rel={`${product.nofollow ? "nofollow" : ""} ${
+                              product.noopener ? "noopener" : ""
+                            } ${product.noreferrer ? "noreferrer" : ""}`}
+                          >
+                            <img
+                              src={product.imageLink}
+                              alt={product.miniProductName}
+                            ></img>
+                          </a>
+                        </Link>
                         {/* <Image
-                    src={urlFor(product.asset.url)
-                      .width(250)
-                      .quality(100)
-                      .auto("format")
-                      .url()}
-                    objectFit="contain"
-                    layout="fill"
-                    alt={product.alt}
-                  /> */}
+                          src={`${product.imageLink || "#"}`}
+                          objectFit="contain"
+                          layout="fill"
+                          alt={product.miniProductName}
+                        /> */}
                       </div>
                       <div className="px-1 col-span-3 flex flex-col justify-evenly align-middle items-center prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-2xl prose-headings:text-center prose-headings:text-gray-700 prose-headings:drop-shadow-md prose-headings:font-extralight">
                         <Link href={`${product.affiliateLink}`} passHref>
@@ -81,15 +90,15 @@ export default function MiniProdGalleryComponent(props) {
                       {product.miniProductDescription}
                     </p>
                     <div className="pb-4">
-                      <Link href={`${product.affiliateLink}`} passHref>
+                      <Link href={product.affiliateLink || "/"} passHref>
                         <a
                           target={product.targetBlank && "_blank"}
-                          rel={`${product.nofollow && "nofollow"} ${
-                            product.noopener && "noopener"
-                          } ${product.noreferrer && "noreferrer"}`}
+                          rel={`${product.nofollow ? "nofollow" : ""} ${
+                            product.noopener ? "noopener" : ""
+                          } ${product.noreferrer ? "noreferrer" : ""}`}
                         >
                           <button className="sm:mx-4 p-4 border whitespace-normal border-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-400 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
-                            Check Price on Amazon
+                            {product.buttonText || "Check Price on Amazon"}
                           </button>
                         </a>
                       </Link>
@@ -116,23 +125,32 @@ export default function MiniProdGalleryComponent(props) {
                       {product.cardCaption}
                     </span>
                     <div className="grid grid-cols-5 grid-rows-1 row-auto">
-                      <div className="col-span-5 sm:col-span-2 flex flex-col justify-around">
-                        <div
+                      <div className="relative col-span-5 sm:col-span-2 flex flex-col justify-around">
+                        {/* <div
                           className=""
                           dangerouslySetInnerHTML={{
                             __html: `${product.miniProductAmazonImage}`,
                           }}
-                        />
+                        /> */}
+                        <Link href={product.affiliateLink} passHref>
+                          <a
+                            target={product.targetBlank && "_blank"}
+                            rel={`${product.nofollow ? "nofollow" : ""} ${
+                              product.noopener ? "noopener" : ""
+                            } ${product.noreferrer ? "noreferrer" : ""}`}
+                          >
+                            <img
+                              src={product.imageLink}
+                              alt={product.miniProductName}
+                            ></img>
+                          </a>
+                        </Link>
                         {/* <Image
-                      src={urlFor(product.asset.url)
-                        .width(250)
-                        .quality(100)
-                        .auto("format")
-                        .url()}
-                      objectFit="contain"
-                      layout="fill"
-                      alt={product.alt}
-                    /> */}
+                          src={product.imageLink}
+                          width={500}
+                          height={500}
+                          alt={product.miniProductName}
+                        /> */}
                       </div>
                       <div className="px-1 col-span-5 sm:col-span-3 flex flex-col justify-evenly align-middle items-center prose-sm prose-ul:px-1 prose-li:font-medium prose-li:marker:text-yellow-600 prose-li:marker:text-lg prose-p:text-gray-800 prose-p:font-medium prose-p:text-sm prose-a:no-underline prose-a:hover:underline prose-a:text-slate-800 prose-headings:text-2xl prose-headings:text-center prose-headings:text-gray-700 prose-headings:drop-shadow-md prose-headings:font-extralight">
                         <Link href={`${product.affiliateLink}`} passHref>
