@@ -32,7 +32,13 @@ export function loadOrganisationSchema(webSiteData) {
               "name": "${webSiteData}",
               "url": "https://www.coffeenatedstories.com/",
               "logo": "https://cdn.sanity.io/images/7hvwvfev/production/297a44b30dcf560719975e4a37d1bde34ce10848-500x500.png",
-              "sameAs": "https://www.youtube.com/@coffeenatedstories"
+              "sameAs": ["https://www.youtube.com/@coffeenatedstories"],
+              "foundingDate": "20220421T000000-0400",
+              "description": "Coffeenated Stories is a little piece of the web where we publish our coffee-stained sheets of writings about everything that is coffee-related. Such as the coffee industry and history, the coffee preparation and brewing methods, and even the coffee plant itself. We also offer honest reviews about the equipment and tools to brew our favorite beverage. Here you can read about the latest and greatest coffee gear, coffee makers, grinders, etc. Discover many recipes and guides for making coffee and many other coffee drinks. Read through our pages to find out how the rest of the world prepares and enjoys their cup of coffee. Stay Coffeenated - Cheers.",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "coffeenatedstories@gmail.com"
+              }
     }
     `,
   };
