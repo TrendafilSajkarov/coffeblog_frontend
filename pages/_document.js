@@ -17,6 +17,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           href="https://fonts.googleapis.com/css2?family=Inter&display=optional"
           rel="stylesheet"
         />
+        <meta
+          name="p:domain_verify"
+          content="9bced3b580407c25245c4625bbdc3652"
+        />
       </Head>
       <body className="selection:bg-yellow-600 selection:text-white">
         <noscript
