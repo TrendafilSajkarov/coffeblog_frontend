@@ -14,6 +14,7 @@ export default function Page({
   categories,
   logo,
   title,
+  description,
   aboutUs,
   footer,
   pages,
@@ -42,6 +43,7 @@ export default function Page({
       <Head>
         <title>{title}</title>
         <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
+        <meta name="description" content={description || ""} />
       </Head>
       <Navbar
         categories={categories}
@@ -75,7 +77,7 @@ export async function getStaticProps(context) {
         ...,
           "body": [],
           "slug": slug.current,
-          "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+          "estimatedReadingTime": round(length(pt::text(body)) / 5 / 250 ),
           "categories": categories[0]->{
             _id,
             title,
@@ -133,12 +135,14 @@ export async function getStaticProps(context) {
   const layoutQuery = groq`
   *[_type == "layout"]{
     logo,
-    title
+    title,
+    description
   }
 `;
   const data1 = await getClient().fetch(layoutQuery);
   const logo = data1[0].logo;
   const title = data1[0].title;
+  const description = data1[0].description;
 
   //================ FOOTER Query ==========================
   const footerQuery = groq`
@@ -193,6 +197,7 @@ export async function getStaticProps(context) {
       categories,
       logo,
       title,
+      description,
       footer,
       currentPage,
       pages,
