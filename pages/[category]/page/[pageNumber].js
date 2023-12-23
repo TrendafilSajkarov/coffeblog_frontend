@@ -47,7 +47,10 @@ export default function CategoryPageWithNumber({
         <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         <meta
           name="description"
-          content={currentCategory[0].description || ""}
+          content={
+            currentCategory[0].description ||
+            "Coffeenated Stories Post's Category"
+          }
         />
       </Head>
       <Navbar
