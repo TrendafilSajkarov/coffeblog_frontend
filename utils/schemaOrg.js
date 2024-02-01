@@ -1,6 +1,27 @@
 import { urlFor } from "../lib/sanity";
 import { MinutesToDuration } from "../utils/utils";
 
+export function loadHomePageNumberBreadcrumbSchema(currentPage, title) {
+  return {
+    __html: `
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home Page",
+        "item": "https://www.coffeenatedstories.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Page ${currentPage} | ${title}"
+      }]
+    }
+    `,
+  };
+}
+
 export function loadHomePageBreadcrumbSchema() {
   return {
     __html: `

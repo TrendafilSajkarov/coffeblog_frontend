@@ -5,6 +5,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Site from "../../components/Site/Site";
 
+import { loadHomePageNumberBreadcrumbSchema } from "../../utils/schemaOrg";
+
 import { getClient } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
 import { urlFor } from "../../lib/sanity";
@@ -46,6 +48,13 @@ export default function Page({
         </title>
         <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         <meta name="description" content={description || ""} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={loadHomePageNumberBreadcrumbSchema(
+            currentPage,
+            title
+          )}
+        />
       </Head>
       <Navbar
         categories={categories}
