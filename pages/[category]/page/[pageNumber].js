@@ -43,7 +43,9 @@ export default function CategoryPageWithNumber({
   return (
     <div>
       <Head>
-        <title>{currentCategory[0].title}</title>
+        <title>
+          {currentCategory[0].title} - Page {currentPage} | Coffeenated Stories
+        </title>
         <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         <meta
           name="description"

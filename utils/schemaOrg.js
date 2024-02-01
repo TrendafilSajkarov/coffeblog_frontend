@@ -1,6 +1,24 @@
 import { urlFor } from "../lib/sanity";
 import { MinutesToDuration } from "../utils/utils";
 
+export function loadHomePageBreadcrumbSchema() {
+  return {
+    __html: `
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [{
+                {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home Page"
+                }
+              }]
+            }
+    `,
+  };
+}
+
 export function loadWebSiteSchema(webSiteData) {
   return {
     __html: `

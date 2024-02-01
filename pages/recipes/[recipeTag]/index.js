@@ -39,7 +39,9 @@ export default function Recipes({
   return (
     <div>
       <Head>
-        <title>Recipes | {title}</title>
+        <title>
+          {currentTagTitle} | {title}
+        </title>
         <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         <script
           type="application/ld+json"

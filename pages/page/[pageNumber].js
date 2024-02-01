@@ -41,7 +41,9 @@ export default function Page({
   return (
     <div>
       <Head>
-        <title>{title}</title>
+        <title>
+          Page {currentPage} | {title}
+        </title>
         <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         <meta name="description" content={description || ""} />
       </Head>

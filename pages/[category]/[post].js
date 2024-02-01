@@ -11,6 +11,7 @@ import { groq } from "next-sanity";
 
 import Image from "next/image";
 import Head from "next/head";
+import Link from "next/link";
 import DefaultErrorPage from "next/error";
 
 export default function PostPage({
@@ -93,8 +94,20 @@ export default function PostPage({
               </div>
             </div>
             <div className="flex flex-1 flex-col items-center py-3 font-serif text-4xl">
-              <div className="uppercase text-yellow-600 text-base flex-grow-0">
-                {singlePost[0].categories.title}
+              <div className="flex flex-wrap items-center text-sm uppercase pb-2 text-yellow-600 flex-grow-0">
+                <Link href="/">
+                  <a className="uppercase hover:underline px-1 hover:bg-yellow-600 hover:text-white text-slate-600">
+                    HOME
+                  </a>
+                </Link>
+                <span className="px-1 text-xl text-slate-500 font-semibold">
+                  {">"}
+                </span>
+                <Link href={`/${singlePost[0].categories.slug}`}>
+                  <a className="uppercase whitespace-nowrap hover:underline px-1 bg-yellow-600 text-white hover:text-white">
+                    {singlePost[0].categories.title}
+                  </a>
+                </Link>
               </div>
               <h1 className="font-light px-1 text-center">
                 {singlePost[0].title}

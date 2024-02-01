@@ -21,9 +21,34 @@ export default function MainContent({
 
   return (
     <main className="col-span-2 grid grid-cols-1 auto-rows-auto h-fit">
-      <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3 px-1 ">
-        Latest Posts
-      </h4>
+      {currentPage === 0 ? (
+        <div className="flex flex-wrap justify-between items-baseline px-1 mb-2">
+          <h1 className="uppercase font-serif text-yellow-600 text-xs mb-3 px-1 ">
+            Home Page
+          </h1>
+          <h4 className="uppercase font-serif text-yellow-600 text-xs mb-3 px-1 ">
+            Latest Posts
+          </h4>
+        </div>
+      ) : (
+        <div className="flex flex-wrap justify-between items-baseline px-1 mb-2">
+          <div className="flex flex-wrap items-baseline">
+            <Link href="/">
+              <a className="uppercase text-xs font-serif hover:underline hover:text-yellow-600 text-slate-600">
+                HOME
+              </a>
+            </Link>
+            <span className="text-slate-500 font-semibold px-1">{">"}</span>
+            <h1 className="uppercase font-serif text-yellow-600 text-xs">
+              Page{" "}
+              <span className="text-base font-semibold">{`${currentPage}`}</span>
+            </h1>
+          </div>
+          <h4 className="uppercase font-serif text-yellow-600 text-xs">
+            Latest Posts
+          </h4>
+        </div>
+      )}
       {latestPost && (
         <article className="prose-sm px-1 group text-center row-span-1 h-screen max-h-1000 min-h-600 flex flex-col items-center">
           <div className="relative w-full h-2/3 shadow-md">

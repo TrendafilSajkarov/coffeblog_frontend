@@ -14,6 +14,7 @@ export default function GridGallery({ imgArr }) {
               className="px-1 flex flex-col justify-items-center"
             >
               <Image
+                unoptimized
                 src={urlFor(img.asset.url)
                   .width(250)
                   .height(250)

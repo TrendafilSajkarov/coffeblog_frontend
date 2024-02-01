@@ -9,6 +9,7 @@ export default function InlineGallery({ imgArr }) {
           return (
             <div key={img._key} className="relative px-1">
               <Image
+                unoptimized
                 src={urlFor(img.asset.url)
                   .width(250)
                   .height(250)

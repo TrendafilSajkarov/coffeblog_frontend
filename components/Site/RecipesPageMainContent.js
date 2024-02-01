@@ -15,10 +15,51 @@ export default function RecipesPageMainContent({
 }) {
   return (
     <main className="col-span-3 flex flex-col px-1">
-      <h4 className="uppercase font-serif text-white px-3 text-xs bg-yellow-600 flex justify-between">
-        <span>{currentTagTitle ? `${currentTagTitle}` : "All"} Recipes</span>
-        <span>{currentPage == 0 ? "Home Page" : `Page ${currentPage}`}</span>
-      </h4>
+      <div className="uppercase font-serif text-white px-3 text-xs bg-yellow-600 flex flex-wrap justify-between items-baseline">
+        <div className="flex flex-wrap items-baseline">
+          <Link href="/">
+            <a className="uppercase text-xs font-serif hover:underline text-white pr-1">
+              HOME
+            </a>
+          </Link>
+          <span className="text-white font-semibold px-1">{">"}</span>
+          {currentTagTitle ? (
+            <div className="flex flex-wrap items-baseline">
+              <Link href="/recipes">
+                <a className="uppercase px-1 text-xs font-serif hover:underline text-white">
+                  Recipes
+                </a>
+              </Link>
+              <span className="text-white font-semibold px-1">{">"}</span>
+              <h1 className="whitespace-nowrap uppercase px-1 text-xs font-serif text-yellow-600 bg-white">
+                {currentTagTitle}
+              </h1>
+            </div>
+          ) : currentPage === 0 ? (
+            <div className="flex flex-wrap items-baseline">
+              <h1 className="uppercase px-1 text-xs font-serif text-yellow-600 bg-white">
+                Recipes
+              </h1>
+            </div>
+          ) : (
+            <div className="flex flex-wrap items-baseline">
+              <Link href="/recipes">
+                <a className="uppercase px-1 text-xs font-serif hover:underline text-white">
+                  Recipes
+                </a>
+              </Link>
+              <span className="text-white font-semibold px-1">{">"}</span>
+              <h1 className="whitespace-nowrap uppercase px-1 text-xs font-serif text-yellow-600 bg-white">
+                {`Page `}
+                <span className="font-bold font-sans">{currentPage}</span>
+              </h1>
+            </div>
+          )}
+        </div>
+        <h4 className="whitespace-nowrap uppercase font-serif text-white text-xs bg-yellow-600">
+          Latest Recipes
+        </h4>
+      </div>
 
       <section className="">
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-2 gap-y-4 place-items-center mt-4">

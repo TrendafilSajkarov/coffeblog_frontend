@@ -7,6 +7,7 @@ import RecipesPageMainContent from "../../../components/Site/RecipesPageMainCont
 
 import Head from "next/head";
 import DefaultErrorPage from "next/error";
+import Link from "next/link";
 import Image from "next/image";
 
 import { urlFor, PortableText } from "../../../lib/sanity";
@@ -116,8 +117,24 @@ export default function Recipe({
               </div>
             </div>
             <div className="flex flex-1 flex-col items-center py-3 font-serif text-center text-4xl">
-              <div className="uppercase text-yellow-600 text-base flex-grow-0">
-                {singleRecipe[0].categories.title}
+              <div className="flex flex-wrap items-center justify-center text-sm uppercase text-yellow-600 flex-grow-0">
+                <Link href="/">
+                  <a className="uppercase whitespace-nowrap hover:underline px-1 hover:bg-yellow-600 hover:text-white text-slate-600">
+                    HOME
+                  </a>
+                </Link>
+                <span className="px-1 text-slate-500 font-semibold">{">"}</span>
+                <Link href={`/recipes`}>
+                  <a className="uppercase whitespace-nowrap hover:underline px-1 hover:bg-yellow-600 hover:text-white text-slate-600">
+                    Recipes
+                  </a>
+                </Link>
+                <span className="px-1 text-slate-500 font-semibold">{">"}</span>
+                <Link href={`/recipes/${singleRecipe[0].categories.slug}`}>
+                  <a className="uppercase whitespace-nowrap hover:underline px-1 bg-yellow-600 text-white hover:text-white">
+                    {singleRecipe[0].categories.title}
+                  </a>
+                </Link>
               </div>
               <h1 className="font-light px-1">{singleRecipe[0].title}</h1>
               <p className="text-xs text-gray-400">

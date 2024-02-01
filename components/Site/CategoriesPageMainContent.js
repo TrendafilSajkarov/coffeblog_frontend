@@ -14,9 +14,43 @@ export default function CategoriesPageMainContent({
 }) {
   return (
     <main className="col-span-2 flex flex-col px-1">
-      <h4 className="uppercase font-serif text-yellow-600 text-xs">
-        Latest Posts from {currentCategory[0].title}
-      </h4>
+      <div className="flex justify-between flex-wrap items-baseline">
+        {currentPage === 0 ? (
+          <div className="flex flex-wrap items-baseline ">
+            <Link href="/">
+              <a className="uppercase text-xs font-serif hover:underline hover:text-yellow-600 text-slate-600">
+                HOME
+              </a>
+            </Link>
+            <span className="text-slate-500 font-semibold px-1">{">"}</span>
+            <h1 className="uppercase font-serif text-yellow-600 text-xs">
+              {currentCategory[0].title}
+            </h1>
+          </div>
+        ) : (
+          <div className="flex flex-wrap items-baseline">
+            <Link href="/">
+              <a className="uppercase text-xs font-serif hover:underline hover:text-yellow-600 text-slate-600">
+                HOME
+              </a>
+            </Link>
+            <span className="text-slate-500 font-semibold px-1">{">"}</span>
+            <Link href={`/${currentCategory[0].title}`}>
+              <a className="uppercase text-xs font-serif hover:underline hover:text-yellow-600 text-slate-600">
+                {currentCategory[0].title}
+              </a>
+            </Link>
+            <span className="text-slate-500 font-semibold px-1">{">"}</span>
+            <h1 className="uppercase font-serif text-yellow-600 text-xs">
+              {`Page `}
+              <span className="text-base font-semibold">{currentPage}</span>
+            </h1>
+          </div>
+        )}
+        <h4 className="uppercase font-serif text-yellow-600 text-xs">
+          Latest Posts
+        </h4>
+      </div>
 
       <section className="flex flex-col">
         <ul className="space-y-6 mt-4">
