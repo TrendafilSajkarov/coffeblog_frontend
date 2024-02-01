@@ -6,6 +6,8 @@ import Footer from "../../../components/Footer/Footer";
 import AsideContent from "../../../components/Site/AsideContent";
 import CategoriesPageMainContent from "../../../components/Site/CategoriesPageMainContent";
 
+import { loadCategoryNumberBreadcrumbSchema } from "../../../utils/schemaOrg";
+
 import { getClient } from "../../../lib/sanity.server";
 import { groq } from "next-sanity";
 import { urlFor } from "../../../lib/sanity";
@@ -53,6 +55,14 @@ export default function CategoryPageWithNumber({
             currentCategory[0].description ||
             "Coffeenated Stories Post's Category"
           }
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={loadCategoryNumberBreadcrumbSchema(
+            currentCategory[0].title,
+            currentCategory[0].slug,
+            currentPage
+          )}
         />
       </Head>
       <Navbar

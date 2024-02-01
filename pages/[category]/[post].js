@@ -5,6 +5,8 @@ import AsideContent from "../../components/Site/AsideContent";
 import { getDate } from "../../utils/utils";
 import { serializers } from "../../lib/serializers";
 
+import { loadPostBreadcrumbSchema } from "../../utils/schemaOrg";
+
 import { PortableText, urlFor } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
@@ -58,6 +60,14 @@ export default function PostPage({
           content={urlFor(singlePost[0].mainImage.asset).width(800).url()}
         />
         <meta property="og:type" content="website" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={loadPostBreadcrumbSchema(
+            singlePost[0].categories.title,
+            singlePost[0].categories.slug,
+            singlePost[0].title
+          )}
+        />
       </Head>
       <Navbar
         categories={categories}

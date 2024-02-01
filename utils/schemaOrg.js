@@ -1,6 +1,87 @@
 import { urlFor } from "../lib/sanity";
 import { MinutesToDuration } from "../utils/utils";
 
+export function loadPostBreadcrumbSchema(
+  categoryTitle,
+  categorySlug,
+  postTitle
+) {
+  return {
+    __html: `
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home Page",
+        "item": "https://www.coffeenatedstories.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "${categoryTitle}",
+        "item": "https://www.coffeenatedstories.com/${categorySlug}"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "${postTitle}"
+      }]
+    }
+    `,
+  };
+}
+
+export function loadCategoryNumberBreadcrumbSchema(
+  categoryTitle,
+  categorySlug,
+  currentPage
+) {
+  return {
+    __html: `
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home Page",
+        "item": "https://www.coffeenatedstories.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "${categoryTitle}",
+        "item": "https://www.coffeenatedstories.com/${categorySlug}"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "${categoryTitle} - Page ${currentPage} | Coffeenated Stories"
+      }]
+    }
+    `,
+  };
+}
+
+export function loadCategoryHomePageBreadcrumbSchema(categoryTitle, siteTitle) {
+  return {
+    __html: `
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home Page",
+        "item": "https://www.coffeenatedstories.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "${categoryTitle} | ${siteTitle}"
+      }]
+    }
+    `,
+  };
+}
+
 export function loadHomePageNumberBreadcrumbSchema(currentPage, title) {
   return {
     __html: `

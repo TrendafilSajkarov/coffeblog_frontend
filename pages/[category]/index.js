@@ -6,6 +6,8 @@ import Footer from "../../components/Footer/Footer";
 import AsideContent from "../../components/Site/AsideContent";
 import CategoriesPageMainContent from "../../components/Site/CategoriesPageMainContent";
 
+import { loadCategoryHomePageBreadcrumbSchema } from "../../utils/schemaOrg";
+
 import { getClient } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
 import { urlFor } from "../../lib/sanity";
@@ -45,6 +47,13 @@ export default function CategoryPage({
         </title>
         <link rel="icon" href={urlFor(logo.asset).width(144).url()} />
         <meta name="description" content={currentCategory[0].description} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={loadCategoryHomePageBreadcrumbSchema(
+            currentCategory[0].title,
+            siteTitle
+          )}
+        />
       </Head>
       <Navbar
         categories={categories}
