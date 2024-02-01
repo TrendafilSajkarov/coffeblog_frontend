@@ -17,6 +17,7 @@ import { groq } from "next-sanity";
 
 import { getDate } from "../../../utils/utils";
 import { loadRecipeSchema } from "../../../utils/schemaOrg";
+import { loadRecipeBreadcrumbsSchema } from "../../../utils/schemaOrg";
 
 export default function Recipe({
   categories,
@@ -64,6 +65,14 @@ export default function Recipe({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={loadRecipeSchema(singleRecipe[0])}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={loadRecipeBreadcrumbsSchema(
+            singleRecipe[0].categories.title,
+            singleRecipe[0].categories.slug,
+            singleRecipe[0].title
+          )}
         />
         <meta name="description" content={singleRecipe[0].description} />
         <meta name="twitter:card" content="summary_large_image" />

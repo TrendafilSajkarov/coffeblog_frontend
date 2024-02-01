@@ -9,6 +9,7 @@ import { getClient } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
 
 import { loadCaroselSchema } from "../../utils/schemaOrg";
+import { loadRecipesHomePageBreadcrumbsSchema } from "../../utils/schemaOrg";
 
 export default function Recipes({
   categories,
@@ -28,6 +29,10 @@ export default function Recipes({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={loadCaroselSchema(latestRecipes)}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={loadRecipesHomePageBreadcrumbsSchema(title)}
         />
         <meta
           name="description"

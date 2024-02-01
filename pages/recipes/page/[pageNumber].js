@@ -11,6 +11,7 @@ import { groq } from "next-sanity";
 
 import { isNumeric } from "../../../utils/utils";
 import { loadCaroselSchema } from "../../../utils/schemaOrg";
+import { loadRecipesNumberBreadcrumbSchema } from "../../../utils/schemaOrg";
 
 export default function Recipes({
   categories,
@@ -52,6 +53,13 @@ export default function Recipes({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={loadCaroselSchema(latestRecipes)}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={loadRecipesNumberBreadcrumbSchema(
+            currentPage,
+            title
+          )}
         />
         <meta
           name="description"

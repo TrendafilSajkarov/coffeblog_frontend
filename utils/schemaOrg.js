@@ -1,6 +1,146 @@
 import { urlFor } from "../lib/sanity";
 import { MinutesToDuration } from "../utils/utils";
 
+export function loadRecipeBreadcrumbsSchema(tagTitle, tagSlug, recipeTitle) {
+  return {
+    __html: `
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home Page",
+        "item": "https://www.coffeenatedstories.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Recipes",
+        "item": "https://www.coffeenatedstories.com/recipes"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "${tagTitle}",
+        "item": "https://www.coffeenatedstories.com/recipes/${tagSlug}"
+      },{
+        "@type": "ListItem",
+        "position": 4,
+        "name": "${recipeTitle}"
+      }]
+    }
+    `,
+  };
+}
+
+export function loadRecipeTagNumberBreadcrumbsSchema(
+  tagTitle,
+  tagSlug,
+  currentPage,
+  siteTitle
+) {
+  return {
+    __html: `
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home Page",
+        "item": "https://www.coffeenatedstories.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Recipes",
+        "item": "https://www.coffeenatedstories.com/recipes"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "${tagTitle}",
+        "item": "https://www.coffeenatedstories.com/recipes/${tagSlug}"
+      },{
+        "@type": "ListItem",
+        "position": 4,
+        "name": "${tagTitle} - Page ${currentPage} | ${siteTitle}"
+      }]
+    }
+    `,
+  };
+}
+
+export function loadRecipeTagHomePageBreadcrumbsSchema(tagTitle, siteTitle) {
+  return {
+    __html: `
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home Page",
+        "item": "https://www.coffeenatedstories.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Recipes",
+        "item": "https://www.coffeenatedstories.com/recipes"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "${tagTitle} | ${siteTitle}"
+      }]
+    }
+    `,
+  };
+}
+
+export function loadRecipesNumberBreadcrumbSchema(currentPage, siteTitle) {
+  return {
+    __html: `
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home Page",
+        "item": "https://www.coffeenatedstories.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Recipes",
+        "item": "https://www.coffeenatedstories.com/recipes"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Recipes - Page ${currentPage} | ${siteTitle}"
+      }]
+    }
+    `,
+  };
+}
+
+export function loadRecipesHomePageBreadcrumbsSchema(siteTitle) {
+  return {
+    __html: `
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home Page",
+        "item": "https://www.coffeenatedstories.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Recipes | ${siteTitle}"
+      }]
+    }
+    `,
+  };
+}
+
 export function loadPostBreadcrumbSchema(
   categoryTitle,
   categorySlug,
