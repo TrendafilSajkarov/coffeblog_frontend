@@ -98,7 +98,7 @@ export default function Recipe({
         isRecipeNavbarActive={true}
         recipeNavbar={recipeNavbar}
       />
-      <section className="container max-w-screen-xl mx-auto my-6">
+      <section className="container max-w-screen-xl mx-auto my-6 scroll-smooth">
         <div className="relative w-full h-screen max-h-700 shadow-md">
           <Image
             src={urlFor(singleRecipe[0].mainImage.asset)
@@ -169,6 +169,14 @@ export default function Recipe({
                       member of the Amazon Associates Program, and as an Amazon
                       Associate, we earn from qualifying purchases.
                     </div>
+                    <p>
+                      Jump to{" "}
+                      <Link
+                        href={`/recipes/${singleRecipe[0].categories.slug}/${singleRecipe[0].slug.current}#PreparationSteps`}
+                      >
+                        <a>Preparation Steps</a>
+                      </Link>
+                    </p>
 
                     {/* <div className="bg-sky-500 border-2 text-center border-white my-2 mx-3 px-2 text-white shadow-sm shadow-white">
                       <p className="font-medium">

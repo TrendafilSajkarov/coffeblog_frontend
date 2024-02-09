@@ -3,7 +3,10 @@ import { serializers } from "../../lib/serializers";
 
 export default function PreparationSteps(recipe) {
   return (
-    <div className="prose w-full prose-li:marker:text-yellow-600 prose-th:text-base prose-th:font-medium prose-th:py-1 prose-img:mx-auto prose-figcaption:italic prose-figcaption:text-xs prose-figcaption:text-center prose-a:text-blue-600 font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-serif">
+    <div
+      id="PreparationSteps"
+      className="pt-4 prose w-full prose-li:marker:text-yellow-600 prose-th:text-base prose-th:font-medium prose-th:py-1 prose-img:mx-auto prose-figcaption:italic prose-figcaption:text-xs prose-figcaption:text-center prose-a:text-blue-600 font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-serif"
+    >
       {recipe.recipe && (
         <div>
           <h2 className="border-b-2 border-yellow-600">Preparation Steps</h2>
