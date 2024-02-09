@@ -206,7 +206,7 @@ export default function Recipe({
                 </div>
               )}
               <PortableText
-                className="prose mt-10 w-full prose-th:text-base prose-th:font-medium prose-th:py-1 prose-img:mx-auto prose-figcaption:italic prose-figcaption:text-xs prose-figcaption:text-center prose-a:text-blue-600 font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-serif"
+                className="prose mt-10 w-full prose-th:text-base prose-th:font-medium prose-th:py-1 prose-img:mx-auto prose-figcaption:italic prose-figcaption:text-xs prose-figcaption:text-center prose-a:text-blue-600 prose-a:font-sans font-sans prose-headings:font-medium prose-headings:text-3xl prose-headings:font-serif prose-blockquote:font-sans prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:border-yellow-600 prose-blockquote:bg-yellow-50 prose-blockquote:py-2"
                 blocks={singleRecipe[0].recipeBody}
                 serializers={serializers}
               />
