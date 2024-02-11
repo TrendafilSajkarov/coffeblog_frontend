@@ -71,6 +71,7 @@ export default function Search({ setOpenSearch }) {
                       <div className="h-full grid grid-cols-3">
                         <div className="relative col-span-1 h-full w-full">
                           <Image
+                            unoptimized
                             src={urlFor(post.mainImage)
                               .width(150)
                               .height(150)

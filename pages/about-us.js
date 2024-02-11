@@ -32,6 +32,7 @@ export default function AboutPage({
       <section className="container mx-auto pt-5 space-y-5 flex flex-col prose">
         <div className="relative w-full h-96">
           <Image
+            unoptimized
             src={urlFor(aboutUs.mainImage).width(800).url()}
             layout="fill"
             objectFit="cover"

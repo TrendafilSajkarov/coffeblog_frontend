@@ -185,6 +185,7 @@ export default function Menu({
                         <div className="prose-sm font-serif text-xs">
                           <div className="relative w-full h-48">
                             <Image
+                              unoptimized
                               src={urlFor(aboutUs.mainImage)
                                 .width(300)
                                 .height(300)

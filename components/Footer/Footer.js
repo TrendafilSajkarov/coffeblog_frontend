@@ -14,6 +14,7 @@ export default function Footer({ footer }) {
           <Link href="/" passHref>
             <div className="relative h-full w-48 cursor-pointer">
               <Image
+                unoptimized
                 className="object-fill"
                 width={imageProps.width}
                 height={imageProps.height}

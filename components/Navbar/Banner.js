@@ -17,6 +17,7 @@ export default function Banner({ logo }) {
       <Link href="/" passHref>
         <div className="relative h-full w-48 cursor-pointer">
           <Image
+            unoptimized
             width={imageProps.width}
             height={imageProps.height}
             objectFit="cover"

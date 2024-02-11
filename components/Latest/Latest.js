@@ -10,6 +10,7 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
     <main className="xl:container mx-auto py-8 grid md:grid-rows-2 min-h-700 h-xxxxl md:h-xxxl lg:grid-cols-2 lg:grid-rows-1 gap-2 lg:h-screen lg:max-h-760 w-full">
       <div className="relative group">
         <Image
+          unoptimized
           objectFit="cover"
           src={urlFor(featuredPosts[0].mainImage).width(800).height(800).url()}
           layout="fill"
@@ -66,6 +67,7 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
       <div className="grid grid-flow-row grid-rows-3 md:grid-flow-col grid-cols-2 md:grid-rows-2 gap-2">
         <div className="relative group">
           <Image
+            unoptimized
             objectFit="cover"
             src={urlFor(featuredRecipes[0].mainImage)
               .width(800)
@@ -111,6 +113,7 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
 
         <div className="relative group">
           <Image
+            unoptimized
             objectFit="cover"
             src={urlFor(featuredRecipes[1].mainImage)
               .width(800)
@@ -156,6 +159,7 @@ export default function Latest({ featuredPosts, featuredRecipes }) {
 
         <div className="relative col-span-2 row-span-2 md:col-span-1 group">
           <Image
+            unoptimized
             objectFit="cover"
             src={urlFor(featuredPosts[1].mainImage).width(800).url()}
             layout="fill"

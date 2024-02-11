@@ -10,6 +10,7 @@ export default function RichParagraph(props) {
           <figure>
             <div className="bg-gradient-to-b from-white to-slate-50 shadow-md p-1">
               <Image
+                unoptimized
                 src={urlFor(props.node.paragraphImageMeta.url)
                   .width(250)
                   .height(250)

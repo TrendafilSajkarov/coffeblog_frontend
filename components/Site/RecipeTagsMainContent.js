@@ -55,6 +55,7 @@ export default function RecipesTagsMainContent({
               >
                 <div className="relative h-full w-full flex-1 mr-3">
                   <Image
+                    unoptimized
                     src={urlFor(recipe.mainImage.asset)
                       .width(550)
                       .height(500)
