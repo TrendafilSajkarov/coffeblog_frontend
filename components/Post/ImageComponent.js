@@ -13,6 +13,7 @@ export default function ImageComponent(props) {
     // <pre>{JSON.stringify(props.node, null, 2)}</pre>
     <figure className="flex flex-col items-center justify-center bg-gradient-to-b from-white to-slate-50 shadow-md p-1 pb-2">
       <Image
+        unoptimized
         src={urlFor(props.node.asset)
           .width(
             imageProps.width <= 1500
