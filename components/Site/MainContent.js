@@ -53,6 +53,7 @@ export default function MainContent({
         <article className="prose-sm px-1 group text-center row-span-1 h-screen max-h-1000 min-h-600 flex flex-col items-center">
           <div className="relative w-full h-2/3 shadow-md">
             <Image
+              unoptimized
               src={urlFor(latestPost.mainImage).width(400).quality(100).url()}
               layout="fill"
               objectFit="cover"
@@ -122,6 +123,7 @@ export default function MainContent({
             >
               <div className={`relative w-full flex justify-center`}>
                 <Image
+                  unoptimized
                   src={urlFor(post.mainImage).width(400).quality(100).url()}
                   width={dimentions.width}
                   height={dimentions.height}

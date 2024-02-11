@@ -22,6 +22,7 @@ export default function AsideContent({
           <div className="prose-sm text-base font-medium">
             <div className="relative w-full h-52">
               <Image
+                unoptimized
                 src={urlFor(aboutUs.mainImage)
                   .width(300)
                   .height(300)
@@ -52,6 +53,7 @@ export default function AsideContent({
                 <div className="h-full grid grid-cols-3">
                   <div className="relative col-span-1 h-full w-full">
                     <Image
+                      unoptimized
                       src={urlFor(post.mainImage)
                         .width(150)
                         .height(150)
@@ -180,6 +182,7 @@ export default function AsideContent({
                 >
                   <div className="relative h-full w-full flex-1 mr-3">
                     <Image
+                      unoptimized
                       src={urlFor(recipe.mainImage.asset)
                         .width(550)
                         .height(500)
