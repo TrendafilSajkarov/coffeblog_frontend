@@ -23,6 +23,7 @@ export default function YoutubeComponent(props) {
         {!imageClicked ? (
           <>
             <Image
+              unoptimized
               src={`https://img.youtube.com/vi/${id}/sddefault.jpg`}
               layout="fill"
               objectFit="cover"
