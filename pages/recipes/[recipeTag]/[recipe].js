@@ -101,6 +101,7 @@ export default function Recipe({
       <section className="container max-w-screen-xl mx-auto my-6 scroll-smooth">
         <div className="relative w-full h-screen max-h-700 shadow-md">
           <Image
+            unoptimized
             src={urlFor(singleRecipe[0].mainImage.asset)
               .width(800)
               .auto("format")
