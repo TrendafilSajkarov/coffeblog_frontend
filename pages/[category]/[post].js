@@ -187,7 +187,7 @@ export default function PostPage({
               </div>
             )}
             <PortableText
-              className="prose w-full mt-10 prose-th:text-base prose-th:font-medium prose-th:py-1 prose-img:mx-auto prose-figcaption:italic prose-figcaption:text-xs prose-figcaption:text-center prose-a:text-blue-600 font-sans prose-headings:font-medium prose-headings:text-3xl prose-strong:font-bold prose-li:marker:text-yellow-600 prose-headings:font-serif prose-blockquote:font-sans prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:border-yellow-600 prose-blockquote:bg-yellow-50 prose-blockquote:py-2"
+              className="prose w-full mt-10 prose-th:text-base prose-th:[text-shadow:_0_1px_2px_rgb(0_0_0_/40%)] prose-th:font-semibold prose-th:font-sans prose-th:tracking-normal prose-th:py-1 prose-img:mx-auto prose-figcaption:italic prose-figcaption:text-xs prose-figcaption:text-center prose-a:text-blue-600 font-sans prose-headings:text-gray-900 prose-headings:font-medium prose-headings:text-3xl prose-strong:font-bold prose-li:marker:text-yellow-600 prose-headings:font-serif prose-blockquote:font-sans prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:border-yellow-600 prose-blockquote:bg-yellow-50 prose-blockquote:py-2"
               blocks={singlePost[0].body}
               serializers={serializers}
             />

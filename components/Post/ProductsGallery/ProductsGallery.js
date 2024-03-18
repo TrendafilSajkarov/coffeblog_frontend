@@ -127,19 +127,23 @@ export default function ProguctsGalleryComponent(props) {
                         } ${product.noreferrer && "noreferrer"}`}
                       >
                         {props.node.headingImportance == "H2" ? (
-                          <h3 className="text-center">{product.productName}</h3>
+                          <h3 className="text-center [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
+                            {product.productName}
+                          </h3>
                         ) : props.node.headingImportance == "H3" ? (
-                          <h4 className="text-center">{product.productName}</h4>
+                          <h4 className="text-center [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
+                            {product.productName}
+                          </h4>
                         ) : props.node.headingImportance == "H4" ? (
-                          <h5 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                          <h5 className="font-medium [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)] px-1 text-center text-3xl font-serif text-gray-900">
                             {product.productName}
                           </h5>
                         ) : props.node.headingImportance == "H5" ? (
-                          <h6 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                          <h6 className="font-medium [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)] px-1 text-center text-3xl font-serif text-gray-900">
                             {product.productName}
                           </h6>
                         ) : (
-                          <h6 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                          <h6 className="font-medium [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)] px-1 text-center text-3xl font-serif text-gray-900">
                             {product.productName}
                           </h6>
                         )}
@@ -169,7 +173,7 @@ export default function ProguctsGalleryComponent(props) {
                         product.noopener && "noopener"
                       } ${product.noreferrer && "noreferrer"}`}
                     >
-                      <button className="border border-gray-900 bg-yellow-300 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
+                      <button className="[text-shadow:_0_1px_2px_rgb(0_0_0_/40%)] border border-gray-900 bg-yellow-300 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
                         {product.buttonText}
                       </button>
                     </a>

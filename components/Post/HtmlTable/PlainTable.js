@@ -3,7 +3,7 @@ export default function PlainTable({ props }) {
     <div className="w-full overflow-auto">
       <table className="table-auto">
         {props.node.caption && (
-          <caption className="mb-2 italic font-light">
+          <caption className="mb-2 italic font-normal tracking-wide text-black">
             {props.node.caption}
           </caption>
         )}

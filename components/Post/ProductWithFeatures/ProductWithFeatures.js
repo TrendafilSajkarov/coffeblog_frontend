@@ -25,7 +25,9 @@ export default function ProductWithFeaturesComponent(props) {
                     props.node.noopener && "noopener"
                   } ${props.node.noreferrer && "noreferrer"}`}
                 >
-                  <h2>{props.node.productWithFeaturesName}</h2>
+                  <h2 className="[text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
+                    {props.node.productWithFeaturesName}
+                  </h2>
                 </a>
               </Link>
             ) : props.node.productWithFeaturesNameImportance == "H3" ? (
@@ -37,7 +39,9 @@ export default function ProductWithFeaturesComponent(props) {
                     props.node.noopener && "noopener"
                   } ${props.node.noreferrer && "noreferrer"}`}
                 >
-                  <h3>{props.node.productWithFeaturesName}</h3>
+                  <h3 className="[text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
+                    {props.node.productWithFeaturesName}
+                  </h3>
                 </a>
               </Link>
             ) : props.node.productWithFeaturesNameImportance == "H4" ? (
@@ -49,7 +53,9 @@ export default function ProductWithFeaturesComponent(props) {
                     props.node.noopener && "noopener"
                   } ${props.node.noreferrer && "noreferrer"}`}
                 >
-                  <h4>{props.node.productWithFeaturesName}</h4>
+                  <h4 className="[text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
+                    {props.node.productWithFeaturesName}
+                  </h4>
                 </a>
               </Link>
             ) : props.node.productWithFeaturesNameImportance == "H5" ? (
@@ -61,7 +67,7 @@ export default function ProductWithFeaturesComponent(props) {
                     props.node.noopener && "noopener"
                   } ${props.node.noreferrer && "noreferrer"}`}
                 >
-                  <h5 className="font-medium text-3xl mt-4 mb-2 font-serif text-gray-700">
+                  <h5 className="font-medium [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)] text-3xl mt-4 mb-2 font-serif text-gray-700">
                     {props.node.productWithFeaturesName}
                   </h5>
                 </a>
@@ -75,7 +81,7 @@ export default function ProductWithFeaturesComponent(props) {
                     props.node.noopener && "noopener"
                   } ${props.node.noreferrer && "noreferrer"}`}
                 >
-                  <h6 className="font-medium text-3xl mt-4 mb-2 font-serif text-gray-700">
+                  <h6 className="font-medium [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)] text-3xl mt-4 mb-2 font-serif text-gray-700">
                     {props.node.productWithFeaturesName}
                   </h6>
                 </a>
@@ -147,7 +153,7 @@ export default function ProductWithFeaturesComponent(props) {
                   props.node.noopener && "noopener"
                 } ${props.node.noreferrer && "noreferrer"}`}
               >
-                <button className="border border-gray-900 bg-yellow-300 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
+                <button className="border [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)] border-gray-900 bg-yellow-300 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
                   {props.node.buttonText}
                 </button>
               </a>

@@ -57,23 +57,23 @@ export default function MiniProdGalleryComponent(props) {
                             } ${product.noreferrer && "noreferrer"}`}
                           >
                             {product.miniProductNameImportance === "H2" ? (
-                              <h2 className="text-center">
+                              <h2 className="text-center [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
                                 {product.miniProductName}
                               </h2>
                             ) : product.miniProductNameImportance === "H3" ? (
-                              <h3 className="text-center">
+                              <h3 className="text-center [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
                                 {product.miniProductName}
                               </h3>
                             ) : product.miniProductNameImportance === "H4" ? (
-                              <h4 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                              <h4 className="font-medium px-1 text-center text-3xl font-serif text-gray-700 [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
                                 {product.miniProductName}
                               </h4>
                             ) : product.miniProductNameImportance === "H5" ? (
-                              <h5 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                              <h5 className="font-medium px-1 text-center text-3xl font-serif text-gray-700 [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
                                 {product.miniProductName}
                               </h5>
                             ) : (
-                              <h6 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                              <h6 className="font-medium px-1 text-center text-3xl font-serif text-gray-700 [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
                                 {product.miniProductName}
                               </h6>
                             )}
@@ -97,7 +97,7 @@ export default function MiniProdGalleryComponent(props) {
                             product.noopener ? "noopener" : ""
                           } ${product.noreferrer ? "noreferrer" : ""}`}
                         >
-                          <button className="sm:mx-4 p-4 border whitespace-normal border-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-400 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
+                          <button className="sm:mx-4 p-4 [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)] border whitespace-normal border-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-400 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
                             {product.buttonText || "Check Price on Amazon"}
                           </button>
                         </a>
@@ -161,23 +161,23 @@ export default function MiniProdGalleryComponent(props) {
                             } ${product.noreferrer && "noreferrer"}`}
                           >
                             {product.miniProductNameImportance === "H2" ? (
-                              <h2 className="text-center">
+                              <h2 className="text-center [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
                                 {product.miniProductName}
                               </h2>
                             ) : product.miniProductNameImportance === "H3" ? (
-                              <h3 className="text-center">
+                              <h3 className="text-center [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
                                 {product.miniProductName}
                               </h3>
                             ) : product.miniProductNameImportance === "H4" ? (
-                              <h4 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                              <h4 className="font-medium px-1 text-center text-3xl font-serif text-gray-700 [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
                                 {product.miniProductName}
                               </h4>
                             ) : product.miniProductNameImportance === "H5" ? (
-                              <h5 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                              <h5 className="font-medium px-1 text-center text-3xl font-serif text-gray-700 [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
                                 {product.miniProductName}
                               </h5>
                             ) : (
-                              <h6 className="font-medium px-1 text-center text-3xl font-serif text-gray-700">
+                              <h6 className="font-medium px-1 text-center text-3xl font-serif text-gray-700 [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)]">
                                 {product.miniProductName}
                               </h6>
                             )}
@@ -201,7 +201,7 @@ export default function MiniProdGalleryComponent(props) {
                             product.noopener && "noopener"
                           } ${product.noreferrer && "noreferrer"}`}
                         >
-                          <button className="sm:mx-4 p-4 border whitespace-normal border-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-400 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
+                          <button className="sm:mx-4 p-4 [text-shadow:_0_1px_2px_rgb(0_0_0_/40%)] border whitespace-normal border-gray-900 bg-gradient-to-r from-yellow-300 to-yellow-400 uppercase hover:bg-amber-300 hover:text-black hover:underline shadow-md px-4 py-1 text-gray-900 text-sm font-medium">
                             Check Price on Amazon
                           </button>
                         </a>
