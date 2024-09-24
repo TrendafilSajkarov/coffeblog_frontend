@@ -11,6 +11,8 @@ import { groq } from "next-sanity";
 import { loadCaroselSchema } from "../../utils/schemaOrg";
 import { loadRecipesHomePageBreadcrumbsSchema } from "../../utils/schemaOrg";
 
+import { revalidateTime } from "../../lib/revalidateTime";
+
 export default function Recipes({
   categories,
   logo,
@@ -149,6 +151,6 @@ export async function getStaticProps(context) {
       pages,
       recipeNavbar,
     },
-    revalidate: 60,
+    revalidate: revalidateTime,
   };
 }

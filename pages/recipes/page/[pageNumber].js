@@ -13,6 +13,8 @@ import { isNumeric } from "../../../utils/utils";
 import { loadCaroselSchema } from "../../../utils/schemaOrg";
 import { loadRecipesNumberBreadcrumbSchema } from "../../../utils/schemaOrg";
 
+import { revalidateTime } from "../../../lib/revalidateTime";
+
 export default function Recipes({
   categories,
   logo,
@@ -196,7 +198,7 @@ export async function getStaticProps(context) {
       isPageNumberNaN,
       recipeNavbar,
     },
-    revalidate: 60,
+    revalidate: revalidateTime,
   };
 }
 

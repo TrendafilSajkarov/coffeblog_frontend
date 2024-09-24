@@ -12,6 +12,8 @@ import { loadWebSiteSchema } from "../utils/schemaOrg";
 import { loadOrganisationSchema } from "../utils/schemaOrg";
 import { loadHomePageBreadcrumbSchema } from "../utils/schemaOrg";
 
+import { revalidateTime } from "../lib/revalidateTime";
+
 export default function Home({
   categories,
   aboutUs,
@@ -203,6 +205,6 @@ export async function getStaticProps({ preview = false }) {
       aboutUs,
       recipeNavbar,
     },
-    revalidate: 60,
+    revalidate: revalidateTime,
   };
 }

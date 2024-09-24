@@ -11,6 +11,8 @@ import { PortableText, urlFor } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
 
+import { revalidateTime } from "../../lib/revalidateTime";
+
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
@@ -371,7 +373,7 @@ export async function getStaticProps(context) {
       aboutUs,
       recipeNavbar,
     }, // will be passed to the page component as props
-    revalidate: 60,
+    revalidate: revalidateTime,
   };
 }
 

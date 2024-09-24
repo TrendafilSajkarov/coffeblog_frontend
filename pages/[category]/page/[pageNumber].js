@@ -12,6 +12,8 @@ import { getClient } from "../../../lib/sanity.server";
 import { groq } from "next-sanity";
 import { urlFor } from "../../../lib/sanity";
 
+import { revalidateTime } from "../../../lib/revalidateTime";
+
 export default function CategoryPageWithNumber({
   categories,
   logo,
@@ -236,7 +238,7 @@ export async function getStaticProps(context) {
       currentPage,
       recipeNavbar,
     },
-    revalidate: 60,
+    revalidate: revalidateTime,
   };
 }
 

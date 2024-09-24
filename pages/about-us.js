@@ -9,6 +9,8 @@ import { serializers } from "../lib/serializers";
 import { getClient } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 
+import { revalidateTime } from "../lib/revalidateTime";
+
 export default function AboutPage({
   categories,
   logo,
@@ -102,6 +104,6 @@ export async function getStaticProps(context) {
       aboutUs,
       recipeNavbar,
     },
-    revalidate: 60,
+    revalidate: revalidateTime,
   };
 }
